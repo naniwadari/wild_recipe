@@ -8,11 +8,12 @@ Bundler.require(*Rails.groups)
 
 module WildRecipe
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.time_zone = "Tokyo"
+    config.active_record.default_timezone = :local
+    #デフォルトのlocaleを日本語(:ja)にする
+    config.i18n.default_locale = :ja
+    #i18nの複数ロケールファイルが読み込まれるようにpathを通す
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end

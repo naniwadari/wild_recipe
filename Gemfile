@@ -27,6 +27,8 @@ gem "bootstrap-will_paginate", "1.0.0"
 gem "bootstrap-sass", "3.4.1"
 #データベース内のカウント機能
 gem "counter_culture", "2.2.4"
+#日本語化
+gem "rails-i18n", "~> 5.1"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
