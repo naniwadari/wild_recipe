@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 #自分で入れたやつ…
+#jquery
+gem "jquery-rails"
 #パスワード暗号化
 gem "bcrypt", "3.1.12"
 #ページネーション
@@ -50,6 +52,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'minitest-reporters', '1.1.14'
   gem 'selenium-webdriver'
   gem "rails-controller-testing"
 end
