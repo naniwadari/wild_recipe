@@ -6,6 +6,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     @user = users(:recipeman)
   end
   
+  #ログインフォームで無効なデータを送信するテスト
   test "login with invalid information" do
     get login_path
     assert_template "sessions/new"
@@ -16,6 +17,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
   
+  #ログインフォームで有効なデータを送信するテスト
   test "login with valid information" do
     get login_path
     post login_path, params: { session: { email: @user.email,

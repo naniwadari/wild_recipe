@@ -1,4 +1,9 @@
 recipeman:
-  name: Recipeman
+  name: Recipe man
   email: wildrecipe@example.com
   password_digest: <%= User.digest('password') %>
+
+recipewoman:
+  name: Recipe woman
+  email: recipewoman@example.com
+  password_digest: <%= User.digest('password')%>
