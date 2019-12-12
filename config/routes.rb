@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  #avtive_admin用のルート
+  ActiveAdmin.routes(self)
+  
   root "static_pages#home"
   get "/about", to:"static_pages#about"
   get '/signup', to: "users#new"

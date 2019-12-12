@@ -2,8 +2,16 @@ recipeman:
   name: Recipe man
   email: wildrecipe@example.com
   password_digest: <%= User.digest('password') %>
+  admin: false
 
 recipewoman:
   name: Recipe woman
   email: recipewoman@example.com
   password_digest: <%= User.digest('password')%>
+  admin: false
+  
+admin_user:
+  name: Admin user
+  email: admin@admin.com
+  password_digest: <%= User.digest('password')%>
+  admin: true

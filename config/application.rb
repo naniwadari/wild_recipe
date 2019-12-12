@@ -15,5 +15,9 @@ module WildRecipe
     config.i18n.default_locale = :ja
     #i18nの複数ロケールファイルが読み込まれるようにpathを通す
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
+    #active_adminのheroku用設定
+    config.assets.precompile += %w[ admin/active_admin.scss admin/active_admin.js]
   end
+  
+  
 end
