@@ -37,6 +37,19 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_equal email, @user.email
   end
   
+  #プロフィールテキストの追加テスト
+  test "successful edit profile_text" do
+    log_in_as(@user)
+    get user_path(@user)
+    assert_template "users/show"
+    profile_text = "テスト文章です"
+    patch user_path(@user), params: { user: { profile_text: profile_text }}
+    assert_not flash.empty?
+    assert_redirected_to @user
+    @user.reload
+    assert_equal profile_text, @user.profile_text
+  end
+  
   #フレンドリーフォワーディングのテスト
   test "friendly forwarding" do
     get edit_user_path(@user)

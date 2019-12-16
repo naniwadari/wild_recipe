@@ -73,6 +73,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   
+  test "profile_text should not be too long" do
+    @user.profile_text = "あ" * 256
+    assert_not @user.valid?
+  end
+  
   #authenticated?がnilならfalseを返すことを確認
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?("")

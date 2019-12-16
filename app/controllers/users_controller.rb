@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     #このparamsハッシュでは:user属性を必須とし、許可した属性以外をブロックする(strong parameters)
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+                                   :password_confirmation,:profile_text)
     end
     
     #beforeアクション
