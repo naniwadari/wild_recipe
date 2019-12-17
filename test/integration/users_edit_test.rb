@@ -4,6 +4,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:recipeman)
+    @other_user = users(:recipewoman)
   end
   
   #プロフィール変更へ無効なデータを送信
@@ -42,12 +43,22 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get user_path(@user)
     assert_template "users/show"
+    #折り畳みの変更ボタンが表示されていることの確認
+    assert_select "a[data-toggle=?]", "collapse"
     profile_text = "テスト文章です"
     patch user_path(@user), params: { user: { profile_text: profile_text }}
     assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
     assert_equal profile_text, @user.profile_text
+  end
+  
+  #正規ユーザー以外には変更ボタンを表示しない
+  test "change-button should only appear right user" do
+    log_in_as(@other_user)
+    get user_path(@user)
+    assert_template "users/show"
+    assert_select "a[data-toggle=?]", "collapse", count: 0
   end
   
   #フレンドリーフォワーディングのテスト

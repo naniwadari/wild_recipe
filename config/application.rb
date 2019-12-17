@@ -17,6 +17,8 @@ module WildRecipe
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     #active_adminのheroku用設定
     config.assets.precompile += %w[ admin/active_admin.scss admin/active_admin.js]
+    #認証トークンをremoteフォームに埋め込む(javascript無効の対策)
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
   
   
