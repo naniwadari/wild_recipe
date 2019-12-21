@@ -28,16 +28,15 @@ class UsersController < ApplicationController
   #@userはbefore_actionのcorrect_userで定義
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = "プロフィールを変更しました"
-      respond_to do |format|
-        format.html { redirect_to @user }
-        format.js
-      end
+        respond_to do |format|
+          format.html { redirect_to @user }
+          format.js
+        end
     else
       render "edit"
     end
   end
-  
+
   private
     
     #このparamsハッシュでは:user属性を必須とし、許可した属性以外をブロックする(strong parameters)

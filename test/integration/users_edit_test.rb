@@ -31,7 +31,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               email: email,
                                               password: "",
                                               password_confirmation: ""}}
-    assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
     assert_equal name, @user.name
@@ -47,7 +46,6 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_select "a[data-toggle=?]", "collapse"
     profile_text = "テスト文章です"
     patch user_path(@user), params: { user: { profile_text: profile_text }}
-    assert_not flash.empty?
     assert_redirected_to @user
     @user.reload
     assert_equal profile_text, @user.profile_text
