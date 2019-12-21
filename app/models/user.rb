@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 },allow_nil: true
   validates :profile_text, length: {maximum: 255 }
   
+  #リレーション
+  has_many :recipes, dependent: :destroy
   class << self
     
     #渡された文字列をBcryptで暗号化して返す

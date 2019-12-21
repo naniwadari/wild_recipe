@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #avtive_admin用のルート
   ActiveAdmin.routes(self)
   
@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   
   resources :users
+  
+  resources :recipes
 end

@@ -1,10 +1,10 @@
-<% if object.errors.any? %>
+<% if @recipe.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
-      <%= object.errors.count %>個のエラーがあります。
+      <%= @recipe.errors.count %>個のエラーがあります。
     </div>
       <ul>
-        <% object.errors.full_messages.each do |msg| %>
+        <% @recipe.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

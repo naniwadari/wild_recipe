@@ -11,3 +11,22 @@ User.create!(name:  "Example User",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true)
+
+Recipe.create!(name: "スベリヒユのおひたし",
+               user_id: "1",
+               comment: "一番最初に作った野草料理です。")
+               
+Ingredient.create!(name: "スベリヒユ",
+                   amount: "100ｇ",
+                   number: "1",
+                   recipe_id: "1")
+
+Ingredient.create!(name: "しょうゆ",
+                   amount: "大さじ3",
+                   number: "2",
+                   recipe_id: "1")
+
+Ingredient.create!(name: "さとう",
+                   amount: "大さじ2",
+                   number: "3",
+                   recipe_id: "1")

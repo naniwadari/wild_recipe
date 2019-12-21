@@ -1,0 +1,10 @@
+<h1>料理の名前を入力してください</h1>
+<%= form_for(@recipe) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  
+  <%= f.text_field :name, placeholder: "例：スベリヒユのおひたし" %>
+
+  <%= f.submit "レシピ入力に進む" %>
+<% end %>
+
+
