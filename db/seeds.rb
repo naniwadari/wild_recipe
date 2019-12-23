@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #ユーザー
-User.create!(name:  "Example User",
+User.create!(name:  "レシピマン@アドミン",
              email: "example@wildrecipe.com",
              password:              "foobar",
              password_confirmation: "foobar",
@@ -30,3 +30,19 @@ Ingredient.create!(name: "さとう",
                    amount: "大さじ2",
                    number: "3",
                    recipe_id: "1")
+
+Procedure.create!(number: "1",
+                  content: "スベリヒユをよく洗って泥を落とします",
+                  recipe_id: "1")
+
+Procedure.create!(number: "2",
+                  content: "しばらく湯がいてザルにあげます",
+                  recipe_id: "1")
+
+Procedure.create!(number: "3",
+                  content: "ボウルに入れて調味料と混ぜます",
+                  recipe_id: "1")
+                  
+Procedure.create!(number: "4",
+                  content: "お皿に盛って召し上がれ",
+                  recipe_id: "1")

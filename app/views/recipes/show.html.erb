@@ -1,0 +1,11 @@
+<h1><%= @recipe.name %></h1>
+<h3>材料</h3>
+<% @recipe.ingredient.each do |ingredient| %>
+  <p><%= ingredient.name %>:<%= ingredient.amount %></p>
+<% end %>
+<h3>手順</h3>
+<% @recipe.procedure.each do |procedure| %>
+  <p><%= procedure.number%>:<%= procedure.content %></p>
+<% end %>
+
+<p>コメント：<%= @recipe.comment %></p>

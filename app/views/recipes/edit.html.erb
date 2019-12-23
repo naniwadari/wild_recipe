@@ -1,1 +1,22 @@
 <h1><%= @recipe.name %></h1>
+<h3>材料</h3>
+<% if @recipe.ingredient.empty? %>
+  <p>材料を入力しましょう</p>
+<% else %>
+  <% @recipe.ingredient.each do |ingredient| %>
+    <p><%= ingredient.number %><%= ingredient.name %>:<%= ingredient.amount %></p>
+  <% end %>
+<% end %>
+
+<%= form_with model: @ingredients, url: ingredients_path, local: true do |form| %>
+  <%= hidden_field_tag :recipe_id, @recipe.id %>
+  <% @ingredients.collection.each do |ingredient| %>
+    <%= fields_for 'ingredients[]', ingredient do |field| %>
+    
+      <%= field.text_field :name, placeholder: "材料名" %>
+      
+      <%= field.text_field :amount, placeholder: "量" %>
+    <% end %>
+  <% end %>
+  <%= form.submit %>
+<% end %>
