@@ -14,18 +14,21 @@ class IngredientCollection
   def initialize(attributes = [], recipe_id)
     #レシピＩＤを指定
     @recipe = Recipe.find_by(id: recipe_id)
-    #attributesに値が入っていればcollectionに配列を代入する
+    #attributesに値が入っていればcollectionに材料データを入れ込んだ配列を代入する
     if attributes.present?
       self.collection = attributes.map do |value|
         @recipe.ingredient.build(
           name: value[:name],
-          amount: value[:amount] #,
-          #number: value[:number]
+          amount: value[:amount]
         )
+      end
+      #上で代入した材料データにナンバーを割り振る
+      self.collection.each_with_index do |value, i|
+        value.number = "#{ (i + 1) }"
       end
     #attributesが定義されていないかorデータが空なら、外キー以外は空の材料データをNUM個作る
     else
-      self.collection = INGREDIENT_NUM.times.map{ @recipe.ingredient.new }
+      self.collection = INGREDIENT_NUM.times.map{ @recipe.ingredient.build }
     end
   end
   
