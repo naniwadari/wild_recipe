@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+suberihiyu:
+  id: 1
+  name: suberihiyu ohitasi
   user_id: 1
-
-two:
-  name: MyString
-  user_id: 1
+  comment: My first wild recipe
