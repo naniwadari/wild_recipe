@@ -11,6 +11,7 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     @input_ingredients_alt = [ {name: "", amount: ""},
                                {name: "", amount: ""},
                                {name: "スベリヒユ", amount: "200g"}]
+    #材料データの個数、IngredientCollectionを参照
     @ingredient_num = IngredientCollection::INGREDIENT_NUM
   end
   

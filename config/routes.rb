@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'procedures/create'
+
+  get 'procedures/update'
+
+  get 'procedures/destroy'
+
   #avtive_admin用のルート
   ActiveAdmin.routes(self)
   
@@ -17,4 +23,6 @@ Rails.application.routes.draw do
   resources :recipes
   
   resources :ingredients
+  
+  resources :procedures
 end

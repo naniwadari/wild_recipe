@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @ingredients = IngredientCollection.new( [], @recipe.id)
+    @procedure = @recipe.procedure.build
   end
   
   def show
