@@ -13,7 +13,7 @@
         <td><%= link_to "#{r.name}", recipe_path(id: r.id) %></td>
         <td><%= link_to "編集", edit_recipe_path(id: r.id)%></td>
         <td>
-          <%= form_for(r, url: release_recipe_path ) do |form| %>
+          <%= form_with url: release_recipe_path(id: r.id), method: :patch, local: true do |form| %>
             <%= form.hidden_field :release, value: false %>
             <%= form.submit "下書きに戻す" %>
           <% end %>

@@ -26,12 +26,12 @@
 </div>
 
 <div class="row">
-  <%= form_for(@recipe, url: release_recipe_path) do |form| %>
+  <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
     <%= form.hidden_field :release, value: false %>
     <%= form.submit "下書きとして保存" %>
   <% end %>
   
-  <%= form_for(@recipe, url: release_recipe_path ) do |form| %>
+  <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
    <%= form.hidden_field :release, value: true %>
    <%= form.submit "レシピを公開する" %>
   <% end %>

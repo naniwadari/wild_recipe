@@ -37,7 +37,7 @@ class RecipesController < ApplicationController
   
   def release
     @recipe = Recipe.find(params[:id])
-    if @recipe.update_attributes(recipe_params)
+    if @recipe.update_attributes(release: params[:release])
       if @recipe.release == true
         flash[:success] = "レシピを公開しました"
         redirect_to recipe_path(@recipe)
@@ -58,7 +58,7 @@ class RecipesController < ApplicationController
   
     #Recipeのストロングパラメーター
     def recipe_params
-      params.require(:recipe).permit(:name, :comment, :release)
+      params.require(:recipe).permit(:name, :comment)
     end
     
    #ログイン済ユーザーかどうか確認
