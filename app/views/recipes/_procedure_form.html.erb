@@ -1,0 +1,49 @@
+<h3>調理の手順</h3>
+
+<% if @recipe.procedure.empty? %>
+  <p>手順を入力しましょう</p>
+<% else %>
+  <% @recipe.procedure.each do |procedure| %>
+    <% if procedure.content.present? %>
+      <p><%= procedure.number %>…<%= procedure.content %></p>
+    <% end %>
+  <% end %>
+<% end %>
+
+
+<% 4.times.with_index do |i| %>
+  <div class="col-sm-3">
+    <div class="d-flex">
+      <div class="form-group">
+        <div class="col-xs-1">
+          <%= "#{(i+1)}"%>:
+        </div>
+        <div class="col-md-2">
+          <%= form_with url: procedures_change_before_path, local: true do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= hidden_field_tag :number, "#{(i+1)}" %>
+            <%= form.submit "←", class: "change_content_button" %>
+          <% end %>
+        </div>
+        <div class="col-md-2">
+          <%= form_with url: procedures_change_after_path, local: true do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= hidden_field_tag :number, "#{(i+1)}" %>
+            <%= form.submit "→", class: "change_content_button" %>
+          <% end %>
+        </div>
+      </div>
+     
+      <%= form_for(@procedure) do |form| %>
+        <%= hidden_field_tag :recipe_id, @recipe.id %>
+        <% if @recipe.procedure.find_by(number: "#{(i+1)}") && @recipe.procedure.find_by(number: "#{(i+1)}").content.present? %>
+          <%= form.text_area :content , value: @recipe.procedure.find_by(number: "#{(i+1)}").content %>
+        <% else %>
+          <%= form.text_area :content %>
+        <% end %>
+        <%= form.hidden_field :number, value: "#{(i+1)}" %>
+        <%= form.submit "保存" %>
+      <% end %>
+    </div>
+  </div>  
+<% end %>

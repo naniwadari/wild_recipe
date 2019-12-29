@@ -15,10 +15,29 @@ class ProceduresController < ApplicationController
       render "recipes/edit"
     end
   end
-
-  def update
+  
+  def change_after
+    @recipe = Recipe.find_by(id: params[:recipe_id])
+    @change_after = Procedure.find_by(recipe_id: @recipe.id, number: params[:number])
+    if @change_after.present?
+      Procedure.change_content_after(@recipe.id, @change_after.number)
+      redirect_to edit_recipe_path(@recipe)
+    else
+      redirect_to edit_recipe_path(@recipe)
+    end
   end
-
+  
+  def change_before
+    @recipe = Recipe.find_by(id: params[:recipe_id])
+    @change_before = Procedure.find_by(recipe_id: @recipe.id, number: params[:number])
+    if @change_before.present?
+      Procedure.change_content_before(@recipe.id, @change_before.number)
+      redirect_to edit_recipe_path(@recipe)
+    else
+      redirect_to edit_recipe_path(@recipe)
+    end
+  end
+  
   def destroy
   end
   

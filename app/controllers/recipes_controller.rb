@@ -21,6 +21,15 @@ class RecipesController < ApplicationController
     @procedure = @recipe.procedure.build
   end
   
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update_attributes(recipe_params)
+      redirect_to edit_recipe_path(@recipe)
+    else
+      render "edit"
+    end
+  end
+  
   def show
     @recipe = Recipe.find(params[:id])
   end
