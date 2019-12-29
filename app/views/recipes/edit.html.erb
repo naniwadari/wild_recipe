@@ -24,6 +24,15 @@
     </div>
   <% end %>
 </div>
+
 <div class="row">
-  <%= link_to "投稿する", recipe_path(@recipe) %>
+  <%= form_for(@recipe, url: release_recipe_path) do |form| %>
+    <%= form.hidden_field :release, value: false %>
+    <%= form.submit "下書きとして保存" %>
+  <% end %>
+  
+  <%= form_for(@recipe, url: release_recipe_path ) do |form| %>
+   <%= form.hidden_field :release, value: true %>
+   <%= form.submit "レシピを公開する" %>
+  <% end %>
 </div>

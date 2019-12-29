@@ -5,8 +5,9 @@
 </p>
 
 <% if current_user == @user %>
-  <a href="#edit_profile" data-toggle="collapse">変更</a>
-  
+  <div class="row">
+    <a href="#edit_profile" data-toggle="collapse">変更</a>
+  </div>
   <div id="edit_profile" class="collapse">
     <%= form_for(@user, remote: true) do |f| %>
       <%= render "shared/error_messages", object: f.object %>

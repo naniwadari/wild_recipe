@@ -3,3 +3,34 @@
 <p>メールアドレス:<%= @user.email %></p>
 
 <%= render "profile" %>
+
+<div class="col-md-4">
+  <h3>公開したレシピ</h3>
+  <table class="table table-striped">
+    <tr><th>レシピ名</th></tr>
+    <% @recipes.each do |r| %>
+      <tr>
+        <td><%= link_to "#{r.name}", recipe_path(id: r.id) %></td>
+        <td><%= link_to "編集", edit_recipe_path(id: r.id)%></td>
+        <td>
+          <%= form_for(r, url: release_recipe_path ) do |form| %>
+            <%= form.hidden_field :release, value: false %>
+            <%= form.submit "下書きに戻す" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @recipes %>
+  
+  <h3>下書き中のレシピ</h3>
+  <table class="table table-striped">
+    <tr><th>レシピ名</th></tr>
+    <% @draft_recipes.each do |dr| %>
+      <tr>
+        <td><%= link_to "#{dr.name}", edit_recipe_path(id: dr.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @draft_recipes, param_name: "draft_page" %>
+</div>

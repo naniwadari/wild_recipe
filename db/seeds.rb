@@ -14,7 +14,8 @@ User.create!(name:  "レシピマン@アドミン",
 
 Recipe.create!(name: "スベリヒユのおひたし",
                user_id: "1",
-               comment: "一番最初に作った野草料理です。")
+               comment: "一番最初に作った野草料理です。",
+               release: true)
                
 Ingredient.create!(name: "スベリヒユ",
                    amount: "100ｇ",

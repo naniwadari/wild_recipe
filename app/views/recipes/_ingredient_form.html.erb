@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="col-md-6">
-  <table>
+  <table class="table table-striped">
     <tr><th>名前</th><th>量</th></tr>
     <%= form_with model: @ingredients, url: ingredients_path, local: true do |form| %>
       <%= hidden_field_tag :recipe_id, @recipe.id %>

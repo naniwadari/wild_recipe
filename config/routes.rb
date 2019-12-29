@@ -20,7 +20,11 @@ Rails.application.routes.draw do
   
   resources :users
   
-  resources :recipes
+  resources :recipes do
+    member do
+      patch :release #公開・非公開を決めるカラム
+    end
+  end
   
   resources :ingredients
   

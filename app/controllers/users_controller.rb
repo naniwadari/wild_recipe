@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes.where(release: true).order(id: "desc").page(params[:page])
+    @draft_recipes = @user.recipes.where(release: false).order(id: "desc").page(params[:draft_page]).per(10)
   end
   
   def create
