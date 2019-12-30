@@ -20,7 +20,7 @@
       <%= form.text_area :comment, value: @recipe.comment %>
     <% end %>
     <div class="col-md-1">
-      <%= form.submit "保存"%>
+      <%= form.submit "保存" %>
     </div>
   <% end %>
 </div>
@@ -35,4 +35,6 @@
    <%= form.hidden_field :release, value: true %>
    <%= form.submit "レシピを公開する" %>
   <% end %>
+  
+  <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
 </div>

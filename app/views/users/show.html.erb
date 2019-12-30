@@ -11,18 +11,22 @@
     <% @recipes.each do |r| %>
       <tr>
         <td><%= link_to "#{r.name}", recipe_path(id: r.id) %></td>
-        <td><%= link_to "編集", edit_recipe_path(id: r.id)%></td>
-        <td>
-          <%= form_with url: release_recipe_path(id: r.id), method: :patch, local: true do |form| %>
-            <%= form.hidden_field :release, value: false %>
-            <%= form.submit "下書きに戻す" %>
-          <% end %>
-        </td>
+        <% if current_user == @user %>
+          <td><%= link_to "編集", edit_recipe_path(id: r.id)%></td>
+          <td>
+            <%= form_with url: release_recipe_path(id: r.id), method: :patch, local: true do |form| %>
+              <%= form.hidden_field :release, value: false %>
+              <%= form.submit "下書きに戻す" %>
+            <% end %>
+          </td>
+        <% end %>
+          
       </tr>
     <% end %>
   </table>
   <%= paginate @recipes %>
   
+  <% if current_user == @user %>
   <h3>下書き中のレシピ</h3>
   <table class="table table-striped">
     <tr><th>レシピ名</th></tr>
@@ -33,4 +37,5 @@
     <% end %>
   </table>
   <%= paginate @draft_recipes, param_name: "draft_page" %>
+  <% end %>
 </div>
