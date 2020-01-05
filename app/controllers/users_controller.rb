@@ -7,9 +7,14 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
-    @recipes = @user.recipes.where(release: true).order(id: "desc").page(params[:page])
-    @draft_recipes = @user.recipes.where(release: false).order(id: "desc").page(params[:draft_page]).per(10)
+    @user = User.find_by(id: params[:id])
+    if @user.present?
+      @recipes = @user.recipes.where(release: true).order(id: "desc").page(params[:page])
+      @draft_recipes = @user.recipes.where(release: false).order(id: "desc").page(params[:draft_page]).per(10)
+    else
+      flash[:danger] = "ユーザーが見つかりませんでした"
+      redirect_to root_url
+    end
   end
   
   def create

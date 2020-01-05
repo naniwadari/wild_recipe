@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+procedure_1:
+  id: 1
   number: 1
-  content: MyText
-  recipe: one
+  content: first process
+  recipe_id: 1
 
-two:
-  number: 1
-  content: MyText
-  recipe: two
+procedure_2:
+  id: 2
+  number: 2
+  content: next process
+  recipe_id: 1

@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  before_action :logged_in_author
+  before_action :correct_author_via
   
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])

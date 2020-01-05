@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :edit]
-  before_action :correct_user, only:[:edit, :update, :release, :destroy]
+  before_action :logged_in_author, only: [:new, :create, :edit]
+  before_action :correct_author, only:[:edit, :update, :release, :destroy]
+  
   def index
     @recipes = Recipe.where(release: true).page(params[:page])
   end
@@ -58,7 +59,11 @@ class RecipesController < ApplicationController
   end
   
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = Recipe.find_by(id: params[:id])
+    unless @recipe.present?
+      flash[:danger] = "レシピが見つかりませんでした"
+      redirect_to root_url
+    end
   end
   
   private
@@ -67,25 +72,5 @@ class RecipesController < ApplicationController
     def recipe_params
       params.require(:recipe).permit(:name, :comment)
     end
-    
-   #ログイン済ユーザーかどうか確認
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "レシピの閲覧・投稿・編集にはログインが必要です。"
-        redirect_to login_url
-      end
-    end
-    
-    #レシピＩＤからユーザーを抽出して@recipe_authorに代入
-    def recipe_author
-      @recipe = Recipe.find_by(id: params[:id])
-      @user = User.find_by(id: @recipe.user_id) if @recipe.present?
-    end
-    
-    #レシピの執筆者とログインユーザーが同じ場合を検証
-    def correct_user
-      recipe_author
-      redirect_to(root_url) unless current_user?(@user)
-    end
+
 end
