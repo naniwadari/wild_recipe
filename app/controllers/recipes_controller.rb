@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :correct_author, only:[:edit, :update, :release, :destroy]
   
   def index
-    @recipes = Recipe.where(release: true).page(params[:page])
+    @recipes = Recipe.search(params[:search]).page(params[:page])
   end
   
   def new
