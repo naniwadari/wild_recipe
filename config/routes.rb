@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'procedures/create'
-
-  get 'procedures/update'
-
-  get 'procedures/destroy'
-
+  
   #avtive_admin用のルート
   ActiveAdmin.routes(self)
   
@@ -26,9 +20,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :ingredients
+  resources :ingredients, only: :create
   
-  resources :procedures
+  resources :procedures, only: [:create, :destroy]
   post "procedures/change_after", to: "procedures#change_after"
   post "procedures/change_before", to: "procedures#change_before"
 
