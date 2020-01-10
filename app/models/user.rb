@@ -14,6 +14,8 @@ class User < ApplicationRecord
   
   #リレーション
   has_many :recipes, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  
   class << self
     
     #渡された文字列をBcryptで暗号化して返す
@@ -45,4 +47,20 @@ class User < ApplicationRecord
   def forget
     update_attribute(:remember_digest, nil)
   end
+  
+  #レシピをイイネする
+  def like(recipe)
+    self.likes.create(recipe_id: recipe.id)
+  end
+  
+  #レシピのイイネを取り消す
+  def unlike(recipe)
+    self.likes.find_by(recipe_id: recipe.id).destroy
+  end
+  
+  #ユーザーがレシピをイイネしていたらtrueを返す
+  def like?(recipe)
+    self.likes.find_by(recipe_id: recipe.id).present?
+  end
+  
 end

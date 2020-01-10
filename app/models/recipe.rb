@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :ingredient, dependent: :destroy
   has_many :procedure, dependent: :destroy
+  has_many :likes, dependent: :destroy
   
   validates :name,presence: true, length: {maximum: 20}
   
