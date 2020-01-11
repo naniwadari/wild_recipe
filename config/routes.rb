@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   resources :procedures, only: [:create, :destroy]
   post "procedures/change_after", to: "procedures#change_after"
   post "procedures/change_before", to: "procedures#change_before"
-
+  
+  resources :likes, only: [:create, :destroy]
 end
