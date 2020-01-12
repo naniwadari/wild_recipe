@@ -15,18 +15,14 @@
 
 <p>コメント：<%= @recipe.comment %></p>
 
-<% if current_user.like?(@recipe) %>
-
-  <%= form_with url: like_path( current_user.likes.find_by(recipe_id: @recipe.id)), method: :delete, local: true do |f| %>
-    <%= hidden_field_tag :recipe_id, @recipe.id %>
-    <%= f.submit "イイネを取り消す" %>
-  <% end %>
+<div class="like_icon">
+  <% if current_user.like?(@recipe) %>
   
-<% else %>
-
-  <%= form_with url: likes_path, local: true do |f| %>
-    <%= hidden_field_tag :recipe_id, @recipe.id %>
-    <%= f.submit "イイネ" %>
-  <% end %>
+    <%= render "unlike" %>
+    
+  <% else %>
   
-<% end %>
+    <%= render "like" %>
+  
+  <% end %>
+</div>

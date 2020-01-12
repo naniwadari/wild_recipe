@@ -5,6 +5,22 @@
 <%= render "profile" %>
 
 <div class="col-md-4">
+  <h3>イイネしたレシピ</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>レシピ名</th>
+      <th>執筆者</th>
+    </tr>
+    <% @like_recipes.each do |l| %>
+      <tr>
+        <% recipe = Recipe.find_by(id: l.recipe_id) %>
+        <td><%= link_to "#{recipe.name}", recipe_path(id: recipe.id) %></td>
+        <td><%= link_to "#{User.find_by(id: recipe.user_id).name}", user_path(id: recipe.user_id)%></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @like_recipes, param_name: "like_page" %>
+  
   <h3>公開したレシピ</h3>
   <table class="table table-striped">
     <tr><th>レシピ名</th></tr>

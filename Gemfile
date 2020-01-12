@@ -32,6 +32,8 @@ gem "counter_culture", "2.2.4"
 gem "rails-i18n", "~> 5.1"
 #管理画面の追加
 gem "activeadmin"
+#fontawesome
+gem "font-awesome-sass", "~> 5.4.1"
 
 #active_adminとconflictのため保留
 #gem "will_paginate", "3.2.1"

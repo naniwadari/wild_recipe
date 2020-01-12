@@ -1,0 +1,7 @@
+<%= form_with url: likes_path do |f| %>
+  <%= hidden_field_tag :recipe_id, @recipe.id %>
+  <%= button_tag type: "submit" do %>
+    <%= icon('far','heart') %>
+  <% end %>
+  <%= @recipe.likes.count unless @recipe.likes.count == 0 %>
+<% end %>
