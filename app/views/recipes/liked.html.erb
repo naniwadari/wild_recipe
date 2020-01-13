@@ -1,0 +1,12 @@
+<h1>このレシピをイイネしたユーザー</h1>
+<table class="table table-striped">
+  <tr><th>ユーザー名</th></tr>
+  <% @liked_user.each do |u| %>
+    <tr>
+      <td>
+        <%= link_to "#{User.find_by(id: u.user_id).name}", user_path(id: u.user_id) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @liked_user %>

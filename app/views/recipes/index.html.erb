@@ -18,7 +18,5 @@
       <td><%= link_to "#{User.find_by(id: r.user_id ).name}", user_path(id: r.user_id) %></td>
     </tr>
   <% end %>
-  
 </table>
-
 <%= paginate @recipes %>

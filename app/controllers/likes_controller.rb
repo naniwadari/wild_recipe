@@ -18,8 +18,7 @@ class LikesController < ApplicationController
       format.js
     end
   end
-end
-  
+
   private
   
   def logged_in_user
@@ -29,3 +28,5 @@ end
       redirect_to login_url
     end
   end
+  
+end

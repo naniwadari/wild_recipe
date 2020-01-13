@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   resources :recipes do
     member do
+      get :liked #レシピをイイネしたユーザーの一覧
       patch :release #公開・非公開を決めるカラム
     end
   end

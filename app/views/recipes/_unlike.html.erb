@@ -3,5 +3,7 @@
   <%= button_tag type: "submit" do %>
     <%= icon('fas','heart') %>
   <% end %>
-  <%= @recipe.likes.count %>
+  <%= link_to liked_recipe_path(@recipe) do %>
+    <%= @recipe.likes.count %>イイネ
+  <% end %>
 <% end %>

@@ -58,6 +58,11 @@ class RecipesController < ApplicationController
     end
   end
   
+  def liked
+    @recipe = Recipe.find(params[:id])
+    @liked_user = @recipe.likes.page(params[:page])
+  end
+  
   def show
     @recipe = Recipe.find_by(id: params[:id])
     unless @recipe.present?
