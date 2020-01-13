@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :ingredient, dependent: :destroy
   has_many :procedure, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :books, dependent: :destroy
   
   validates :name,presence: true, length: {maximum: 20}
   

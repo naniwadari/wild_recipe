@@ -12,6 +12,7 @@ class UsersController < ApplicationController
       @recipes = @user.recipes.where(release: true).order(id: "desc").page(params[:page]).per(10)
       @draft_recipes = @user.recipes.where(release: false).order(id: "desc").page(params[:draft_page]).per(10)
       @like_recipes = @user.likes.order(id: "desc").page(params[:like_page]).per(10)
+      @book_recipes = @user.books.order(id: "desc").page(params[:book_page]).per(10)
     else
       flash[:danger] = "ユーザーが見つかりませんでした"
       redirect_to root_url

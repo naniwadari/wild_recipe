@@ -17,12 +17,16 @@
 
 <div class="like_icon">
   <% if current_user.like?(@recipe) %>
-  
     <%= render "unlike" %>
-    
   <% else %>
-  
     <%= render "like" %>
-  
+  <% end %>
+</div>
+
+<div class="book_icon">
+  <% if current_user.book?(@recipe) %>
+    <%= render "unbook" %>
+  <% else %>
+    <%= render "book" %>
   <% end %>
 </div>

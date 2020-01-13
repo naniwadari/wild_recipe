@@ -21,6 +21,22 @@
   </table>
   <%= paginate @like_recipes, param_name: "like_page" %>
   
+  <h3>ブックマークしたレシピ</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>レシピ名</th>
+      <th>執筆者</th>
+    </tr>
+    <% @book_recipes.each do |b| %>
+      <tr>
+        <% recipe = Recipe.find_by(id: b.recipe_id) %>
+        <td><%= link_to "#{recipe.name}", recipe_path(id: recipe.id) %></td>
+        <td><%= link_to "#{User.find_by(id: recipe.user_id).name}", user_path(id: recipe.user_id) %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= paginate @book_recipes, param_name: "book_page" %>
+  
   <h3>公開したレシピ</h3>
   <table class="table table-striped">
     <tr><th>レシピ名</th></tr>

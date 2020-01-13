@@ -1,0 +1,6 @@
+<%= form_with url: books_path,local: true do |f| %>
+  <%= hidden_field_tag :recipe_id, @recipe.id %>
+  <%= button_tag type: "submit" do %>
+    <%= icon('far','bookmark') %>
+  <% end %>
+<% end %>

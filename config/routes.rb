@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   post "procedures/change_before", to: "procedures#change_before"
   
   resources :likes, only: [:create, :destroy]
+  
+  resources :books, only: [:create, :destroy]
 end

@@ -13,7 +13,7 @@ class LikeFunctionTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get recipe_path(@recipe)
     #イイネボタン
-    assert_select "form[method=?]","post"
+    assert_select "form[action=?]","/likes"
     #イイネ件数表示が無い
     assert_select "a[href=?]", liked_recipe_path(@recipe), count: 0
     #データ送信
@@ -26,7 +26,7 @@ class LikeFunctionTest < ActionDispatch::IntegrationTest
     #ページをリロード
     get recipe_path(@recipe)
     #イイネ解除ボタン
-    assert_select "input[value=?]","delete"
+    assert_select "form[action=?]", "/likes/#{(Like.last.id)}"
     #イイネ件数表示がある
     assert_select "a[href=?]", liked_recipe_path(@recipe)
     #解除データ送信

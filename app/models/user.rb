@@ -15,6 +15,7 @@ class User < ApplicationRecord
   #リレーション
   has_many :recipes, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :books, dependent: :destroy
   
   class << self
     
@@ -61,6 +62,21 @@ class User < ApplicationRecord
   #ユーザーがレシピをイイネしていたらtrueを返す
   def like?(recipe)
     self.likes.find_by(recipe_id: recipe.id).present?
+  end
+  
+  #レシピをブックマークする
+  def book(recipe)
+    self.books.create(recipe_id: recipe.id)
+  end
+  
+  #レシピのブックマークを取り消す
+  def unbook(recipe)
+    self.books.find_by(recipe_id: recipe.id).destroy
+  end
+  
+  #ユーザーがレシピをブックマークしていたらtrueを返す
+  def book?(recipe)
+    self.books.find_by(recipe_id: recipe.id).present?
   end
   
 end
