@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200113051944) do
+ActiveRecord::Schema.define(version: 20200113124637) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20200113051944) do
     t.index ["recipe_id"], name: "index_books_on_recipe_id"
     t.index ["user_id", "recipe_id"], name: "index_books_on_user_id_and_recipe_id", unique: true
     t.index ["user_id"], name: "index_books_on_user_id"
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "recipe_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment"], name: "index_impressions_on_comment"
+    t.index ["recipe_id"], name: "index_impressions_on_recipe_id"
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "ingredients", force: :cascade do |t|

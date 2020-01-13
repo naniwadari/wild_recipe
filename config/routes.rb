@@ -30,4 +30,6 @@ Rails.application.routes.draw do
   resources :likes, only: [:create, :destroy]
   
   resources :books, only: [:create, :destroy]
+  
+  resources :impressions, only: [:create, :destroy]
 end

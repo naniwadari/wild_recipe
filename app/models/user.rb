@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :books, dependent: :destroy
-  
+  has_many :impressions, dependent: :destroy
   class << self
     
     #渡された文字列をBcryptで暗号化して返す
@@ -77,6 +77,16 @@ class User < ApplicationRecord
   #ユーザーがレシピをブックマークしていたらtrueを返す
   def book?(recipe)
     self.books.find_by(recipe_id: recipe.id).present?
+  end
+  
+  #ユーザーがレシピにコメントする
+  def write_comment(recipe, comment)
+    self.impressions.create(recipe_id: recipe.id, comment: comment)
+  end
+  
+  #コメントを削除する
+  def erase_comment(comment_id)
+    self.impressions.find_by(id: comment_id).destroy
   end
   
 end
