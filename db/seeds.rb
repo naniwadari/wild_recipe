@@ -47,3 +47,7 @@ Procedure.create!(number: "3",
 Procedure.create!(number: "4",
                   content: "お皿に盛って召し上がれ",
                   recipe_id: "1")
+
+Impression.create!(user_id: "1",
+                   recipe_id: "1",
+                   comment: "実際に作ってみましたがおいしかったです！")
