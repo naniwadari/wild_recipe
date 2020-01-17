@@ -21,3 +21,7 @@
 /yarn-error.log
 
 .byebug_history
+.zprofile
+.zprofile.swp
+.wildrecipe-vscode.code-workspace
+.wildrecipe.code-workspace
