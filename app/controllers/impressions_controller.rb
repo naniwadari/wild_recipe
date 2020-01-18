@@ -1,4 +1,5 @@
 class ImpressionsController < ApplicationController
+  before_action :correct_author,only: :destroy
   
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])
@@ -6,11 +7,20 @@ class ImpressionsController < ApplicationController
     redirect_to @recipe
   end
   
+  #@commentはcorrect_authorで代入
   def destroy
-    @comment = Impression.find_by(id: params[:id])
     @recipe = @comment.recipe
     @comment.destroy
     redirect_to @recipe
   end
 
+  private
+
+  def correct_author
+    @comment = Impression.find(params[:id])
+    unless current_user == @comment.user
+      redirect_to root_url
+      flash[:danger] = "編集権限がありません"
+    end
+  end
 end
