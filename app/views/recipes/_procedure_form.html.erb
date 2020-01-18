@@ -35,9 +35,10 @@
       </div>
      
       <%= form_for(@procedure) do |form| %>
+        <% existing_procedure = @recipe.procedure.find_by(number: "#{(i+1)}")%>
         <%= hidden_field_tag :recipe_id, @recipe.id %>
-        <% if @recipe.procedure.find_by(number: "#{(i+1)}") && @recipe.procedure.find_by(number: "#{(i+1)}").content.present? %>
-          <%= form.text_area :content , value: @recipe.procedure.find_by(number: "#{(i+1)}").content %>
+        <% if existing_procedure %>
+          <%= form.text_area :content , value: existing_procedure.content %>
         <% else %>
           <%= form.text_area :content %>
         <% end %>
