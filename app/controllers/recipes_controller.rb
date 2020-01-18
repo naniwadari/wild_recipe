@@ -66,7 +66,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find_by(id: params[:id])
     if @recipe.present?
-      @user_comments = @recipe.impressions
+      @user_comments = @recipe.impressions.page(params[:page]).per(5)
     else
       flash[:danger] = "レシピが見つかりませんでした"
       redirect_to root_url

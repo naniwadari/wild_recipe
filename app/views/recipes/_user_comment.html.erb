@@ -4,8 +4,10 @@
 			<%= link_to "#{comment.user.name}", user_path(comment.user) %>:
 			<%= comment.comment %>
 			<% if current_user == comment.user %>
-				<%= link_to "削除", impression_path(comment),method: :delete, recipe_id: @recipe.id %>
+				<%= link_to "削除", impression_path(comment),
+						method: :delete, data: {confirm: "本当に削除しますか？"} %>
 			<% end %>
 		</p>
 	<% end %>
 <% end %>
+<%= paginate @user_comments %>
