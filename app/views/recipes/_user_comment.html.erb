@@ -1,0 +1,11 @@
+<% if @user_comments.present? %>
+	<% @user_comments.each do |comment| %>
+		<p>
+			<%= link_to "#{comment.user.name}", user_path(comment.user) %>:
+			<%= comment.comment %>
+			<% if current_user == comment.user %>
+				<%= link_to "削除", impression_path(comment),method: :delete, recipe_id: @recipe.id %>
+			<% end %>
+		</p>
+	<% end %>
+<% end %>

@@ -7,6 +7,10 @@ class ImpressionsController < ApplicationController
   end
   
   def destroy
+    @comment = Impression.find_by(id: params[:id])
+    @recipe = @comment.recipe
+    @comment.destroy
+    redirect_to @recipe
   end
 
 end

@@ -84,9 +84,4 @@ class User < ApplicationRecord
     self.impressions.create(recipe_id: recipe.id, comment: comment)
   end
   
-  #コメントを削除する
-  def erase_comment(comment_id)
-    self.impressions.find_by(id: comment_id).destroy
-  end
-  
 end
