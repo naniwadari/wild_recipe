@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
   
   def edit
     @recipe = Recipe.find(params[:id])
-    @user = User.find_by(id: @recipe.user_id)
+    @user = @recipe.user
     @ingredients = IngredientCollection.new( [], @recipe.id)
     @procedure = @recipe.procedure.build
   end
