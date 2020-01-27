@@ -1,0 +1,16 @@
+<header class="navbar navbar-fixed-top navbar-inverse" >
+  <div class="container">
+    <%= link_to "WildRecipe!", root_path, id:"logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "ホーム", root_path %></li>
+        <li><%= link_to "WildRecipeとは？", about_path %></li>
+        <% if logged_in? %>
+          <%= render "layouts/after_login" %>
+        <% else %>
+          <%= render "layouts/before_login" %>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>

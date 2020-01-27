@@ -3,19 +3,21 @@
   <head>
     <title><%= full_title( yield(:title) ) %></title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "layouts/header" %>
-    <div class="container">
-      <% flash.each do |message_type, message|%>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}" ) %>
-      <% end %>
-      <%= yield %>
+    <div class="wrapper">
+      <%= render "layouts/header" %>
+      <div class="container">
+        <% flash.each do |message_type, message|%>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}" ) %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <%= debug(params) if Rails.env.development? %>
     </div>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

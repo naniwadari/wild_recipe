@@ -25,7 +25,7 @@ gem "bcrypt", "3.1.12"
 #ページネーション
 gem "kaminari"
 #bootstrap
-gem "bootstrap-sass", "3.4.1"
+#gem "bootstrap-sass", "3.4.1"
 #データベース内のカウント機能
 gem "counter_culture", "2.2.4"
 #日本語化
