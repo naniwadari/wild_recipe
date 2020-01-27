@@ -1,16 +1,14 @@
-<header class="navbar navbar-fixed-top navbar-inverse" >
-  <div class="container">
-    <%= link_to "WildRecipe!", root_path, id:"logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ホーム", root_path %></li>
-        <li><%= link_to "WildRecipeとは？", about_path %></li>
-        <% if logged_in? %>
-          <%= render "layouts/after_login" %>
-        <% else %>
-          <%= render "layouts/before_login" %>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+<div class="flex flex-between">
+	<div>
+		<h1><img src="https://placehold.jp/150x150.png" alt="ロゴ" class="header-logo">WildRecipe</h1>
+	</div>
+	<div class="header-menu-button">
+		<i class="fas fa-bars"></i>
+	</div>
+</div>
+<%= form_tag(recipes_path, :method => "get",class: "flex") do %>
+	<%= text_field_tag :search, "",placeholder: "レシピを検索" ,class: "header-search-form"%>
+	<%= button_tag type: "submit",:name => nil ,class: "search-button" do %>
+		<%= icon("fas", "search")%>
+	<% end %>
+<% end %>
