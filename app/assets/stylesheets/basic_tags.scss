@@ -1,0 +1,74 @@
+/*フレックス*/
+
+.flex{
+	display: flex;
+}
+
+.flex-between{
+	justify-content: space-between;
+}
+
+/*テキスト並び*/
+.text-right{
+  text-align: right;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-center{
+  text-align: center;
+}
+
+/*見出しラベル*/
+
+.label{
+  padding: 0.8em;
+}
+
+.gray-label{
+  background-color: $bisque;
+}
+
+/*ボタン関連*/
+
+.book-icon{
+  font-size: 2rem;
+  padding: 6px;
+}
+
+//メインビジュアル
+.mainvisual{
+  width: 100%;
+}
+//レシピ羅列
+
+.recipe_box{
+  border: 1px solid gray;
+  border-bottom: none;
+  
+  &:last-child{
+   border-bottom: 1px solid gray; 
+  }
+  
+  img{
+    width: 100px;
+  }
+}
+
+.recipe_content{
+  width: 70%;
+}
+
+.recipe_title{
+  padding: 8px 12px 0;
+}
+
+.recipe_comment{
+  padding: 6px 12px 0;
+}
+
+.recipe_author{
+  padding: 8px 12px 0;
+}

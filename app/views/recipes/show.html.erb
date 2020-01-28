@@ -1,5 +1,5 @@
 <h1><%= @recipe.name %></h1>
-<h2>作成者:<%= link_to "#{ User.find_by(id: @recipe.user_id).name}", user_path(id: @recipe.user_id) %></h2>
+<h2>作成者:<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %></h2>
 <h3>材料</h3>
 <% @recipe.ingredient.each do |ingredient| %>
   <% if ingredient.name.present? %>
@@ -23,7 +23,7 @@
   <% end %>
 </div>
 
-<div class="book_icon">
+<div id="book-icon-<%= @recipe.id %>" class="book-icon">
   <% if current_user.book?(@recipe) %>
     <%= render "unbook" %>
   <% else %>

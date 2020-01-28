@@ -16,4 +16,12 @@ class Recipe < ApplicationRecord
     #検索ワードに似たレシピを返す
     Recipe.where("(name LIKE ?) AND (release = ?)", "%#{search}%", true)
   end
+  
+  #レシピを時系列で返す
+  def self.latest(limit_number = nil)
+    #取得数の指定がなければすべてのレコードを取得
+    return Recipe.where(release: true).order(created_at: "DESC") unless limit_number
+    #指定された数のレコードを取得
+    Recipe.where(release: true).order(created_at: "DESC").limit(limit_number)
+  end
 end

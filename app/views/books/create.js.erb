@@ -1,1 +1,1 @@
-$(".book_icon").html( "<%= escape_javascript(render('recipes/unbook')) %>" );
+$("#book-icon-<%= @recipe.id %>").html( "<%= j(render('recipes/unbook', recipe: @recipe)) %>" );
