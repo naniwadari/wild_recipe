@@ -3,27 +3,4 @@
   <h3>最新のレシピ</h3>
 </div>
 
-<% @latest_recipes.each do |recipe| %>
-  <% author = recipe.user %>
-  <div class="recipe_box flex flex-between">
-    <img src="http://placehold.jp/150x150.png"></img>
-    <div class="recipe_content">
-      <div class="recipe_title">
-        <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
-      </div>
-      <div class="recipe_comment">
-        <%= recipe.comment %>
-      </div>
-      <div class="recipe_author">
-        by <%= link_to "#{author.name}", user_path(author) %>
-      </div>
-    </div>
-    <div id="book-icon-<%= recipe.id %>">
-      <% if current_user.book?(recipe) %>
-        <%= render "recipes/unbook", :book_recipe => recipe %>
-      <% else %>
-        <%= render "recipes/book", :book_recipe => recipe %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+<%= render "layouts/recipe_list" %>
