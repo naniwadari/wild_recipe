@@ -3,10 +3,18 @@
 <h1><%= @recipe.name %></h1>
 <p><%= @recipe.comment %></p>
 作成者:<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
-<div class="recipes-button text-center　flex">
+<div class="like_icon">
+  <% if current_user.like?(@recipe) %>
+    <%= render "unlike" %>
+  <% else %>
+    <%= render "like" %>
+  <% end %>
+</div>
+<div class="recipes-button text-center flex">
   <a class="func-button">レシピを共有</a>
   <a class="func-button">レシピを保存</a>
 </div>
+
 <div class="label gray-label">
   <h3>材料</h3>
 </div>
@@ -34,16 +42,6 @@
   <% end %>
 </div>
 
-<p>コメント：<%= @recipe.comment %></p>
-
-<div class="like_icon">
-  <% if current_user.like?(@recipe) %>
-    <%= render "unlike" %>
-  <% else %>
-    <%= render "like" %>
-  <% end %>
-</div>
-
 <div id="book-icon-<%= @recipe.id %>" class="book-icon">
       <% if current_user.book?(@recipe) %>
         <%= render "unbook" %>
@@ -52,6 +50,9 @@
       <% end %>
     </div>
 
+<div class="label gray-label">
+  <h3>ユーザーからのコメント</h3>
+</div>
 <div class="user_comment">
   <%= render "user_comment" %>
 </div>

@@ -2,11 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.recipes-button{
+	width: 100%;
+}
+
 .func-button{
 	display: inline-block;
-	width: 49.9%;
+	width: 50%;
 	background-color: $border-color;
 	box-sizing: border-box;
+	padding: 1rem;
+	
+	&:first-of-type{
+		border-right: 1px solid black;
+	}
 }
 
 .ingredient-list{
