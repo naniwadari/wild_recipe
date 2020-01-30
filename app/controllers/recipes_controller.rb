@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :correct_author, only:[:edit, :update, :release, :destroy]
   
   def index
-    @recipes = Recipe.search(params[:search]).page(params[:page]).per(20)
+    @recipes = Recipe.search(params[:search]).order(updated_at: "DESC").page(params[:page]).per(20)
   end
   
   def new

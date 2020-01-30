@@ -22,6 +22,6 @@ class Recipe < ApplicationRecord
     #取得数の指定がなければすべてのレコードを取得
     return Recipe.where(release: true).order(created_at: "DESC") unless limit_number
     #指定された数のレコードを取得
-    Recipe.where(release: true).order(created_at: "DESC").limit(limit_number)
+    Recipe.where(release: true).order(updated_at: "DESC").limit(limit_number)
   end
 end

@@ -12,6 +12,10 @@
   justify-content: left;
 }
 
+.flex-right{
+  justify-content: right;
+}
+
 /*テキスト並び*/
 .text-right{
   text-align: right;
@@ -50,10 +54,10 @@
 
 .recipe_box{
   border: 1px solid gray;
-  border-bottom: none;
+  border-top: none;
   
-  &:last-child{
-   border-bottom: 1px solid gray; 
+  &:first-of-type{
+   border-top: 1px solid gray; 
   }
   
   img{

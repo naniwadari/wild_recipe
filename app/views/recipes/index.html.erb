@@ -1,4 +1,15 @@
-<h1>レシピ一覧</h1>
+<% if params[:search].nil? %>
+  <h1>レシピ一覧</h1>
+<% else %>
+  <h1>検索結果</h1>
+<% end %>
 
-<%= render "layouts/recipe_list"%>
+<% if @recipes.present? %>
+  <% @recipes.each do |recipe| %>
+    <%= render "layouts/recipe_list", recipe: recipe %>
+  <% end %>
+<% else %>
+  <p>見つかりませんでした(><;)</p>
+  <p>検索機能がまだ弱いのでレシピ名での検索をお願いします(><;)</p>
+<% end %>
 <%= paginate @recipes %>

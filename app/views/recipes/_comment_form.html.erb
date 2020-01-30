@@ -1,5 +1,5 @@
 <%= form_with url: impressions_path, method: :post, local: true do |form| %>
 	<%= hidden_field_tag :recipe_id, @recipe.id %>
-	<%= form.text_area :comment %>
+	<%= form.text_area :comment, class: "comment_textarea" %>
 	<%= form.submit "コメントを送信" %>
 <% end %>

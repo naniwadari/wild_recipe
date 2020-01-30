@@ -9,10 +9,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     if @user.present?
-      @recipes = @user.recipes.where(release: true).order(id: "desc").page(params[:page]).per(10)
-      @draft_recipes = @user.recipes.where(release: false).order(id: "desc").page(params[:draft_page]).per(10)
-      @like_recipes = @user.likes.order(id: "desc").page(params[:like_page]).per(10)
-      @book_recipes = @user.books.order(id: "desc").page(params[:book_page]).per(10)
+      @recipes_count = @user.recipes.where(release: true)
+      @recipes = @recipes_count.order(id: "desc").page(params[:page]).per(5)
+      @draft_recipes_count = @user.recipes.where(release: false)
+      @draft_recipes = @draft_recipes_count.order(id: "desc").page(params[:draft_page]).per(5)
+      @like_recipes_count = @user.likes
+      @like_recipes = @like_recipes_count.order(id: "desc").page(params[:like_page]).per(5)
+      @book_recipes_count = @user.books
+      @book_recipes = @book_recipes_count.order(id: "desc").page(params[:book_page]).per(5)
     else
       flash[:danger] = "ユーザーが見つかりませんでした"
       redirect_to root_url

@@ -1,73 +1,59 @@
 <% provide(:title, "ユーザープロフィール")%>
-<p>ニックネーム:<%= @user.name %></p>
-<p>メールアドレス:<%= @user.email %></p>
+<div class="flex">
+  <img src="http://placehold.jp/100x100.png"></img>
+  <div class="profile_text">
+    <h3><%= @user.name %></h3>
+    <%= render "profile" %>
+  </div>
+</div>
 
-<%= render "profile" %>
-
-<div class="col-md-4">
-  <h3>イイネしたレシピ</h3>
-  <table class="table table-striped">
-    <tr>
-      <th>レシピ名</th>
-      <th>執筆者</th>
-    </tr>
-    <% @like_recipes.each do |l| %>
-      <tr>
-        <% recipe = Recipe.find_by(id: l.recipe_id) %>
-        <td><%= link_to "#{recipe.name}", recipe_path(id: recipe.id) %></td>
-        <td><%= link_to "#{User.find_by(id: recipe.user_id).name}", user_path(id: recipe.user_id)%></td>
-      </tr>
+<section>
+  <h3>投稿したレシピ(<%= @recipes_count.count %>)</h3>
+  <% if @recipes.present? %>
+    <% @recipes.each do |recipe| %>
+      <%= render "layouts/recipe_list", recipe: recipe %>
     <% end %>
-  </table>
-  <%= paginate @like_recipes, param_name: "like_page" %>
-  
-  <h3>ブックマークしたレシピ</h3>
-  <table class="table table-striped">
-    <tr>
-      <th>レシピ名</th>
-      <th>執筆者</th>
-    </tr>
-    <% @book_recipes.each do |b| %>
-      <tr>
-        <% recipe = Recipe.find_by(id: b.recipe_id) %>
-        <td><%= link_to "#{recipe.name}", recipe_path(id: recipe.id) %></td>
-        <td><%= link_to "#{User.find_by(id: recipe.user_id).name}", user_path(id: recipe.user_id) %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= paginate @book_recipes, param_name: "book_page" %>
-  
-  <h3>公開したレシピ</h3>
-  <table class="table table-striped">
-    <tr><th>レシピ名</th></tr>
-    <% @recipes.each do |r| %>
-      <tr>
-        <td><%= link_to "#{r.name}", recipe_path(id: r.id) %></td>
-        <% if current_user == @user %>
-          <td><%= link_to "編集", edit_recipe_path(id: r.id)%></td>
-          <td>
-            <%= form_with url: release_recipe_path(id: r.id), method: :patch, local: true do |form| %>
-              <%= form.hidden_field :release, value: false %>
-              <%= form.submit "下書きに戻す" %>
-            <% end %>
-          </td>
-        <% end %>
-          
-      </tr>
-    <% end %>
-  </table>
-  <%= paginate @recipes %>
-  
-  <% if current_user == @user %>
-  <h3>下書き中のレシピ</h3>
-  <table class="table table-striped">
-    <tr><th>レシピ名</th></tr>
-    <% @draft_recipes.each do |dr| %>
-      <tr>
-        <td><%= link_to "#{dr.name}", edit_recipe_path(id: dr.id) %></td>
-      </tr>
-    <% end %>
-  </table>
-  <%= paginate @draft_recipes, param_name: "draft_page" %>
+  <% else %>
+   <p>まだレシピを投稿していません</p>
   <% end %>
+  <%= paginate @recipes %>
+</section>
+
+<section>
+  <h3>イイネしたレシピ(<%= @like_recipes_count.count %>)</h3>
+  <% if @like_recipes.present? %>
+    <% @like_recipes.each do |like_recipe| %>
+      <%= render "layouts/recipe_list", recipe: like_recipe.recipe %>
+    <% end %>
+  <% else %>
+    <p>まだレシピをイイネしていません</p>
+  <% end %>
+  <%= paginate @like_recipes, param_name: "like_page" %>
+</section>
+
+<section>
+  <h3>ブックマークしたレシピ(<%= @book_recipes_count.count %>)</h3>
+  <% if @book_recipes.present? %>
+    <% @book_recipes.each do |book_recipe| %>
+      <%= render "layouts/recipe_list", recipe: book_recipe.recipe %>
+    <% end %>
+  <% else %>
+    <p>まだレシピをブックマークしていません</p>
+  <% end %>
+  <%= paginate @book_recipes, param_name: "book_page" %>
+</section>
+
+<section>
+  <% if current_user == @user %>
+    <h3>未公開のレシピ(<%= @draft_recipes_count.count %>)</h3>
+    <% if @draft_recipes.present? %>
+      <% @draft_recipes.each do |draft_recipe| %>
+        <%= render "layouts/recipe_list", recipe: draft_recipe %>
+      <% end %>
+      <%= paginate @draft_recipes, param_name: "draft_page" %>
+    <% else %>
+      <p>未公開のレシピはありません</p>
+    <% end %>
+  <% end %>
+</section>
 </div>

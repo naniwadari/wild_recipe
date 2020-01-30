@@ -35,3 +35,12 @@
 		border-bottom: none;
 	}
 }
+
+.comment_form{
+	text-align: right;
+	
+	.comment_textarea{
+		width: 100%;
+		box-sizing: border-box;
+	}
+}

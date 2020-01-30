@@ -2,5 +2,8 @@
 <div class="label gray-label">
   <h3>最新のレシピ</h3>
 </div>
-
-<%= render "layouts/recipe_list" %>
+<section>
+  <% @recipes.each do |recipe| %>
+    <%= render "layouts/recipe_list", recipe: recipe %>
+  <% end %>
+</section>
