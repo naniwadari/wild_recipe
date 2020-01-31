@@ -43,7 +43,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get user_path(@user)
     assert_template "users/show"
     #折り畳みの変更ボタンが表示されていることの確認
-    assert_select "a[data-toggle=?]", "collapse"
+    assert_select "a", text: "変更"
     profile_text = "テスト文章です"
     patch user_path(@user), params: { user: { profile_text: profile_text }}
     assert_redirected_to @user
@@ -56,7 +56,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@other_user)
     get user_path(@user)
     assert_template "users/show"
-    assert_select "a[data-toggle=?]", "collapse", count: 0
+    assert_select "a", text: "変更", count: 0
   end
   
   #フレンドリーフォワーディングのテスト

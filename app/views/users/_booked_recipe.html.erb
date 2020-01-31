@@ -1,0 +1,7 @@
+<% if @book_recipes.present? %>
+  <% @book_recipes.each do |book_recipe| %>
+    <%= render "layouts/recipe_list", recipe: book_recipe.recipe %>
+  <% end %>
+<% else %>
+  <p>まだレシピをブックマークしていません</p>
+<% end %>

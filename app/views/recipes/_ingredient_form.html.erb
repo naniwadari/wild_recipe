@@ -1,16 +1,19 @@
-<h3>材料</h3>
 <% if @recipe.ingredient.empty? %>
   <p>材料を入力しましょう</p>
 <% else %>
   <% @recipe.ingredient.each do |ingredient| %>
     <% if ingredient.name.present? %>
-      <p><%= ingredient.number %>…<%= ingredient.name %>:<%= ingredient.amount %></p>
+      <div class="ingredient-list flex flex-between">
+        <div><%= ingredient.name %></div>
+        <div><%= ingredient.amount %></div>
+      </div>
     <% end %>
   <% end %>
 <% end %>
 
-<div class="col-md-6">
-  <table class="table table-striped">
+<dt><a>材料を変更する</a></dt>
+<dd>
+  <table>
     <tr><th>名前</th><th>量</th></tr>
     <%= form_with model: @ingredients, url: ingredients_path, local: true do |form| %>
       <%= hidden_field_tag :recipe_id, @recipe.id %>
@@ -34,4 +37,4 @@
       
     <% end %>
   </table>
-</div>
+</dd>

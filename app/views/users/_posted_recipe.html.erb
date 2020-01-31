@@ -1,0 +1,7 @@
+<% if @recipes.present? %>
+  <% @recipes.each do |recipe| %>
+    <%= render "layouts/recipe_list", recipe: recipe %>
+  <% end %>
+<% else %>
+ <p>まだレシピを投稿していません</p>
+<% end %>

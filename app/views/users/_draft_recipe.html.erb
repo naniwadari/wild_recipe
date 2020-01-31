@@ -1,0 +1,8 @@
+<% if @draft_recipes.present? %>
+  <% @draft_recipes.each do |draft_recipe| %>
+    <%= render "layouts/recipe_list", recipe: draft_recipe %>
+  <% end %>
+  <%= paginate @draft_recipes, param_name: "draft_page" %>
+<% else %>
+  <p>未公開のレシピはありません</p>
+<% end %>

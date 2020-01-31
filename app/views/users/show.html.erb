@@ -1,4 +1,5 @@
 <% provide(:title, "ユーザープロフィール")%>
+
 <div class="flex">
   <img src="http://placehold.jp/100x100.png"></img>
   <div class="profile_text">
@@ -9,51 +10,25 @@
 
 <section>
   <h3>投稿したレシピ(<%= @recipes_count.count %>)</h3>
-  <% if @recipes.present? %>
-    <% @recipes.each do |recipe| %>
-      <%= render "layouts/recipe_list", recipe: recipe %>
-    <% end %>
-  <% else %>
-   <p>まだレシピを投稿していません</p>
-  <% end %>
+  <%= render "posted_recipe" %>
   <%= paginate @recipes %>
 </section>
 
 <section>
   <h3>イイネしたレシピ(<%= @like_recipes_count.count %>)</h3>
-  <% if @like_recipes.present? %>
-    <% @like_recipes.each do |like_recipe| %>
-      <%= render "layouts/recipe_list", recipe: like_recipe.recipe %>
-    <% end %>
-  <% else %>
-    <p>まだレシピをイイネしていません</p>
-  <% end %>
+  <%= render "liked_recipe" %>
   <%= paginate @like_recipes, param_name: "like_page" %>
 </section>
 
 <section>
   <h3>ブックマークしたレシピ(<%= @book_recipes_count.count %>)</h3>
-  <% if @book_recipes.present? %>
-    <% @book_recipes.each do |book_recipe| %>
-      <%= render "layouts/recipe_list", recipe: book_recipe.recipe %>
-    <% end %>
-  <% else %>
-    <p>まだレシピをブックマークしていません</p>
-  <% end %>
+  <%= render "booked_recipe" %>
   <%= paginate @book_recipes, param_name: "book_page" %>
 </section>
 
 <section>
   <% if current_user == @user %>
     <h3>未公開のレシピ(<%= @draft_recipes_count.count %>)</h3>
-    <% if @draft_recipes.present? %>
-      <% @draft_recipes.each do |draft_recipe| %>
-        <%= render "layouts/recipe_list", recipe: draft_recipe %>
-      <% end %>
-      <%= paginate @draft_recipes, param_name: "draft_page" %>
-    <% else %>
-      <p>未公開のレシピはありません</p>
-    <% end %>
+    <%= render "draft_recipe" %>
   <% end %>
 </section>
-</div>

@@ -1,7 +1,7 @@
 <% if params[:search].nil? %>
-  <h1>レシピ一覧</h1>
+  <h1>レシピ一覧(<%= Recipe.count %>件)</h1>
 <% else %>
-  <h1>検索結果</h1>
+  <h1>検索結果(<%= @recipes_count.count %>件)</h1>
 <% end %>
 
 <% if @recipes.present? %>
@@ -10,6 +10,6 @@
   <% end %>
 <% else %>
   <p>見つかりませんでした(><;)</p>
-  <p>検索機能がまだ弱いのでレシピ名での検索をお願いします(><;)</p>
+  <p>検索機能がまだ弱いので許してください(><;)</p>
 <% end %>
 <%= paginate @recipes %>

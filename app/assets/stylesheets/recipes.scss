@@ -44,3 +44,39 @@
 		box-sizing: border-box;
 	}
 }
+
+//recipes_edit
+
+.recipes-edit-mv{
+	width: 100%;
+}
+
+.procedure-input-textarea{
+	width: 100%;
+}
+
+#recipe_name{
+	width: 98%;
+	height: 3.3em;
+}
+
+#procedure_content{
+	width: 98%;
+	height: 3.3em;
+}
+
+#recipe_comment{
+	width: 98%;
+	height: 3.3em;
+}
+
+.hiddenform{
+	dt{
+		cursor: pointer;
+	}
+	
+	dd{
+		display: none;
+	}
+}
+//end recipes_edit

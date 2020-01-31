@@ -14,3 +14,16 @@
 //= require jquery
 //= require turbolinks
 //= require_tree ./main
+
+//JS未起動対策 Turbolinksをページ移動した際にリロードする
+//処理はこの間に書くこと
+$(document).on('turbolinks:load', function(){
+  
+  //アコーディオン
+  $(function(){
+    $(".hiddenform dt").on("click", function(){
+      $(this).next().slideToggle();
+    });
+  });
+  
+});

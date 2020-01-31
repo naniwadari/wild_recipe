@@ -1,40 +1,57 @@
-<h1><%= @recipe.name %></h1>
-<div class="d-flex">
-  
-  <div class="row">
-    <%= render "recipes/ingredient_form" %>
-  </div>
-  
-  <div class="row">
-    <%= render "recipes/procedure_form" %>
-  </div>
-  
-</div>
-
-<div class="row">
-<h3>コメント</h3>
-  <%= form_for(@recipe) do |form| %>
-    <% if @recipe.comment.nil? %>
-      <%= form.text_area :comment, placeholder: "コメントを入力しましょう" %>
-    <% else %>
-      <%= form.text_area :comment, value: @recipe.comment %>
-    <% end %>
-    <div class="col-md-1">
-      <%= form.submit "保存" %>
+<div class="recipes-edit">
+  <section>
+    <div class="label gray-label">
+      <h3>レシピタイトル</h3>
     </div>
-  <% end %>
-</div>
-
-<div class="row">
+    <h1><%= @recipe.name %></h1>
+    <dt><a>タイトルを変更する</a></dt>
+    <dd>
+      <%= form_for(@recipe) do |f| %>
+        <%= f.text_field :name, placeholder: "#{@recipe.name}" %>
+        <%= f.submit "変更"%>
+      <% end %>
+    </dd>
+  </section>
+  
+  <section>
+    <div class="label gray-label">
+      <h3>写真</h3>
+    </div>
+    <img src="http://placehold.jp/560x300.png" class="recipes-edit-mv"></img>
+    <a><i class="fas fa-camera"></i>写真を追加</a>
+  </section>
+    
+  <section>
+    <div class="label gray-label">
+      <h3>材料</h3>
+    </div>
+    <%= render "recipes/ingredient_form" %>
+  </section>
+  
+  <section>
+    <div class="label gray-label">
+      <h3>調理の手順</h3>
+    </div>
+    <%= render "recipes/procedure_form" %>
+  </section>
+  
+  <section>
+    <div class="label gray-label">
+      <h3>コメント</h3>
+    </div>
+    <%= render "recipes/recipe_comment_form" %>
+  </section>
+  
   <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
     <%= form.hidden_field :release, value: false %>
     <%= form.submit "下書きとして保存" %>
   <% end %>
+  <p>※下書きとして保存した場合他のユーザーは閲覧できません</p>
   
   <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
    <%= form.hidden_field :release, value: true %>
    <%= form.submit "レシピを公開する" %>
   <% end %>
-  
+  <p>※公開するボタンを押さなくても各項目で保存していれば下書きとして残ります。</p>
   <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
 </div>

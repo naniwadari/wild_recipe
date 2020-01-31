@@ -1,0 +1,7 @@
+<% if @like_recipes.present? %>
+  <% @like_recipes.each do |like_recipe| %>
+    <%= render "layouts/recipe_list", recipe: like_recipe.recipe %>
+  <% end %>
+<% else %>
+  <p>まだレシピをイイネしていません</p>
+<% end %>
