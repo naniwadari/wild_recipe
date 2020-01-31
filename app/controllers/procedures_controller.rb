@@ -9,10 +9,18 @@ class ProceduresController < ApplicationController
     if proce = @recipe.procedure.find_by(number: @procedure.number)
       proce.update(content: @procedure.content)
       proce.save
-      redirect_to edit_recipe_path(@recipe)
+      #redirect_to edit_recipe_path(@recipe)
+      respond_to do |format|
+        format.html( redirect_to edit_recipe_path(@recipe) )
+        format.js
+      end
     #かぶっていなければ普通にセーブ
     elsif @procedure.save
-      redirect_to edit_recipe_path(@recipe)
+      #redirect_to edit_recipe_path(@recipe)
+      respond_to do |format|
+        format.html( redirect_to edit_recipe_path(@recipe) )
+        format.js
+      end
     else
       render "recipes/edit"
     end
