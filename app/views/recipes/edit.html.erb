@@ -7,7 +7,7 @@
     <dt><a>タイトルを変更する</a></dt>
     <dd>
       <%= form_for(@recipe) do |f| %>
-        <%= f.text_field :name, placeholder: "#{@recipe.name}" %>
+        <%= f.text_area :name, placeholder: "#{@recipe.name}" %>
         <%= f.submit "変更"%>
       <% end %>
     </dd>

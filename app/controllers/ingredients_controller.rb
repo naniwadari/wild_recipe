@@ -6,7 +6,10 @@ class IngredientsController < ApplicationController
     @recipe = Recipe.find_by(id: params[:recipe_id])
     @ingredients = IngredientCollection.new(ingredients_params, @recipe.id)
     if @ingredients.save
-      redirect_to edit_recipe_path(@recipe)
+      respond_to do |format|
+        format.html { redirect_to edit_recipe_path(@recipe) }
+        format.js
+      end
     else
       render "recipes/edit"
     end

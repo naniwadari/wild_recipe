@@ -1,0 +1,8 @@
+<% @recipe.ingredient.each do |ingredient| %>
+  <% if ingredient.name.present? %>
+    <div class="ingredient-list flex flex-between">
+      <div><%= ingredient.name %></div>
+      <div><%= ingredient.amount %></div>
+    </div>
+  <% end %>
+<% end %>

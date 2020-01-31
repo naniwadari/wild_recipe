@@ -1,21 +1,16 @@
-<% if @recipe.ingredient.empty? %>
-  <p>材料を入力しましょう</p>
-<% else %>
-  <% @recipe.ingredient.each do |ingredient| %>
-    <% if ingredient.name.present? %>
-      <div class="ingredient-list flex flex-between">
-        <div><%= ingredient.name %></div>
-        <div><%= ingredient.amount %></div>
-      </div>
-    <% end %>
+<div class="ingredients-show">
+  <% if @recipe.ingredient.empty? %>
+    <p>材料を入力しましょう</p>
+  <% else %>
+    <%= render "ingredients_show" %>
   <% end %>
-<% end %>
+</div>
 
 <dt><a>材料を変更する</a></dt>
 <dd>
   <table>
     <tr><th>名前</th><th>量</th></tr>
-    <%= form_with model: @ingredients, url: ingredients_path, local: true do |form| %>
+    <%= form_with model: @ingredients, url: ingredients_path do |form| %>
       <%= hidden_field_tag :recipe_id, @recipe.id %>
       
       <% @ingredients.collection.each_with_index do |ingredient, i| %>
