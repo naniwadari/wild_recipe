@@ -5,20 +5,17 @@ class ProceduresController < ApplicationController
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])
     @procedure = @recipe.procedure.build(procedure_params)
+    proce = @recipe.procedure.find_by(number: @procedure.number)
     #ナンバーがかぶっていた場合はアップデートする
-    if proce = @recipe.procedure.find_by(number: @procedure.number)
-      proce.update(content: @procedure.content)
-      proce.save
-      #redirect_to edit_recipe_path(@recipe)
+    if proce.present?
+      proce.update_attributes(content: @procedure.content)
       respond_to do |format|
-        format.html( redirect_to edit_recipe_path(@recipe) )
         format.js
       end
+      return
     #かぶっていなければ普通にセーブ
     elsif @procedure.save
-      #redirect_to edit_recipe_path(@recipe)
       respond_to do |format|
-        format.html( redirect_to edit_recipe_path(@recipe) )
         format.js
       end
     else
@@ -28,23 +25,31 @@ class ProceduresController < ApplicationController
   
   def change_after
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    @change_after = Procedure.find_by(recipe_id: @recipe.id, number: params[:number])
-    if @change_after.present?
-      Procedure.change_content_after(@recipe.id, @change_after.number)
-      redirect_to edit_recipe_path(@recipe)
-    else
-      redirect_to edit_recipe_path(@recipe)
+    @procedure = @recipe.procedure.find_by(number: params[:number])
+    @after_procedure = @recipe.procedure.find_by(number: (@procedure.number + 1))
+    respond_to do |format|
+      if @after_procedure.present?
+        Procedure.change_content(@procedure, @after_procedure)
+        format.html { redirect_to edit_recipe_path(@recipe)}
+        format.js
+      else
+        redirect_to edit_recipe_path(@recipe)
+      end
     end
   end
   
   def change_before
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    @change_before = Procedure.find_by(recipe_id: @recipe.id, number: params[:number])
-    if @change_before.present?
-      Procedure.change_content_before(@recipe.id, @change_before.number)
-      redirect_to edit_recipe_path(@recipe)
-    else
-      redirect_to edit_recipe_path(@recipe)
+    @procedure = @recipe.procedure.find_by(number: params[:number])
+    @before_procedure = @recipe.procedure.find_by(number: (@procedure.number - 1))
+    respond_to do |format|
+      if @before_procedure.present?
+        Procedure.change_content(@procedure, @before_procedure)
+        format.html { redirect_to edit_recipe_path(@recipe)}
+        format.js
+      else
+        redirect_to edit_recipe_path(@recipe)
+      end
     end
   end
   

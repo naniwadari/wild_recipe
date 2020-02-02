@@ -1,48 +1,37 @@
-<div id="pro"><p>テスト</p></div>
-<% @recipe.procedure.each.with_index do |procedure,i| %>
-  <% if procedure.content.present? %>
-
+<% @recipe.procedure.each_with_index do |procedure,i| %>
+  <% unless procedure.id.nil? %>
     <div class="procedure-list flex flex-left">
       <%= render "procedures_show", {i: i, procedure: procedure} %>
     </div>
-  <% else %>
-    <div class="procedure-list flex flex-left">
-    <div><%= "#{(i+1)}" %>:</div>
-    <div>手順を入力しましょう</div>
-    </div>
-  <% end %>
-  <dt><a>手順を変更する</a></dt>
-  <dd>
-    <div class="flex">
-      <div>
-        <%= "#{(i+1)}"%>:
-      </div>
-      <div class="procedure-input-textarea">
-        <%= form_with model: @procedure, url: procedures_path do |form| %>
-          <% existing_procedure = @recipe.procedure.find_by(number: "#{(i+1)}")%>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <% if existing_procedure %>
-            <%= form.text_area :content , value: existing_procedure.content %>
-          <% else %>
-            <%= form.text_area :content %>
+    <dt><a>手順を変更する</a></dt>
+    <dd>
+      <div class="flex">
+        <div>
+          <%= "#{(i+1)}"%>:
+        </div>
+        <div class="procedure-input-textarea">
+          <%= form_with model: @procedure, url: procedures_path do |form| %>
+            <% existing_procedure = @recipe.procedure.find_by(number: "#{(i+1)}")%>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= form.text_area :content , value: existing_procedure.content if existing_procedure %>
+            <%= form.hidden_field :number, value: "#{(i+1)}" %>
+            <%= form.submit "保存" %>
           <% end %>
-          <%= form.hidden_field :number, value: "#{(i+1)}" %>
-          <%= form.submit "保存" %>
-        <% end %>
+        </div>
+        <div class="flex flex-end">
+          <%= form_with url: procedures_change_before_path do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= hidden_field_tag :number, "#{(i+1)}" %>
+            <%= form.submit "↑", class: "change_content_button" %>
+          <% end %>
+        
+          <%= form_with url: procedures_change_after_path do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= hidden_field_tag :number, "#{(i+1)}" %>
+            <%= form.submit "↓", class: "change_content_button" %>
+          <% end %>
+        </div>
       </div>
-      <div class="flex flex-end">
-        <%= form_with url: procedures_change_before_path, local: true do |form| %>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <%= hidden_field_tag :number, "#{(i+1)}" %>
-          <%= form.submit "↑", class: "change_content_button" %>
-        <% end %>
-      
-        <%= form_with url: procedures_change_after_path, local: true do |form| %>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <%= hidden_field_tag :number, "#{(i+1)}" %>
-          <%= form.submit "↓", class: "change_content_button" %>
-        <% end %>
-      </div>
-    </div>
-  </dd>
+    </dd>
+  <% end %>
 <% end %>

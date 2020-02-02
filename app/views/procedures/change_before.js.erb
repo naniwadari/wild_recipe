@@ -1,0 +1,2 @@
+$("#procedure-show-<%= "#{ @procedure.number }" %>").html( "<%= escape_javascript(@procedure.content) %>" );
+$("#procedure-show-<%= "#{ @before_procedure.number}" %>").html( "<%= escape_javascript(@before_procedure.content )%> ");
