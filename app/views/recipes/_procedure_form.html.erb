@@ -1,5 +1,4 @@
-<% @recipe.procedure.each_with_index do |procedure,i| %>
-  <% unless procedure.id.nil? %>
+<% @recipe.procedure.order("number ASC").each_with_index do |procedure,i| %>
     <div class="procedure-list flex flex-left">
       <%= render "procedures_show", {i: i, procedure: procedure} %>
     </div>
@@ -11,27 +10,30 @@
         </div>
         <div class="procedure-input-textarea">
           <%= form_with model: @procedure, url: procedures_path do |form| %>
-            <% existing_procedure = @recipe.procedure.find_by(number: "#{(i+1)}")%>
             <%= hidden_field_tag :recipe_id, @recipe.id %>
-            <%= form.text_area :content , value: existing_procedure.content if existing_procedure %>
+            <%= form.text_area :content, placeholder: "手順を入力しましょう", value: procedure.content if procedure.content.present? %>
             <%= form.hidden_field :number, value: "#{(i+1)}" %>
             <%= form.submit "保存" %>
           <% end %>
         </div>
-        <div class="flex flex-end">
-          <%= form_with url: procedures_change_before_path do |form| %>
-            <%= hidden_field_tag :recipe_id, @recipe.id %>
-            <%= hidden_field_tag :number, "#{(i+1)}" %>
-            <%= form.submit "↑", class: "change_content_button" %>
-          <% end %>
         
-          <%= form_with url: procedures_change_after_path do |form| %>
-            <%= hidden_field_tag :recipe_id, @recipe.id %>
-            <%= hidden_field_tag :number, "#{(i+1)}" %>
-            <%= form.submit "↓", class: "change_content_button" %>
+        <div class="flex flex-end">
+          <% unless i == 0 %>
+            <%= form_with url: procedures_change_before_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, procedure.number %>
+              <%= form.submit "↑", class: "change_content_button" %>
+            <% end %>
+          <% end %>
+          
+          <% unless i == @recipe.procedure.count - 1 %>
+            <%= form_with url: procedures_change_after_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, procedure.number %>
+              <%= form.submit "↓", class: "change_content_button" %>
+            <% end %>
           <% end %>
         </div>
       </div>
     </dd>
-  <% end %>
 <% end %>

@@ -26,10 +26,10 @@ class ProceduresController < ApplicationController
   def change_after
     @recipe = Recipe.find_by(id: params[:recipe_id])
     @procedure = @recipe.procedure.find_by(number: params[:number])
-    @after_procedure = @recipe.procedure.find_by(number: (@procedure.number + 1))
+    @next_procedure = @procedure.next_number
     respond_to do |format|
-      if @after_procedure.present?
-        Procedure.change_content(@procedure, @after_procedure)
+      if @next_procedure.present?
+        Procedure.change_content(@procedure, @next_procedure)
         format.html { redirect_to edit_recipe_path(@recipe)}
         format.js
       else
@@ -41,14 +41,14 @@ class ProceduresController < ApplicationController
   def change_before
     @recipe = Recipe.find_by(id: params[:recipe_id])
     @procedure = @recipe.procedure.find_by(number: params[:number])
-    @before_procedure = @recipe.procedure.find_by(number: (@procedure.number - 1))
+    @previous_procedure = @procedure.previous_number
     respond_to do |format|
-      if @before_procedure.present?
-        Procedure.change_content(@procedure, @before_procedure)
+      if @previous_procedure.present?
+        Procedure.change_content(@procedure, @previous_procedure)
         format.html { redirect_to edit_recipe_path(@recipe)}
         format.js
       else
-        redirect_to edit_recipe_path(@recipe)
+        return false
       end
     end
   end
