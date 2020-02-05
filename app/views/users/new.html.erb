@@ -1,24 +1,18 @@
 <% provide(:title,"サインアップ")%>
-<h1>サインアップ</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user, url: signup_path ) do |f| %>
-      <%= render "shared/error_messages", object: f.object %>
-      
-      <%= f.label :name,"名前" %>
-      <%= f.text_field :name, class: "form_control" %>
-      
-      <%= f.label :email,"Ｅメール" %>
-      <%= f.email_field :email, class: "form_control" %>
-      
-      <%= f.label :password,"パスワードの入力" %>
-      <%= f.password_field :password, class: "form_control" %>
-      
-      <%= f.label :password_confirmation, "パスワードの再入力" %>
-      <%= f.password_field :password_confirmation, class: "form_control" %>
-      
-      <%= f.submit "アカウント登録", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<section class="signup text-center">
+  <h1>サインアップ</h1>
+  <%= form_for(@user, url: signup_path, html: {class: "inline"}) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    
+    <%= f.text_field :name, class: "session-form", placeholder: "ニックネーム" %>
+    
+    <%= f.email_field :email, class: "session-form", placeholder: "Eメールアドレス" %>
+    
+    <%= f.password_field :password, class: "session-form", placeholder: "パスワード" %>
+
+    <%= f.password_field :password_confirmation, class: "session-form", placeholder: "パスワードの再入力" %>
+    
+    <%= f.submit "アカウント登録", class: "login-button" %>
+  <% end %>
+</section>

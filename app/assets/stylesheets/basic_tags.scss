@@ -20,6 +20,20 @@
   justify-content: flex-end;
 }
 
+/* ブロックレベル */
+
+.inline{
+  display: inline;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.block{
+  display: block;
+}
+
 /*テキスト並び*/
 .text-right{
   text-align: right;

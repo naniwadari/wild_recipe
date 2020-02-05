@@ -1,6 +1,8 @@
-<% @recipe.procedure.order("number ASC").each_with_index do |procedure,i| %>
+<% 5.times.with_index do |i| %>
+  <% procedure = @recipe.procedure.find_by(number: (i+1)) %>
+  <% if procedure %>
     <div class="procedure-list flex flex-left">
-      <%= render "procedures_show", {i: i, procedure: procedure} %>
+      <%= render "recipes/procedures_show", {i: i, procedure: procedure} %>
     </div>
     <dt><a>手順を変更する</a></dt>
     <dd>
@@ -26,14 +28,58 @@
             <% end %>
           <% end %>
           
-          <% unless i == @recipe.procedure.count - 1 %>
+          <% unless i == 4 %>
             <%= form_with url: procedures_change_after_path do |form| %>
               <%= hidden_field_tag :recipe_id, @recipe.id %>
               <%= hidden_field_tag :number, procedure.number %>
               <%= form.submit "↓", class: "change_content_button" %>
             <% end %>
           <% end %>
+          <%= link_to "削除", procedure_path(procedure), method: :delete %>
         </div>
       </div>
     </dd>
+  <% else %>
+    <div class="procedure-list flex flex-left">
+      <div><%= "#{(i+1)}"%>:</div>
+      <div id="procedure-show-<%= "#{(i+1)}" %>" ></div>
+    </div>
+    
+    <dt><a>手順を変更する</a></dt>
+    
+    <dd>
+      <div class="flex">
+        <div>
+          <%= "#{(i+1)}"%>:
+        </div>
+        <div class="procedure-input-textarea">
+          <%= form_with model: @procedure, url: procedures_path do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= form.text_area :content, placeholder: "手順を入力しましょう" %>
+            <%= form.hidden_field :number, value: "#{(i+1)}" %>
+            <%= form.submit "保存" %>
+          <% end %>
+        </div>
+        
+        <div class="flex flex-end">
+          <% unless i == 0 %>
+            <%= form_with url: procedures_change_before_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, "#{(i+1)}" %>
+              <%= form.submit "↑", class: "change_content_button" %>
+            <% end %>
+          <% end %>
+          
+          <% unless i == 4 %>
+            <%= form_with url: procedures_change_after_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, "#{(i+1)}" %>
+              <%= form.submit "↓", class: "change_content_button" %>
+            <% end %>
+          <% end %>
+          <%= link_to "削除" %>
+        </div>
+      </div>
+    </dd>
+  <% end %>
 <% end %>
