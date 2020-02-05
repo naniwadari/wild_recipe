@@ -30,10 +30,14 @@ class RecipesController < ApplicationController
   
   def update
     @recipe = Recipe.find(params[:id])
-    if @recipe.update_attributes(recipe_params)
-      redirect_to edit_recipe_path(@recipe)
-    else
-      render "edit"
+    respond_to do |format|
+      if @recipe.update_attributes(recipe_params)
+        #redirect_to edit_recipe_path(@recipe)
+        format.html {redirect_to edit_recipe_path(@recipe)}
+        format.js
+      else
+        render "edit"
+      end
     end
   end
   

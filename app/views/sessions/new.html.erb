@@ -7,12 +7,12 @@
       
       <%= f.password_field :password, placeholder: "パスワード", class: "session-form" %>
       
-      <%= f.label :remember_me, class: "inline-block" do %>
+      <%= f.label :remember_me, class: "block" do %>
         <%= f.check_box :remember_me %>
         <span>ログイン情報をブラウザに保存</span>
       <% end %>
       
-      <%= f.submit "ログイン", class: "login-button" %>
+      <%= f.submit "ログイン", class: "btn large-btn" %>
     
   <% end %>
   <p>まだユーザー登録してなければ・・・<%= link_to "サインアップ", signup_path %></p>
@@ -20,6 +20,6 @@
   <%= form_for(:session, url: login_path) do |f| %>
     <%= f.hidden_field :email, value: "sample@sample.com", class: "form-control" %>
     <%= f.hidden_field :password, value: "password", class: "form-control" %>
-    <%= f.submit "テストログイン", class: "btn btn-primary" %>
+    <%= f.submit "テストログイン", class: "btn midium-btn" %>
   <% end %>
 </section>

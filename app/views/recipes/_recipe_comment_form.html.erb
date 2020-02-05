@@ -1,11 +1,13 @@
-<% if @recipe.comment.present? %>
-	<%= @recipe.comment %>
-<% else %>
-	<p>コメントを入力しましょう。</p>
-<% end %>
+<div id="recipe-comment-show">
+  <% if @recipe.comment.present? %>
+  	<%= @recipe.comment %>
+  <% else %>
+  	<p>コメントを入力しましょう。</p>
+  <% end %>
+</div>
 <dt><a>コメントを変更する</a></dt>
 <dd>
-  <%= form_for(@recipe) do |form| %>
+  <%= form_for(@recipe, remote: true) do |form| %>
     <% if @recipe.comment.nil? %>
       <%= form.text_area :comment, placeholder: "コメントを入力しましょう" %>
     <% else %>

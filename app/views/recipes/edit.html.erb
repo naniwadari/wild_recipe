@@ -6,7 +6,7 @@
     <h1 id="recipe-title"><%= @recipe.name %></h1>
     <dt><a>タイトルを変更する</a></dt>
     <dd>
-      <%= form_for(@recipe) do |f| %>
+      <%= form_for(@recipe, remote: true) do |f| %>
         <%= f.text_area :name, placeholder: "#{@recipe.name}" %>
         <%= f.submit "変更"%>
       <% end %>
