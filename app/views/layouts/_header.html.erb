@@ -1,6 +1,10 @@
 <div class="flex flex-between">
 	<div>
-		<h1><%= image_tag("wildrecipe_logo.png", class: "header-logo")%></h1>
+		<h1>
+			<%= link_to root_url do %>
+				<%= image_tag("wildrecipe_logo.png", class: "header-logo") %>
+			<% end %>
+		</h1>
 	</div>
 	<div class="header-menu-button">
 		<i class="fas fa-bars"></i>

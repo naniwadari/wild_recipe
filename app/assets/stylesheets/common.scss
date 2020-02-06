@@ -71,6 +71,7 @@ button{
 /* ボタン */
 
 .btn{
+	border: 1px solid $border-color;
 	background-color: $button-color;
 	border-radius: $button-radius;
 	padding: 5px;
