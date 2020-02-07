@@ -1,24 +1,21 @@
 <% provide(:title, "プロフィールの変更") %>
-<h1>プロフィールの変更</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render "shared/error_messages", object: f.object %>
-      
-      <%= f.label :name, "ニックネーム" %>
-      <%= f.text_field :name, class: "form-control" %>
-      
-      <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: "form-control" %>
-      
-      <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, class: "form-control" %>
-      
-      <%= f.label :password_confirmation, "パスワードの再入力" %>
-      <%= f.password_field :password_confirmation, class: "form-control" %>
-      
-      <%= f.submit "変更", class: "btn btn-primary" %>
-    <% end %>
-  </div>
-</div>
+<section class="user-edit text-center">
+  <h1>プロフィールの変更</h1>
+  <%= form_for(@user,html: {class: "inline"}) do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    
+    <p><%= f.label :name, "ニックネーム" %></p>
+    <%= f.text_field :name, class: "session-form" %>
+    
+    <p><%= f.label :email, "メールアドレス" %></p>
+    <%= f.email_field :email, class: "session-form" %>
+    
+    <p><%= f.label :password, "パスワード" %></p>
+    <%= f.password_field :password, class: "session-form" %>
+    
+    <p><%= f.label :password_confirmation, "パスワードの再入力" %></p>
+    <%= f.password_field :password_confirmation, class: "session-form" %>
+    
+    <%= f.submit "変更", class: "btn large-btn" %>
+  <% end %>
+</section>

@@ -3,25 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.tab{
-	&:hover{
-		cursor: pointer;
-	}
-}
-
-.tab.is-active{
-	border-bottom: none;
-	background-color: #fff;
-}
-
-.panel{
-	display: none;
-}
-
-.panel.is-show{
-	display: block;
-}
-
 .profile-tab{
 	width: 100%;
 	font-size: 1.6rem;
@@ -32,6 +13,7 @@
 	border-right: none;
 	background-color: lightgray;
 	box-sizing: border-box;
+	
 	&:first-of-type{
 		border-radius: 5px 0 0 0;
 	}
@@ -39,5 +21,9 @@
 	&:last-of-type{
 		border-radius: 0 5px 0 0;
 		border-right: 1px solid black;
+	}
+	
+	&.is-active{
+		border-bottom: none;
 	}
 }
