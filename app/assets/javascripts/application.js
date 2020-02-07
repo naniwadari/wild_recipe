@@ -26,8 +26,9 @@ $(document).on('turbolinks:load', function(){
     });
   });
   
+  //クリックしたら選択したタブの項目が表示
   $(function(){
-    $(".profile-tab").click(function(){
+    $(".tab").click(function(){
       $(".is-active").removeClass("is-active");
       $(this).addClass("is-active");
       $(".is-show").removeClass("is-show");
