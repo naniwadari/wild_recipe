@@ -12,13 +12,13 @@ module RecipesHelper
     #URLからレシピＩＤを取得。
     def recipe_author
       @recipe = Recipe.find_by(id: params[:id])
-      @user = User.find_by(id: @recipe.user_id) if @recipe.present?
+      @user = @recipe.user
     end
     
     #フォームのパラメーターからレシピIDを取得
     def recipe_author_via
       @recipe = Recipe.find_by(id: params[:recipe_id])
-      @user = User.find_by(id: @recipe.user_id) if @recipe.present?
+      @user = @recipe.user
     end
     
     #recipe_authorメソッドでユーザー情報を取得
