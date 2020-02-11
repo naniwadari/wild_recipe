@@ -44,7 +44,11 @@
       <h3>調理の手順</h3>
     </div>
     <div id="procedure-form">
-      <%= render "recipes/procedures/form" %>
+      <% if @procedures.present? %>
+        <%= render "recipes/procedures/form" %>
+      <% else %>
+        <%= render "recipes/procedures/empty_form" %>
+      <% end %>
     </div>
   </section>
   

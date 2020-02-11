@@ -25,6 +25,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @user = @recipe.user
     @ingredients = IngredientCollection.new( [], @recipe.id)
+    @procedures = @recipe.procedure.order(number: "ASC")
     @procedure = @recipe.procedure.build
   end
   

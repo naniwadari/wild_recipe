@@ -59,11 +59,10 @@ class ProceduresController < ApplicationController
     @procedure = Procedure.find(params[:id])
     @recipe = @procedure.recipe
     @procedure.destroy_procedure
-    redirect_to edit_recipe_path(@recipe)
-    #respond_to do |format|
-    #  format.html { redirect_to edit_recipe_path(@recipe) }
-    #  format.js
-    #end
+    respond_to do |format|
+      format.html { redirect_to edit_recipe_path(@recipe) }
+      format.js
+    end
   end
   
   private 

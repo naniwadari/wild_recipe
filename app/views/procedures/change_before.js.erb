@@ -1,2 +1,4 @@
-$("#procedure-show-<%= "#{ @procedure.number }" %>").html( "<%= escape_javascript( @procedure.content) %>" );
-$("#procedure-show-<%= "#{ @previous_procedure.number }" %>").html( "<%= escape_javascript( @previous_procedure.content )%> ");
+$('div[name="number[<%= @procedure.number %>]"]').html( "<%= escape_javascript( @procedure.content) %>" );
+$('#textarea<%= @procedure.number%>').html( "<%= escape_javascript( @procedure.content) %>" );
+$('div[name="number[<%= @previous_procedure.number %>]"]').html( "<%= escape_javascript( @previous_procedure.content )%> ");
+$('#textarea<%= @previous_procedure.number%>').html( "<%= escape_javascript( @previous_procedure.content) %>" );
