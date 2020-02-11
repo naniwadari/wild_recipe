@@ -10,9 +10,11 @@
 		<i class="fas fa-bars"></i>
 	</div>
 </div>
-<%= form_tag(recipes_path, :method => "get",class: "flex") do %>
-	<%= text_field_tag :search, "",placeholder: "レシピを検索" ,class: "header-search-form"%>
-	<%= button_tag type: "submit",:name => nil ,class: "search-button" do %>
-		<%= icon("fas", "search")%>
+<% if logged_in? %>
+	<%= form_tag(recipes_path, :method => "get",class: "flex") do %>
+		<%= text_field_tag :search, "",placeholder: "レシピを検索" ,class: "header-search-form"%>
+		<%= button_tag type: "submit",:name => nil ,class: "search-button" do %>
+			<%= icon("fas", "search")%>
+		<% end %>
 	<% end %>
 <% end %>

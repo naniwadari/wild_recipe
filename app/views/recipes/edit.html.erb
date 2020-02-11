@@ -3,14 +3,25 @@
     <div class="label gray-label">
       <h3>レシピタイトル</h3>
     </div>
-    <h1 id="recipe-title"><%= @recipe.name %></h1>
-    <dt><a>タイトルを変更する</a></dt>
-    <dd>
-      <%= form_for(@recipe, remote: true) do |f| %>
-        <%= f.text_area :name, placeholder: "#{@recipe.name}" %>
-        <%= f.submit "変更"%>
-      <% end %>
-    </dd>
+    <div class="content-inner">
+      <h1 id="recipe-title"><%= @recipe.name %></h1>
+      <dt><a>タイトルを変更する</a></dt>
+      <dd>
+        <%= form_for(@recipe, remote: true) do |f| %>
+          <%= f.text_area :name, placeholder: "#{@recipe.name}" %>
+          <%= f.submit "変更"%>
+        <% end %>
+      </dd>
+    </div>
+  </section>
+  
+  <section>
+    <div class="label gray-label">
+      <h3>コメント</h3>
+    </div>
+    <div class="content-inner">
+      <%= render "recipes/recipe_comment_form" %>
+    </div>
   </section>
   
   <section>
@@ -37,23 +48,22 @@
     </div>
   </section>
   
-  <section>
-    <div class="label gray-label">
-      <h3>コメント</h3>
-    </div>
-    <%= render "recipes/recipe_comment_form" %>
-  </section>
   
-  <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
-    <%= form.hidden_field :release, value: false %>
-    <%= form.submit "下書きとして保存" %>
-  <% end %>
+  
+  <div class="btn-wrapper">
+    <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
+      <%= form.hidden_field :release, value: false %>
+      <%= form.submit "下書きとして保存" %>
+    <% end %>
+  </div>
   <p>※下書きとして保存した場合他のユーザーは閲覧できません</p>
   
-  <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
-   <%= form.hidden_field :release, value: true %>
-   <%= form.submit "レシピを公開する" %>
-  <% end %>
+  <div class="btn-wrapper">
+    <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
+     <%= form.hidden_field :release, value: true %>
+     <%= form.submit "レシピを公開する" %>
+    <% end %>
+  </div>
   <p>※公開するボタンを押さなくても各項目で保存していれば下書きとして残ります。</p>
   <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
 </div>

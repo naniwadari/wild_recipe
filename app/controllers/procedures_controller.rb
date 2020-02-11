@@ -1,6 +1,7 @@
 class ProceduresController < ApplicationController
   before_action :logged_in_author
-  before_action :correct_author_via
+  before_action :correct_author_via, only: [:create, :change_after, :change_before]
+  before_action :procedure_correct_author, only: :destroy
   
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])
@@ -66,6 +67,11 @@ class ProceduresController < ApplicationController
   end
   
   private 
+  
+  def procedure_correct_author
+    @recipe = Procedure.find(params[:id]).recipe
+    @user = @recipe.user
+  end
   
   def procedure_params
     params.require(:procedure).permit(:number, :content )

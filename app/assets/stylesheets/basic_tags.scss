@@ -34,6 +34,26 @@
   display: block;
 }
 
+//切り替えタブ基本設定
+
+.tab{
+	&:hover{
+		cursor: pointer;
+	}
+}
+
+.tab.is-active{
+	background-color: $bgc;
+}
+
+.panel{
+	display: none;
+}
+
+.panel.is-show{
+	display: block;
+}
+
 /*テキスト並び*/
 .text-right{
   text-align: right;
@@ -46,15 +66,22 @@
 .text-center{
   text-align: center;
 }
-
+//文字色
+.text-white{
+  color: #fff;
+}
 /*見出しラベル*/
 
 .label{
   padding: 0.8em;
+  border-radius: 5px 5px 0 0;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  background-color: #fff;
 }
 
 .gray-label{
-  background-color: $bisque;
+  border-top: 5px solid $bisque;
 }
 
 /*ボタン関連*/
@@ -68,14 +95,15 @@
 .mainvisual{
   width: 100%;
 }
+
 //レシピ羅列
 
 .recipe_box{
-  border: 1px solid gray;
+  border: 1px solid $border-color;
   border-top: none;
-  
+  background-color: #fff;
   &:first-of-type{
-   border-top: 1px solid gray; 
+   border-top: 1px solid $border-color; 
   }
   
   img{

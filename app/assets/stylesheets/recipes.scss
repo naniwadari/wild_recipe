@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.recipes-edit{
+	dt{
+		text-align: right;
+	}
+}
 .recipes-button{
 	width: 100%;
 }
@@ -27,14 +32,15 @@
 	}
 }
 
-.procedure-list{
-	padding: 1rem;
+.procedure-box{
 	border-bottom: 1px solid $border-color;
-	
-	
 	&:last-of-type{
 		border-bottom: none;
 	}
+}
+
+.procedure-list{
+	padding: 1rem;
 }
 
 .comment_form{
@@ -54,6 +60,14 @@
 
 .procedure-input-textarea{
 	width: 100%;
+	padding: 0 2rem;
+	box-sizing: border-box;
+	text-align: right;
+	
+	textarea{
+		width: 100%;
+		height: 4rem;
+	}
 }
 
 #recipe_name{
@@ -81,3 +95,8 @@
 	}
 }
 //end recipes_edit
+
+//ingredients-show
+.pr10{
+	padding-right: 10px;
+}

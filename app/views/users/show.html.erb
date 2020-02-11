@@ -1,44 +1,44 @@
 <% provide(:title, "ユーザープロフィール")%>
 
-<div class="flex">
-  <img src="http://placehold.jp/100x100.png"></img>
-  <div class="profile_text">
-    <h3><%= @user.name %></h3>
-    <%= render "profile" %>
+  <div class="flex">
+    <img src="http://placehold.jp/100x100.png"></img>
+    <div class="profile_text">
+      <h3><%= @user.name %></h3>
+      <%= render "profile" %>
+    </div>
   </div>
-</div>
-<ul class="flex">
-  <li class="tab profile-tab is-active">投稿</li>
-  <li class="tab profile-tab">イイネ</li>
-  <li class="tab profile-tab">ブクマ</li>
-  <% if current_user == @user %>
-    <li class="tab profile-tab">下書き</li>
-  <% end %>
-</ul>
-
-<div class="profile-panel-group">
-  <section class="panel is-show">
-    <h3>投稿したレシピ(<%= @recipes_count.count %>)</h3>
-    <%= render "posted_recipe" %>
-    <%= paginate @recipes %>
-  </section>
-
-  <section class="panel">
-    <h3>イイネしたレシピ(<%= @like_recipes_count.count %>)</h3>
-    <%= render "liked_recipe" %>
-    <%= paginate @like_recipes, param_name: "like_page" %>
-  </section>
-
-  <section class="panel">
-    <h3>ブックマークしたレシピ(<%= @book_recipes_count.count %>)</h3>
-    <%= render "booked_recipe" %>
-    <%= paginate @book_recipes, param_name: "book_page" %>
-  </section>
-
-  <section class="panel">
+  <ul class="flex">
+    <li class="tab profile-tab is-active">投稿(<%= @recipes_count.count %>)</li>
+    <li class="tab profile-tab">イイネ(<%= @like_recipes_count.count %>)</li>
+    <li class="tab profile-tab">ブクマ(<%= @book_recipes_count.count %>)</li>
     <% if current_user == @user %>
-      <h3>未公開のレシピ(<%= @draft_recipes_count.count %>)</h3>
-      <%= render "draft_recipe" %>
+      <li class="tab profile-tab">下書き(<%= @draft_recipes_count.count %>)</li>
     <% end %>
-  </section>
-</div>
+  </ul>
+  
+  <div class="profile-panel-group content-inner">
+    <section class="panel is-show">
+      <h3>投稿したレシピ(<%= @recipes_count.count %>)</h3>
+      <%= render "posted_recipe" %>
+      <%= paginate @recipes %>
+    </section>
+  
+    <section class="panel">
+      <h3>イイネしたレシピ(<%= @like_recipes_count.count %>)</h3>
+      <%= render "liked_recipe" %>
+      <%= paginate @like_recipes, param_name: "like_page" %>
+    </section>
+  
+    <section class="panel">
+      <h3>ブックマークしたレシピ(<%= @book_recipes_count.count %>)</h3>
+      <%= render "booked_recipe" %>
+      <%= paginate @book_recipes, param_name: "book_page" %>
+    </section>
+  
+    <section class="panel">
+      <% if current_user == @user %>
+        <h3>未公開のレシピ(<%= @draft_recipes_count.count %>)</h3>
+        <%= render "draft_recipe" %>
+      <% end %>
+    </section>
+  </div>
