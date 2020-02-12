@@ -14,12 +14,30 @@ class Procedure < ApplicationRecord
   
   #ナンバーが次に大きいレコードを取得
   def next_number
-    Procedure.where("(number > ?) AND (recipe_id = ?)", self.number, self.recipe_id).order("number ASC").first
+    begin
+      Procedure.where("(number > ?) AND (recipe_id = ?)", self.number, self.recipe_id).order("number ASC").first
+    rescue => e
+      return false
+    end
   end
   
   #ナンバーが次に小さいレコードを取得
   def previous_number
-    Procedure.where("(number < ?) AND (recipe_id = ?)", self.number, self.recipe_id).order("number DESC").first
+    begin
+      Procedure.where("(number < ?) AND (recipe_id = ?)", self.number, self.recipe_id).order("number DESC").first
+    rescue => e
+      return false
+    end
+  end
+  
+  #最後のナンバーを持つレコードを返す,レコードが無ければゼロを返す
+  def self.last_number(recipe)
+    proces = recipe.procedure
+    if proces.empty?
+      return 0
+    else
+      recipe.procedure.order(number: "DESC").first.number
+    end
   end
   
   #ナンバーが下のレコードのナンバーを-1して削除する
@@ -34,4 +52,5 @@ class Procedure < ApplicationRecord
   def lower_number
     Procedure.where("(number > ?) AND (recipe_id = ?)", self.number, self.recipe_id)
   end
+  
 end

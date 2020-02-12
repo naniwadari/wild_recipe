@@ -25,7 +25,7 @@ body{
 }
 
 .footer-clearbox{
-	height: 34px;
+	height: 50px;
 }
 
 /*基本タグの設定*/
@@ -98,6 +98,12 @@ button{
 	max-width: 210px;
 }
 
+.clear-btn{
+	border: none;
+	background-color: transparent;
+	color: $link-color;
+	text-decoration: underline;
+}
 .btn-wrapper{
 	width: 100%;
 	text-align: center;

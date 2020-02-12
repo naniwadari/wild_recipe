@@ -1,20 +1,19 @@
-var count = $(".formbox").length;
-if (count > 1){
-	$(this).parents(".formbox").remove();
-
-	//番号振り直し
-	$('.formbox').each(function(index){
-		var number = index + 1;
-		//data属性の数字
-		$(this).attr('data-formno', number);
-
-		$(".formbox-no",this).html(number);
-		$("input.hidden-number",this).attr("value", number);
-		$("textarea",this).attr('id', 'textarea' + number);
-		var procedure_number = $("div.procedure-show",this).attr("name");
-		procedure_number = procedure_number.replace(/number\[[0-9]{1,2}/g,"number[" + number);
-		$("div.procedure-show",this).attr("name", procedure_number);
-	});
-} else {
-	$('.formbox').find("textarea").html("")
-}
+$(function(){
+	var count = $(".formbox").length;
+	if (count > 1){
+		$('div[data-formno=<%= @number %>]').remove();
+		$('.formbox').each(function(index){
+			var number = index + 1;
+			$(this).attr('data-formno', number);
+			$(".formbox-no",this).html(number);
+			$("input.hidden-number",this).attr("value", number);
+			$("textarea",this).attr('id', 'textarea' + number);
+			var procedure_number = $("div.procedure-show").attr("name");
+			procedure_number = procedure_number.replace(/number\[[0-9]{1,2}/g,"number[" + number);
+			$("div.procedure-show",this).attr("name", procedure_number);
+			});
+	} else {
+		$('.formbox').find("textarea").html("")
+		$('.formbox').find(".procedure-show").html("")
+	}
+});

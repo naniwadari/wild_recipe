@@ -7,11 +7,11 @@
       </div>
 
       <div class="procedure-input-textarea">
-        <%= form_with model: @procedure, url: procedures_path do |form| %>
+        <%= form_with model: @procedure, url: procedures_update_path, method: :patch do |form| %>
           <%= hidden_field_tag :recipe_id, @recipe.id %>
+          <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
           <%= form.text_area :content, placeholder: "手順を入力しましょう", value: procedure.content, id: "textarea#{procedure.number}" %>
-          <%= form.hidden_field :number, value: "#{procedure.number}",class: "hidden-number" %>
-          <%= form.submit "保存" %>
+          <%= form.submit "保存", class: "btn" %>
         <% end %>
       </div>
 
@@ -19,23 +19,29 @@
         <%= form_with url: procedures_change_before_path do |form| %>
           <%= hidden_field_tag :recipe_id, @recipe.id %>
           <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-          <%= form.submit "↑", class: "change_content_button" %>
+          <%= form.submit "↑", class: "change_content_button btn" %>
         <% end %>
         
         <%= form_with url: procedures_change_after_path do |form| %>
           <%= hidden_field_tag :recipe_id, @recipe.id %>
           <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-          <%= form.submit "↓", class: "change_content_button" %>
+          <%= form.submit "↓", class: "change_content_button btn" %>
         <% end %>
       </div>
       
       <%= form_with url: procedures_destroy_path, method: :delete do |form| %>
         <%= hidden_field_tag :recipe_id, @recipe.id %>
         <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-        <%= form.submit "削除" %>
+        <%= form.submit "削除", class: "clear-btn" %>
       <% end %>
     
     </div>
   <% end %>
 <% end %>
-<p class="text-center"><a class="add-form btn midium-btn">追加する</a></p>
+<div class="btn-wrapper">
+  <%= form_with model: @procedure, url: procedures_path do |form| %>
+    <%= hidden_field_tag :recipe_id, @recipe.id %>
+    <%= form.hidden_field :content, value: "" %>
+    <%= form.submit "追加する",class: "btn midium-btn" %>
+  <% end %>
+</div>

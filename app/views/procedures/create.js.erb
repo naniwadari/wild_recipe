@@ -1,1 +1,20 @@
-$('div[name="number[<%= @procedure.number %>]" ]' ).html( "<%= escape_javascript(@procedure.content) %>" );
+$(function(){
+  var clonecode = $(".formbox:last").clone(true);
+  var number = <%= @number %>;
+  
+  //各種ナンバーの変更
+  clonecode.attr("data-formno", number);
+  clonecode.find(".formbox-no").html(number);
+  
+  clonecode.find("input.hidden-number").attr("value", number);
+  
+  clonecode.find("textarea").attr('id', 'textarea' + number);
+  clonecode.find("textarea").val('');
+  
+  clonecode.find(".procedure-show").html("");
+  var procedure_number = clonecode.find("div.procedure-show").attr("name");
+  procedure_number = procedure_number.replace(/number\[[0-9]{1,2}/g,"number[" + number);
+  clonecode.find("div.procedure-show").attr("name", procedure_number);
+  
+  clonecode.insertAfter($(".formbox:last"));
+});

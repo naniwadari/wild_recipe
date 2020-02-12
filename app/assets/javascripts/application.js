@@ -64,10 +64,11 @@ $(document).on('turbolinks:load', function(){
       //テキストエリアのidを変更
       clonecode.find("textarea").attr('id', 'textarea' + cloneno2);
       //テキストエリアを空にする
-      clonecode.find("textarea").html("")
+      clonecode.find("textarea").val('');
+      
       
       //procedure-showの内容を空にする
-      clonecode.find(".procedure-show").html("")
+      clonecode.find(".procedure-show").html("");
       //porocedure-showのname="number[?]"を書き換える
       var procedure_number = clonecode.find("div.procedure-show").attr("name");
       procedure_number = procedure_number.replace(/number\[[0-9]{1,2}/g,"number[" + cloneno2);

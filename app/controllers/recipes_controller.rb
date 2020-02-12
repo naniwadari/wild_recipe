@@ -14,6 +14,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
+      @recipe.procedure.create(number: 1, content: "")
       redirect_to edit_recipe_path(@recipe)
     else
       flash[:danger] = "レシピ名を入力してください"
@@ -33,7 +34,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     respond_to do |format|
       if @recipe.update_attributes(recipe_params)
-        #redirect_to edit_recipe_path(@recipe)
         format.html {redirect_to edit_recipe_path(@recipe)}
         format.js
       else
