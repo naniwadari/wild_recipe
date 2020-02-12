@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   
   resources :ingredients, only: :create
   
-  resources :procedures, only: [:create, :destroy]
+  resources :procedures, only: :create
+  delete "procedures/destroy", to: "procedures#destroy"
   post "procedures/change_after", to: "procedures#change_after"
   post "procedures/change_before", to: "procedures#change_before"
   

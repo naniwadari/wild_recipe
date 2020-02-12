@@ -56,19 +56,24 @@ class ProceduresController < ApplicationController
   end
   
   def destroy
-    @procedure = Procedure.find(params[:id])
-    @recipe = @procedure.recipe
-    @procedure.destroy_procedure
+    @recipe = Recipe.find_by(id: params[:recipe_id])
+    @procedure = @recipe.procedure.find_by(number: params[:number])
     respond_to do |format|
-      format.html { redirect_to edit_recipe_path(@recipe) }
-      format.js
+      if @procedure
+        @procedure.destroy_procedure
+        format.html { redirect_to edit_recipe_path(@recipe) }
+        format.js
+      else
+        format.html { redirect_to edit_recipe_path(@reipe) }
+        format.js
+      end
     end
   end
   
   private 
   
   def procedure_correct_author
-    @recipe = Procedure.find(params[:id]).recipe
+    @recipe = Recipe.find_by(id: params[:recipe_id])
     @user = @recipe.user
   end
   

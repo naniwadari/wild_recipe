@@ -28,9 +28,13 @@
           <%= form.submit "↓", class: "change_content_button" %>
         <% end %>
       </div>
-      <p class="text-right">
-        <%= link_to "削除", procedure_path(procedure), method: :delete, remote: true, class: "delete-formbox" %>
-      </p>
+      
+      <%= form_with url: procedures_destroy_path, method: :delete do |form| %>
+        <%= hidden_field_tag :recipe_id, @recipe.id %>
+        <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+        <%= form.submit "削除" %>
+      <% end %>
+    
     </div>
   <% end %>
 <% end %>
