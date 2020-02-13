@@ -38,7 +38,25 @@ $(document).on('turbolinks:load', function(){
       $(".panel").eq(index).addClass("is-show");
     });
   });
-
+  
+  $(function() {
+    $('.add-ing-form').click(function() {
+      var clonecode = $(this).parents('.ingredient-box').clone(true);
+      clonecode.find('input').val("");
+      clonecode.insertAfter($(this).parents('.ingredient-box'));
+    });
+    
+    $('.delete-ing-form').click(function() {
+      var count = $(".ingredient-box").length;
+      var code = $(this).parents('.ingredient-box');
+      if (count > 1){
+        code.remove();
+      } else {
+        code.find('input').val("");
+      }
+    });
+  });
+  
   //フォームの追加
   $(function(){
     $(".add-form").click(function(){

@@ -100,3 +100,16 @@
 .pr10{
 	padding-right: 10px;
 }
+
+//材料入力部
+.ingredient-form-table{
+	width: 100%;
+	
+	td{
+		text-align: center;
+		
+		input{
+			width: 90%;
+		}
+	}
+}

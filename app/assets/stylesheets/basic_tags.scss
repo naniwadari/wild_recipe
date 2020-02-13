@@ -75,8 +75,6 @@
 .label{
   padding: 0.8em;
   border-radius: 5px 5px 0 0;
-  border-right: 1px solid $border-color;
-  border-left: 1px solid $border-color;
   background-color: #fff;
 }
 
@@ -120,9 +118,11 @@
 }
 
 .recipe_comment{
+  font-size: 1.2rem;
   padding: 6px 12px 0;
 }
 
 .recipe_author{
+  font-size: 1.2rem;
   padding: 8px 12px 0;
 }
