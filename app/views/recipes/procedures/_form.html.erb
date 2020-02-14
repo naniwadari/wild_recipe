@@ -1,47 +1,58 @@
-<% @procedures.each do |procedure| %>
-  <% unless procedure.content.nil? %>
-    <div class="formbox procedure-box" data-formno="<%= procedure.number %>" >
-      <div class="procedure-list flex flex-left">
-        <div class="formbox-no"><%= procedure.number %></div>:
-        <div class="procedure-show" name="number[<%= procedure.number %>]"><%= procedure.content %></div>
-      </div>
-
-      <div class="procedure-input-textarea">
-        <%= form_with model: @procedure, url: procedures_update_path, method: :patch do |form| %>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-          <%= form.text_area :content, placeholder: "手順を入力しましょう", value: procedure.content, id: "textarea#{procedure.number}" %>
-          <%= form.submit "保存", class: "btn" %>
-        <% end %>
-      </div>
-
-      <div class="flex flex-end">
-        <%= form_with url: procedures_change_before_path do |form| %>
-          <%= hidden_field_tag :recipe_id, @recipe.id %>
-          <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-          <%= form.submit "↑", class: "change_content_button btn" %>
-        <% end %>
+<section>
+  <% @procedures.each do |procedure| %>
+    <% unless procedure.content.nil? %>
+      <div class="formbox procedure-box" data-formno="<%= procedure.number %>" >
+        <div class="procedure-list flex flex-left">
+          <div class="formbox-no"><%= procedure.number %></div>:
+          <div class="procedure-show" name="number[<%= procedure.number %>]"><%= procedure.content %></div>
+        </div>
+  
+        <div class="procedure-input-textarea">
+          <%= form_with model: @procedure, url: procedures_update_path, method: :patch do |form| %>
+            <%= hidden_field_tag :recipe_id, @recipe.id %>
+            <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+            <%= form.text_area :content, placeholder: "手順を入力しましょう", value: procedure.content, id: "textarea#{procedure.number}" %>
+            <%= form.submit "保存する", class: "btn mini-btn" %>
+          <% end %>
+        </div>
+  
+        <div class="flex flex-end">
+          <div class="change-content-btn">
+            <%= form_with url: procedures_change_before_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+              <%= button_tag type: "submit", class: "func-btn" do %>
+                <%= icon('fas','arrow-alt-circle-up') %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="change-content-btn">
+            <%= form_with url: procedures_change_after_path do |form| %>
+              <%= hidden_field_tag :recipe_id, @recipe.id %>
+              <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+              <%= button_tag type: "submit", class: "func-btn" do %>
+                <%= icon('fas','arrow-alt-circle-down') %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         
-        <%= form_with url: procedures_change_after_path do |form| %>
+        <%= form_with url: procedures_destroy_path, method: :delete do |form| %>
           <%= hidden_field_tag :recipe_id, @recipe.id %>
           <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-          <%= form.submit "↓", class: "change_content_button btn" %>
+          <%= form.submit "削除", class: "clear-btn" %>
         <% end %>
-      </div>
       
-      <%= form_with url: procedures_destroy_path, method: :delete do |form| %>
-        <%= hidden_field_tag :recipe_id, @recipe.id %>
-        <%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
-        <%= form.submit "削除", class: "clear-btn" %>
-      <% end %>
-    
-    </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</section>
 <div class="btn-wrapper">
   <%= form_with model: @procedure, url: procedures_path do |form| %>
     <%= hidden_field_tag :recipe_id, @recipe.id %>
     <%= form.hidden_field :content, value: "" %>
-    <%= form.submit "追加する",class: "btn midium-btn" %>
+    <%= button_tag type: "submit", class: "btn midium-btn" do %>
+      <%= icon('fas','plus-circle') %><%= "フォームを追加" %>
+    <% end %>
   <% end %>
 </div>

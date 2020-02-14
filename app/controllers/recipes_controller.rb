@@ -15,6 +15,7 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.build(recipe_params)
     if @recipe.save
       @recipe.procedure.create(number: 1, content: "")
+      @recipe.ingredient.create(number: 1)
       redirect_to edit_recipe_path(@recipe)
     else
       flash[:danger] = "レシピ名を入力してください"

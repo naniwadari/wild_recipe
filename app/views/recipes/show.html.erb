@@ -1,65 +1,69 @@
 <img src="https://i.picsum.photos/id/476/560/300.jpg" class="mainvisual"></img>
-
-<h1><%= @recipe.name %></h1>
-<p><%= @recipe.comment %></p>
-<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
-<div class="like_icon">
-  <% if current_user.like?(@recipe) %>
-    <%= render "unlike" %>
-  <% else %>
-    <%= render "like" %>
-  <% end %>
-</div>
-<div class="recipes-button text-center flex">
-  <a class="func-button">レシピを共有</a>
-  <a class="func-button">レシピを保存</a>
-</div>
-
-<div class="label gray-label">
-  <h3>材料</h3>
-</div>
-<div>
-  <% @recipe.ingredient.each do |ingredient| %>
-    <% if ingredient.name.present? %>
-      <div class="ingredient-list flex flex-between">
-        <div><%= ingredient.name %></div>
-        <div><%= ingredient.amount %></div>
-      </div>
+<section>
+  <h1><%= @recipe.name %></h1>
+  <p><%= @recipe.comment %></p>
+  <%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
+</section>
+<section>
+  <div class="like_icon">
+    <% if current_user.like?(@recipe) %>
+      <%= render "unlike" %>
+    <% else %>
+      <%= render "like" %>
     <% end %>
-  <% end %>
-</div>
-<div class="label gray-label">
-  <h3>手順</h3>
-</div>
-<div>
-  <% @recipe.procedure.each do |procedure| %>
-    <% if procedure.content.present? %>
-      <div class="procedure-list flex flex-left">
-        <div><%= procedure.number%>:</div>
-        <div><%= procedure.content %></div>
-      </div>
+  </div>
+  <div id="book-icon-<%= @recipe.id %>" class="book-icon">
+    <% if current_user.book?(@recipe) %>
+      <%= render "unbook" %>
+    <% else %>
+      <%= render "book" %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+</section>
 
-<div id="book-icon-<%= @recipe.id %>" class="book-icon">
-      <% if current_user.book?(@recipe) %>
-        <%= render "unbook" %>
-      <% else %>
-        <%= render "book" %>
+<section>
+  <div class="label gray-label">
+    <h3>材料</h3>
+  </div>
+  <div>
+    <% @recipe.ingredient.each do |ingredient| %>
+      <% if ingredient.name.present? %>
+        <div class="ingredient-list flex flex-between">
+          <div><%= ingredient.name %></div>
+          <div><%= ingredient.amount %></div>
+        </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
+</section>
+<section>
+  <div class="label gray-label">
+    <h3>手順</h3>
+  </div>
+  <div>
+    <% @recipe.procedure.each do |procedure| %>
+      <% if procedure.content.present? %>
+        <div class="procedure-list flex flex-left">
+          <div><%= procedure.number%>:</div>
+          <div><%= procedure.content %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>
 
-<div class="label gray-label">
-  <h3>ユーザーからのコメント</h3>
-</div>
-
-<div class="content-inner">
-  <div class="user_comment">
-    <%= render "user_comment" %>
+<section>
+  <div class="label gray-label">
+    <h3>ユーザーからのコメント</h3>
   </div>
   
-  <div class="comment_form">
-    <%= render "comment_form" %>
+  <div class="content-inner">
+    <div class="user_comment">
+      <%= render "user_comment" %>
+    </div>
+    
+    <div class="comment_form">
+      <%= render "comment_form" %>
+    </div>
   </div>
-</div>
+</section>
