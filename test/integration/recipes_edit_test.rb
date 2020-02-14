@@ -6,14 +6,13 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     @user = users(:recipeman)
     @other_user = users(:recipewoman)
     @recipe = recipes(:suberihiyu)
-    @input_ingredients = [ {name: "スベリヒユ", amount: "100g"},
-                             {name: "ポン酢", amount: "大匙3"},
-                             {name: "七味", amount: "少々"}]
-    @input_ingredients_alt = [ {name: "", amount: ""},
-                               {name: "", amount: ""},
-                               {name: "スベリヒユ", amount: "200g"}]
-    #材料データの個数、IngredientCollectionを参照
-    @ingredient_num = IngredientCollection::INGREDIENT_NUM
+    @input_ingredients = [ {name: "変更前1", amount: "100g"},
+                             {name: "変更前2", amount: "200g"},
+                             {name: "変更前3", amount: "300g"}]
+    @input_ingredients_alt = [ {name: "変更後1", amount: "100g"},
+                               {name: "変更後2", amount: "200g"},
+                               {name: "変更後3", amount: "300g"},
+                               {name: "変更後4", amount: "400g"} ]
     #手順データ2個
     @procedure = procedures(:procedure_1)
     @procedure_alt = procedures(:procedure_2)
@@ -57,27 +56,24 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     get edit_recipe_path(@recipe)
     assert_template "recipes/edit"
     #一回目のデータ投下
-    assert_difference "Ingredient.count", @ingredient_num do
+    assert_difference "Ingredient.count", 3 do
       post ingredients_path, params:{ ingredients: @input_ingredients,
                                       recipe_id: @recipe.id }
     end
     #データの照会
-    assert_equal @recipe.ingredient.find_by(number: "1").name, @input_ingredients[0][:name]
-    assert_equal @recipe.ingredient.find_by(number: "2").name, @input_ingredients[1][:name]
-    assert_equal @recipe.ingredient.find_by(number: "3").name, @input_ingredients[2][:name]
-    assert_nil @recipe.ingredient.find_by(number: "4").name
-    assert_nil @recipe.ingredient.find_by(number: "5").name
+    assert_equal @recipe.ingredient.find_by(number: 1).name, @input_ingredients[0][:name]
+    assert_equal @recipe.ingredient.find_by(number: 2).name, @input_ingredients[1][:name]
+    assert_equal @recipe.ingredient.find_by(number: 3).name, @input_ingredients[2][:name]
     #2回目のデータ投下
-    assert_no_difference "Ingredient.count" do
+    assert_difference "Ingredient.count", 1 do
       post ingredients_path, params:{ ingredients: @input_ingredients_alt,
                                       recipe_id: @recipe.id }
     end
-    #空白のデータは登録されていない+順番がちゃんと整列されていることの確認
-    assert_equal @recipe.ingredient.find_by(number: "1").name, @input_ingredients_alt[2][:name]
-    assert_nil @recipe.ingredient.find_by(number: "2").name
-    assert_nil @recipe.ingredient.find_by(number: "3").name
-    assert_nil @recipe.ingredient.find_by(number: "4").name
-    assert_nil @recipe.ingredient.find_by(number: "5").name
+    #データが変更できているか
+    assert_equal @recipe.ingredient.find_by(number: 1).name, @input_ingredients_alt[0][:name]
+    assert_equal @recipe.ingredient.find_by(number: 2).name, @input_ingredients_alt[1][:name]
+    assert_equal @recipe.ingredient.find_by(number: 3).name, @input_ingredients_alt[2][:name]
+    assert_equal @recipe.ingredient.find_by(number: 4).name, @input_ingredients_alt[3][:name]
   end
   
   #材料入力の失敗パターン
@@ -109,9 +105,9 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
                                      recipe_id: @recipe.id }
     end
     #変更
-    post procedures_path, params:{ procedure: { content: "スベリヒユを煮ます",
-                                                number: "2" },
-                                   recipe_id: @recipe.id }
+    patch procedures_update_path, params:{ procedure: { content: "スベリヒユを煮ます" },
+                                  number: "2",
+                                  recipe_id: @recipe.id }
     @procedure_alt.reload
     assert_equal @procedure_alt.content, "スベリヒユを煮ます"
   end
