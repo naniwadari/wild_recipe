@@ -47,7 +47,7 @@
     <% end %>
   <% end %>
 </section>
-<div class="btn-wrapper">
+<div class="btn-center">
   <%= form_with model: @procedure, url: procedures_path do |form| %>
     <%= hidden_field_tag :recipe_id, @recipe.id %>
     <%= form.hidden_field :content, value: "" %>

@@ -2,89 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.recipes-edit{
-	dt{
-		text-align: right;
-	}
-}
-.recipes-button{
-	width: 100%;
-}
+/*
 
-.func-button{
-	display: inline-block;
-	width: 50%;
-	background-color: $border-color;
-	box-sizing: border-box;
-	padding: 1rem;
-	
-	&:first-of-type{
-		border-right: 1px solid black;
-	}
-}
+レシピ編集ページ
 
-.ingredient-list{
-	padding: 0.5rem 1rem;
-	border-bottom: 1px solid $border-color;
+*/
 
-	&:last-of-type{
-		border-bottom: none;
-	}
-}
-
-.procedure-box{
-	border-bottom: 1px solid $border-color;
-	&:last-of-type{
-		border-bottom: none;
-	}
-}
-
-.procedure-list{
-	padding: 1rem;
-}
-
-.comment_form{
-	text-align: right;
-	
-	.comment_textarea{
-		width: 100%;
-		box-sizing: border-box;
-	}
-}
-
-//recipes_edit
-
-.recipes-edit-mv{
-	width: 100%;
-}
-
-.procedure-input-textarea{
-	width: 100%;
-	padding: 0 2rem;
-	box-sizing: border-box;
-	text-align: right;
-	
-	textarea{
-		width: 100%;
-		height: 68px;
-	}
-}
-
-#recipe_name{
-	width: 98%;
-	height: 3.3em;
-}
-
-#procedure_content{
-	width: 98%;
-	height: 3.3em;
-}
-
-#recipe_comment{
-	width: 98%;
-	height: 3.3em;
-}
-
+//共通
 .hiddenform{
 	dt{
 		cursor: pointer;
@@ -94,14 +18,35 @@
 		display: none;
 	}
 }
-//end recipes_edit
 
-//ingredients-show
-.pr10{
-	padding-right: 10px;
+.recipes-edit{
+	dt{
+		text-align: right;
+	}
 }
 
-//材料入力部
+//レシピコメント
+.recipe-comment{
+	textarea{
+		height: 68px;
+	}
+}
+
+//写真
+.recipes-edit-mv{
+	width: 100%;
+}
+
+//材料入力
+.ingredient-list{
+	padding: 0.5rem 1rem;
+	border-bottom: 1px solid $border-color;
+
+	&:last-of-type{
+		border-bottom: none;
+	}
+}
+
 .ingredient-form-table{
 	width: 100%;
 	
@@ -134,11 +79,67 @@
 	
 }
 
-//調理手順部
+.pr10{
+	padding-right: 10px;
+}
+
+//手順入力
+
+.procedure-box{
+	border-bottom: 1px solid $border-color;
+	&:last-of-type{
+		border-bottom: none;
+	}
+}
+
+.procedure-list{
+	padding: 1rem;
+}
+
+.procedure-input-textarea{
+	width: 100%;
+	padding: 0 2rem;
+	box-sizing: border-box;
+	text-align: right;
+	
+	textarea{
+		width: 100%;
+		height: 68px;
+	}
+}
+
 .change-content-btn{
 	padding: 0 0.5rem;
 	
 	&:last-of-type{
 		border-left: 1px solid $border-color;
+	}
+}
+
+/*
+
+レシピ見るページ
+
+*/
+
+//tweetボタンなど
+
+.recipe-show-funcbox{
+	width: 100%;
+	display: flex;
+	
+	.funcbox-item{
+		width: 20%;
+		
+		&:first-of-type{
+			width: 60%;
+		}
+	}
+}
+
+//ユーザーコメント
+.impression-form{
+	textarea{
+		height: 68px;
 	}
 }

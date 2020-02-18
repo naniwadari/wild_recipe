@@ -1,21 +1,24 @@
 <div class="recipes-edit">
-  <section>
+  
+  <section class="recipe-name">
     <div class="label gray-label">
-      <h3>レシピタイトル</h3>
+      <h3>レシピの名前</h3>
     </div>
     <div class="content-inner">
       <h1 id="recipe-title"><%= @recipe.name %></h1>
-      <dt><a>タイトルを変更する</a></dt>
+      <dt><a>名前を変更する</a></dt>
       <dd>
         <%= form_for(@recipe, remote: true) do |f| %>
-          <%= f.text_area :name, placeholder: "#{@recipe.name}" %>
-          <%= f.submit "変更"%>
+          <%= f.text_area :name, placeholder: "レシピの名前を入力しましょう", value: @recipe.name %>
+          <div class="btn-right">
+            <%= f.submit "変更", class: "btn mini-btn"%>
+          </div>
         <% end %>
       </dd>
     </div>
   </section>
   
-  <section>
+  <section class="recipe-comment">
     <div class="label gray-label">
       <h3>コメント</h3>
     </div>
@@ -28,8 +31,17 @@
     <div class="label gray-label">
       <h3>写真</h3>
     </div>
-    <img src="http://placehold.jp/560x300.png" class="recipes-edit-mv"></img>
-    <a><i class="fas fa-camera"></i>写真を追加</a>
+    <div class="text-center">
+      <img src="<%= @recipe.image.url %>" class="recipes-edit-mv"></img>
+    </div>
+    <div class="btn-center">
+      <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
+        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
+          <%= button_tag type:"submit", class: "clear-btn" do %>
+            <%= icon('fas','camera') %><%= "イメージを登録" %>
+          <% end %>
+      <% end %>
+    </div>
   </section>
     
   <section>
@@ -54,14 +66,14 @@
   
   
   
-  <div class="btn-wrapper">
+  <div class="btn-center">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
       <%= form.hidden_field :release, value: false %>
       <%= form.submit "下書きにする" %>
     <% end %>
   </div>
   
-  <div class="btn-wrapper">
+  <div class="btn-center">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
      <%= form.hidden_field :release, value: true %>
      <%= form.submit "レシピを公開する", class: "btn large-btn" %>

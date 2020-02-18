@@ -17,15 +17,13 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-#自分で入れたやつ…
+#自分で入れたやつ
 #jquery
 gem "jquery-rails"
 #パスワード暗号化
 gem "bcrypt", "3.1.12"
 #ページネーション
 gem "kaminari"
-#bootstrap
-#gem "bootstrap-sass", "3.4.1"
 #データベース内のカウント機能
 gem "counter_culture", "2.2.4"
 #日本語化
@@ -34,10 +32,10 @@ gem "rails-i18n", "~> 5.1"
 gem "activeadmin"
 #fontawesome
 gem "font-awesome-sass", "~> 5.4.1"
-
-#active_adminとconflictのため保留
-#gem "will_paginate", "3.2.1"
-#gem "bootstrap-will_paginate", "1.0.0"
+#画像処理
+gem "carrierwave"
+#画像加工
+gem "mini_magick"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

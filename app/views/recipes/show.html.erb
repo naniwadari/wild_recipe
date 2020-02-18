@@ -1,26 +1,38 @@
-<img src="https://i.picsum.photos/id/476/560/300.jpg" class="mainvisual"></img>
-<section>
-  <h1><%= @recipe.name %></h1>
-  <p><%= @recipe.comment %></p>
-  <%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
-</section>
-<section>
-  <div class="like_icon">
-    <% if current_user.like?(@recipe) %>
-      <%= render "unlike" %>
-    <% else %>
-      <%= render "like" %>
-    <% end %>
-  </div>
-  <div id="book-icon-<%= @recipe.id %>" class="book-icon">
-    <% if current_user.book?(@recipe) %>
-      <%= render "unbook" %>
-    <% else %>
-      <%= render "book" %>
-    <% end %>
-  </div>
-</section>
-
+<img src="<%= @recipe.image.url %>" class="mainimg"></img>
+<div class="content-inner">
+  <section>
+    <h1><%= @recipe.name %></h1>
+    <p><%= @recipe.comment %></p>
+    by<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
+  </section>
+  <section>
+    <div class="recipe-show-funcbox text-center">
+      <div class="funcbox-item">
+        <a href="#" class="tweet-btn">
+          <i class="fab fa-twitter"></i>ツイートする
+        </a>
+      </div>
+      <div class="funcbox-item text-center">
+        <div class="like-func">
+          <% if current_user.like?(@recipe) %>
+            <%= render "unlike" %>
+          <% else %>
+            <%= render "like" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="funcbox-item text-center">
+        <div id="book-icon-<%= @recipe.id %>">
+          <% if current_user.book?(@recipe) %>
+            <%= render "unbook" %>
+          <% else %>
+            <%= render "book" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 <section>
   <div class="label gray-label">
     <h3>材料</h3>
@@ -58,12 +70,12 @@
   </div>
   
   <div class="content-inner">
-    <div class="user_comment">
-      <%= render "user_comment" %>
+    <div class="impression-show">
+      <%= render "impression_show" %>
     </div>
     
-    <div class="comment_form">
-      <%= render "comment_form" %>
+    <div class="impression-form">
+      <%= render "impression_form" %>
     </div>
   </div>
 </section>

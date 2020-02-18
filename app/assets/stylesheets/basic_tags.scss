@@ -20,6 +20,10 @@
   justify-content: flex-end;
 }
 
+.flex-wrap{
+  flex-direction: wrap;
+}
+
 /* ブロックレベル */
 
 .inline{
@@ -66,10 +70,12 @@
 .text-center{
   text-align: center;
 }
+
 //文字色
 .text-white{
   color: #fff;
 }
+
 /*見出しラベル*/
 
 .label{
@@ -84,14 +90,44 @@
 
 /*ボタン関連*/
 
+.like-icon{
+  font-size: 2rem;
+  padding: 6px 0 6px 6px;
+  color: #ff69b4;
+}
+
+.like-count{
+  font-size: 2rem;
+}
+
 .book-icon{
   font-size: 2rem;
   padding: 6px;
+  color: #008833;
 }
 
 //メインビジュアル
+.mainimg{
+    width: 100%;
+}
+
 .mainvisual{
-  width: 100%;
+  position: relative;
+  
+  .mainvisual-logo{
+    position: absolute;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: rgba(255,255,255,0.7);
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    text-align: center;
+    
+    img{
+      width: 70%;
+    }
+  }
 }
 
 //レシピ羅列
@@ -99,14 +135,36 @@
 .recipe_box{
   border: 1px solid $border-color;
   border-top: none;
-  background-color: #fff;
+  background-color: $box-bgc;
+  height: 110px;
+  box-sizing: border-box;
+  position: relative;
+  
   &:first-of-type{
    border-top: 1px solid $border-color; 
   }
   
-  img{
-    width: 100px;
+  .recipe-box-img{
+    width: 110px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: transparent;
+    
+    img{
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%,-50%, 0);
+    }
   }
+}
+
+.recipes-edit-btn{
+  position: absolute;
+  right: 3px;
+  bottom: 0;
 }
 
 .recipe_content{
@@ -114,15 +172,15 @@
 }
 
 .recipe_title{
-  padding: 8px 12px 0;
+  padding: 6px 12px 0;
 }
 
 .recipe_comment{
   font-size: 1.2rem;
-  padding: 6px 12px 0;
+  padding: 4px 12px 0;
 }
 
 .recipe_author{
   font-size: 1.2rem;
-  padding: 8px 12px 0;
+  padding: 6px 12px 0;
 }

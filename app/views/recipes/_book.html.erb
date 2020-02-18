@@ -3,7 +3,7 @@
 <% else %>
   <% recipe = book_recipe %>
 <% end %>
-<%= form_with url: books_path do |f| %>
+<%= form_with url: books_path, class: "inline-block" do |f| %>
   <%= hidden_field_tag :recipe_id, recipe.id %>
   <%= button_tag type: "submit", class: "book-icon" do %>
     <%= icon('far','bookmark') %>

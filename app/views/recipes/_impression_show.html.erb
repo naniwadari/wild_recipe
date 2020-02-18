@@ -7,7 +7,8 @@
 				<%= link_to "削除", impression_path(comment),
 						method: :delete, data: {confirm: "本当に削除しますか？"} %>
 			<% end %>
-		
 	<% end %>
+<% else %>
+	<p>まだユーザーからのコメントはありません。</p>
 <% end %>
 <%= paginate @user_comments %>

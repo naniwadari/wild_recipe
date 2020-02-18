@@ -11,6 +11,7 @@ module WildRecipe
     config.load_defaults 5.1
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     #デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
     #i18nの複数ロケールファイルが読み込まれるようにpathを通す

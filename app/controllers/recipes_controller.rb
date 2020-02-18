@@ -84,7 +84,7 @@ class RecipesController < ApplicationController
   
     #Recipeのストロングパラメーター
     def recipe_params
-      params.require(:recipe).permit(:name, :comment)
+      params.require(:recipe).permit(:name, :comment, :image)
     end
 
 end

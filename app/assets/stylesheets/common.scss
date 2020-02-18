@@ -68,11 +68,13 @@ input{
 }
 
 textarea{
+	width: 100%;
 	resize: vertical;
-	font-size: 1.4rem;
+	font-size: 14px;
+	text-indent: 0.5rem;
 	border: 1px solid $border-color;
 	border-radius: $basic-radius;
-	padding: 7px;
+	padding: 3px 0;
 	box-sizing: border-box;
 }
 
@@ -112,6 +114,7 @@ button{
 .mini-btn{
 	width: 30%;
 }
+
 .clear-btn{
 	border: none;
 	background-color: transparent;
@@ -126,9 +129,27 @@ button{
 	cursor: pointer;
 }
 
-.btn-wrapper{
+.tweet-btn{
+	color: #fff;
+	display: inline-block;
+	background-color: #00acee;
+	border-radius: $basic-radius;
+	padding: 7px;
+	
+	&:hover{
+		color: #fff;
+		text-decoration: none;
+	}
+}
+
+.btn-center{
 	width: 100%;
 	text-align: center;
+}
+
+.btn-right{
+	width: 100%;
+	text-align: right;
 }
 /*ヘッダー*/
 

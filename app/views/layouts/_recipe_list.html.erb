@@ -1,6 +1,8 @@
 <% author = recipe.user %>
 <div class="recipe_box flex flex-between">
-  <img src="http://placehold.jp/150x150.png"></img>
+  <div class="recipe-box-img">
+    <img src="<%= recipe.image.url %>"></img>
+  </div>
   <div class="recipe_content">
     <div class="recipe_title">
       <h3><%= link_to "#{recipe.name}", recipe_path(recipe) %></h3>
@@ -11,12 +13,8 @@
     <div class="recipe_author">
       by <%= link_to "#{author.name}", user_path(author) %>
     </div>
-    <% if current_user == author %>
-      <div class="text-right">
-        <%= link_to "編集", edit_recipe_path(id: recipe.id)%>
-      </div>
-    <% end %>
   </div>
+
   <div id="book-icon-<%= recipe.id %>">
     <% if current_user.book?(recipe) %>
       <%= render "recipes/unbook", :book_recipe => recipe %>
@@ -24,4 +22,8 @@
       <%= render "recipes/book", :book_recipe => recipe %>
     <% end %>
   </div>
+  
+  <% if current_user == author %>
+    <%= link_to "編集", edit_recipe_path(id: recipe.id), class: "recipes-edit-btn" %>
+  <% end %>
 </div>

@@ -8,11 +8,9 @@
 <dt><a>コメントを変更する</a></dt>
 <dd>
   <%= form_for(@recipe, remote: true) do |form| %>
-    <% if @recipe.comment.nil? %>
-      <%= form.text_area :comment, placeholder: "コメントを入力しましょう" %>
-    <% else %>
-      <%= form.text_area :comment, value: @recipe.comment %>
-    <% end %>
-    <%= form.submit "保存" %>
+    <%= form.text_area :comment, placeholder: "コメントを入力しましょう", value: @recipe.comment %>
+    <div class="btn-right">
+      <%= form.submit "保存" , class: "btn mini-btn"%>
+    </div>
   <% end %>
 </dd>

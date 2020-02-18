@@ -1,10 +1,14 @@
-<img src="https://i.picsum.photos/id/476/560/300.jpg" class="mainvisual"></img>
-
-  <div class="label gray-label">
-    <h3>新着レシピ</h3>
+<div class="mainvisual">
+  <%= image_tag "wildrecipe_mv.jpg", class: "mainimg" %>
+  <div class="mainvisual-logo">
+    <%= image_tag "wildrecipe_logo.png"%>  
   </div>
-  <section>
-    <% @recipes.each do |recipe| %>
-      <%= render "layouts/recipe_list", recipe: recipe %>
-    <% end %>
-  </section>
+</div>
+<div class="label gray-label">
+  <h3>新着レシピ</h3>
+</div>
+<section>
+  <% @recipes.each do |recipe| %>
+    <%= render "layouts/recipe_list", recipe: recipe %>
+  <% end %>
+</section>
