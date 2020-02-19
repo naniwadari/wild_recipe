@@ -4,7 +4,7 @@
     <%= icon('far','heart') %>
   <% end %>
   <% unless @recipe.likes.count == 0 %>
-    <%= link_to liked_recipe_path(@recipe) do %>
+    <%= link_to liked_recipe_path(@recipe),class: "like-count" do %>
       <%= @recipe.likes.count %>
     <% end %>
   <% end %>
