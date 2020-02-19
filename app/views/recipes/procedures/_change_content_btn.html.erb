@@ -1,0 +1,20 @@
+<div class="flex flex-end">
+	<div class="change-content-btn">
+		<%= form_with url: procedures_change_before_path do |form| %>
+			<%= hidden_field_tag :recipe_id, @recipe.id %>
+			<%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+			<%= button_tag type: "submit", class: "func-btn" do %>
+				<%= icon('fas','arrow-alt-circle-up') %>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="change-content-btn">
+		<%= form_with url: procedures_change_after_path do |form| %>
+			<%= hidden_field_tag :recipe_id, @recipe.id %>
+			<%= hidden_field_tag :number, procedure.number, class: "hidden-number" %>
+			<%= button_tag type: "submit", class: "func-btn" do %>
+				<%= icon('fas','arrow-alt-circle-down') %>
+			<% end %>
+		<% end %>
+	</div>
+</div>

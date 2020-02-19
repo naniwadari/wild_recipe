@@ -1,5 +1,9 @@
 <% @recipe.ingredient.each do |ingredient| %>
-  <% if ingredient.name.present? %>
+  <% if ingredient.name.nil? && ingredient.amount.nil? %>
+    <div class="ingredient-list flex flex-between">
+      <p>材料を入力してください</p>
+    </div>
+  <% else %>
     <div class="ingredient-list flex flex-between">
       <div><%= ingredient.name %></div>
       <div><%= ingredient.amount %></div>

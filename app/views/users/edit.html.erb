@@ -10,6 +10,9 @@
     <p><%= f.label :email, "メールアドレス" %></p>
     <%= f.email_field :email, class: "session-form" %>
     
+    <p><%= f.label :profile_text, "プロフィール文" %></p>
+    <%= f.text_field :profile_text, class: "session-form" %>
+
     <p><%= f.label :password, "パスワード" %></p>
     <%= f.password_field :password, class: "session-form" %>
     

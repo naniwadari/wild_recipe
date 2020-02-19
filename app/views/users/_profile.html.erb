@@ -5,17 +5,6 @@
 </p>
 
 <% if current_user == @user %>
-  <dt><a>変更</a></dt>
-  <dd>
-    <div id="edit_profile">
-      <%= form_for(@user, remote: true) do |f| %>
-        <%= render "shared/error_messages", object: f.object %>
-        
-        <%= f.text_field :profile_text, class: "form-control" %>
-        
-        <%= f.submit "プロフィールの変更", class: "btn btn-primary" %>
-      <% end %>
-    </div>
-  </dd>
+  <%= link_to "ユーザー情報の変更", edit_user_path(@user) %>
 <% end %>
 

@@ -33,6 +33,7 @@
     </div>
   </section>
 </div>
+
 <section>
   <div class="label gray-label">
     <h3>材料</h3>
@@ -53,13 +54,11 @@
     <h3>手順</h3>
   </div>
   <div>
-    <% @recipe.procedure.each do |procedure| %>
-      <% if procedure.content.present? %>
-        <div class="procedure-list flex flex-left">
-          <div><%= procedure.number%>:</div>
-          <div><%= procedure.content %></div>
-        </div>
-      <% end %>
+    <% @recipe.procedure.order(number: "ASC").each do |procedure| %>
+      <div class="procedure-list flex flex-left">
+        <div><%= procedure.number %>:</div>
+        <div><%= procedure.content %></div>
+      </div>
     <% end %>
   </div>
 </section>
