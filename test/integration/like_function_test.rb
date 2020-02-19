@@ -22,7 +22,7 @@ class LikeFunctionTest < ActionDispatch::IntegrationTest
     end
     #1イイネの表示があるかどうか
     like_count = @recipe.likes.count
-    assert_match "#{like_count}イイネ", response.body
+    assert_match "#{like_count}", response.body
     #ページをリロード
     get recipe_path(@recipe)
     #イイネ解除ボタン
