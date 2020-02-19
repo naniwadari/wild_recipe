@@ -19,6 +19,16 @@
 //処理はこの間に書くこと
 $(document).on('turbolinks:load', function(){
   
+  //スライドメニュー
+  $('.header-menu-btn').on('click',function(){
+    if($('#slide-menu').hasClass('is-off')){
+      $('#slide-menu').removeClass('is-off');
+      $('#slide-menu').animate({'marginRight': '100%'}, 300).add
+    }else{
+      $('#slide-menu').addClass('is-off');
+      $('#slide-menu').animate({'marginRight': '0px'}, 300);
+    }
+  });
   //アコーディオン
   $(function(){
     $(".hiddenform dt").on("click", function(){
