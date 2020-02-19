@@ -62,9 +62,11 @@ ul{
 	list-style: none;
 }
 
-input{
+input[type="submit"],
+input[type="button"] {
 	font-size: 1.4rem;
 	border: 1px solid $border-color;
+	border-radius: $basic-radius;
 }
 
 textarea{
