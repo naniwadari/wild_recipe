@@ -20,6 +20,9 @@
 /node_modules
 /yarn-error.log
 
+#アップロードされたテスト画像を無視
+/public/uploads
+
 .byebug_history
 .zprofile
 .zprofile.swp
