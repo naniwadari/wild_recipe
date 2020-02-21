@@ -22,9 +22,8 @@
 
 #アップロードされたテスト画像を無視
 /public/uploads
-
+#vscode用設定ファイル
+/workspace/
 .byebug_history
 .zprofile
 .zprofile.swp
-.wildrecipe-vscode.code-workspace
-.wildrecipe.code-workspace
