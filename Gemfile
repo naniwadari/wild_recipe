@@ -36,6 +36,8 @@ gem "font-awesome-sass", "~> 5.4.1"
 gem "carrierwave"
 #画像加工
 gem "mini_magick"
+#環境変数管理
+gem "dotenv-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
