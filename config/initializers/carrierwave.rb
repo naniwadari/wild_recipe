@@ -13,16 +13,14 @@ CarrierWave.configure do |config|
 		config.fog_provider = 'fog/aws'
 		config.fog_directory = 'wildrecipe'
 		config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/wildrecipe'
+		config.fog_public = false
 		config.fog_credentials = {
 			#AWS S3用の設定
 			provider: 'AWS',
 			region: 'ap-northeast-1',
-			#credentialsで管理
-			#aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
-			#aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key]
 			#環境変数で管理
-			aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-			aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+			aws_access_key_id: ENV.fetch("AWS_ACCESS_KEY_ID"),
+			aws_secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY")
 		}
 	else
 		#開発環境はlocalに保存

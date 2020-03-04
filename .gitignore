@@ -20,6 +20,8 @@
 /node_modules
 /yarn-error.log
 
+#環境変数設定
+/.env
 #アップロードされたテスト画像を無視
 /public/uploads
 #vscode用設定ファイル
