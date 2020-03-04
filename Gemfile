@@ -74,7 +74,7 @@ group :development do
 end
 
 group :production do
-  gem "pg", "0.20.0"
+  gem "mysql2"
   gem "fog-aws"
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
