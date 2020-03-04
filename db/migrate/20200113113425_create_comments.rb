@@ -9,6 +9,5 @@ class CreateComments < ActiveRecord::Migration[5.1]
     end
     add_index :comments, :user_id
     add_index :comments, :recipe_id
-    add_index :comments, :comment
   end
 end

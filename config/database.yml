@@ -22,6 +22,9 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  encodign: unicode
+  adapter: mysql
   pool: 5
+  encording: utf8
+  database: wildrecipe
+  username: root
+  password: 

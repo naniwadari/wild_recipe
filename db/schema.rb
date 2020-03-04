@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20200214021736) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment"], name: "index_impressions_on_comment"
     t.index ["recipe_id"], name: "index_impressions_on_recipe_id"
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end

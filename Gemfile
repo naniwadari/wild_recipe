@@ -34,8 +34,14 @@ gem "activeadmin"
 gem "font-awesome-sass", "~> 5.4.1"
 #画像処理
 gem "carrierwave"
+#aws用fog
+gem "fog-aws"
+#fogが要求
+gem "mime-types"
 #画像加工
 gem "mini_magick"
+#環境変数管理
+gem "dotenv-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -71,9 +77,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-group :production do
-  gem "pg", "0.20.0"
-  gem "fog-aws"
+group :production, :staging do
+  gem 'unicorn', '5.5.3'
+  gem "mysql2"
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
