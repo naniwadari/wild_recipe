@@ -12,6 +12,11 @@ User.create!(name:  "レシピマン@アドミン",
              password_confirmation: "foobar",
              admin: true)
 
+User.create!(name: "サンプルさん",
+             email: "sample@sample.com",
+             password: "password",
+             password_confirmation: "password")
+             
 Recipe.create!(name: "スベリヒユのおひたし",
                user_id: "1",
                comment: "一番最初に作った野草料理です。",
