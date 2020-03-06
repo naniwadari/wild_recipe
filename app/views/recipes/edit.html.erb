@@ -60,13 +60,15 @@
     </div>
   </section>
 
-  <div class="btn-center mb-l">
+  <div class="btn-center mb-ss">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
      <%= form.hidden_field :release, value: true %>
      <%= form.submit "レシピを公開する", class: "btn large-btn" %>
     <% end %>
   </div>
-  
+  <div class="text-center mb-ss">
+    <p>or</p>
+  </div>
   <div class="btn-center mb-l">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
       <%= form.hidden_field :release, value: false %>
