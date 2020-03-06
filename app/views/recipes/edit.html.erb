@@ -51,7 +51,7 @@
     <%= render "recipes/ingredients/form" %>
   </section>
   
-  <section>
+  <section class="mb-ll">
     <div class="label gray-label mb-s">
       <h3>調理の手順</h3>
     </div>
@@ -59,21 +59,22 @@
       <%= render "recipes/procedures/form" %>
     </div>
   </section>
-  
-  
-  
-  <div class="btn-center">
-    <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
-      <%= form.hidden_field :release, value: false %>
-      <%= form.submit "下書きにする" %>
-    <% end %>
-  </div>
-  
-  <div class="btn-center">
+
+  <div class="btn-center mb-l">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
      <%= form.hidden_field :release, value: true %>
      <%= form.submit "レシピを公開する", class: "btn large-btn" %>
     <% end %>
   </div>
-  <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  
+  <div class="btn-center mb-l">
+    <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
+      <%= form.hidden_field :release, value: false %>
+      <%= form.submit "プライベートで保存" ,class: "btn midium-btn"%>
+    <% end %>
+  </div>
+
+  <div class="btn-center">
+    <%= link_to "レシピを削除", recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  </div>
 </div>
