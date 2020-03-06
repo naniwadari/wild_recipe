@@ -94,6 +94,22 @@ button{
 	appearance: none;
 }
 
+//フラッシュメッセージ
+.alert{
+	width: 100%;
+	padding: 6px;
+}
+
+.alert-success{
+	background-color: #dff0d8;
+	color: #5cb85c;
+}
+
+.alert-danger{
+	background-color: #f2dede;
+	color: #d9534f;
+}
+
 /* ボタン */
 
 .btn{
@@ -158,6 +174,7 @@ button{
 	width: 100%;
 	text-align: right;
 }
+
 /*ヘッダー*/
 
 header{
