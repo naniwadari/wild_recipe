@@ -1,23 +1,23 @@
 <% provide(:title, "プロフィールの変更") %>
 <section class="user-edit text-center">
-  <h1>プロフィールの変更</h1>
+  <h1 class="mb-m">プロフィールの変更</h1>
   <%= form_for(@user,html: {class: "inline"}) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
     
     <p><%= f.label :name, "ニックネーム" %></p>
-    <%= f.text_field :name, class: "session-form" %>
+    <%= f.text_field :name, class: "session-form mb-s" %>
     
     <p><%= f.label :email, "メールアドレス" %></p>
-    <%= f.email_field :email, class: "session-form" %>
+    <%= f.email_field :email, class: "session-form mb-s" %>
     
     <p><%= f.label :profile_text, "プロフィール文" %></p>
-    <%= f.text_field :profile_text, class: "session-form" %>
+    <%= f.text_field :profile_text, class: "session-form mb-s" %>
 
     <p><%= f.label :password, "パスワード" %></p>
-    <%= f.password_field :password, class: "session-form" %>
+    <%= f.password_field :password, class: "session-form mb-s" %>
     
     <p><%= f.label :password_confirmation, "パスワードの再入力" %></p>
-    <%= f.password_field :password_confirmation, class: "session-form" %>
+    <%= f.password_field :password_confirmation, class: "session-form mb-m" %>
     
     <%= f.submit "変更", class: "btn large-btn" %>
   <% end %>

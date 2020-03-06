@@ -1,17 +1,17 @@
 <% provide(:title,"サインアップ")%>
 
 <section class="signup text-center">
-  <h1>サインアップ</h1>
+  <h1 class="mb-m">サインアップ</h1>
   <%= form_for(@user, url: signup_path, html: {class: "inline"}) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
     
-    <%= f.text_field :name, class: "session-form", placeholder: "ニックネーム" %>
+    <%= f.text_field :name, class: "session-form mb-s", placeholder: "ニックネーム" %>
     
-    <%= f.email_field :email, class: "session-form", placeholder: "Eメールアドレス" %>
+    <%= f.email_field :email, class: "session-form mb-s", placeholder: "Eメールアドレス" %>
     
-    <%= f.password_field :password, class: "session-form", placeholder: "パスワード" %>
+    <%= f.password_field :password, class: "session-form mb-s", placeholder: "パスワード" %>
 
-    <%= f.password_field :password_confirmation, class: "session-form", placeholder: "パスワードの再入力" %>
+    <%= f.password_field :password_confirmation, class: "session-form mb-m", placeholder: "パスワードの再入力" %>
     
     <%= f.submit "アカウント登録", class: "btn large-btn" %>
   <% end %>

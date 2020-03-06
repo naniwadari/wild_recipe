@@ -1,21 +1,18 @@
 <% provide(:title, "ログイン") %>
 <section class="login text-center">
-  <h1>ログイン</h1>
+  <h1 class="mb-m">ログイン</h1>
   <%= form_for(:session, url: login_path, html: {class: "inline"}) do |f| %>
-    
-      <%= f.email_field :email, placeholder: "Eメールアドレス", class: "session-form" %>
-      
+    <div class="mb-m">
+      <%= f.email_field :email, placeholder: "Eメールアドレス", class: "session-form mb-ss" %>
       <%= f.password_field :password, placeholder: "パスワード", class: "session-form" %>
-      
-      <%= f.label :remember_me, class: "block" do %>
-        <%= f.check_box :remember_me %>
-        <span>ログイン情報をブラウザに保存</span>
-      <% end %>
-      
-      <%= f.submit "ログイン", class: "btn large-btn" %>
-    
+    </div>
+    <%= f.label :remember_me, class: "block" do %>
+      <%= f.check_box :remember_me %>
+      <span>ログイン情報をブラウザに保存</span>
+    <% end %>
+    <%= f.submit "ログイン", class: "btn large-btn mb-s" %>
   <% end %>
-  <p>まだユーザー登録してなければ・・・<%= link_to "サインアップ", signup_path %></p>
+  <p class="mb-s">まだユーザー登録してなければ・・・<%= link_to "サインアップ", signup_path %></p>
   
   <%= form_for(:session, url: login_path) do |f| %>
     <%= f.hidden_field :email, value: "sample@sample.com", class: "form-control" %>
