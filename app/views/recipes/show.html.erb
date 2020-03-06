@@ -12,24 +12,26 @@
           <i class="fab fa-twitter"></i>ツイートする
         </a>
       </div>
-      <div class="funcbox-item text-center">
-        <div class="like-func">
-          <% if current_user.like?(@recipe) %>
-            <%= render "unlike" %>
-          <% else %>
-            <%= render "like" %>
-          <% end %>
+      <% if logged_in? %>
+        <div class="funcbox-item text-center">
+          <div class="like-func">
+            <% if current_user.like?(@recipe) %>
+              <%= render "unlike" %>
+            <% else %>
+              <%= render "like" %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="funcbox-item text-center">
-        <div id="book-icon-<%= @recipe.id %>">
-          <% if current_user.book?(@recipe) %>
-            <%= render "unbook" %>
-          <% else %>
-            <%= render "book" %>
-          <% end %>
+        <div class="funcbox-item text-center">
+          <div id="book-icon-<%= @recipe.id %>">
+            <% if current_user.book?(@recipe) %>
+              <%= render "unbook" %>
+            <% else %>
+              <%= render "book" %>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </section>
 </div>
