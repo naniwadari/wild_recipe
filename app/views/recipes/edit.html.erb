@@ -1,7 +1,7 @@
-<div class="recipes-edit">
+<div class="recipes-edit content-inner">
   
   <section class="recipe-name">
-    <div class="label gray-label">
+    <div class="label gray-label mb-s">
       <h3>レシピの名前</h3>
     </div>
     <div class="content-inner">
@@ -19,7 +19,7 @@
   </section>
   
   <section class="recipe-comment">
-    <div class="label gray-label">
+    <div class="label gray-label mb-s">
       <h3>コメント</h3>
     </div>
     <div class="content-inner">
@@ -28,7 +28,7 @@
   </section>
   
   <section>
-    <div class="label gray-label">
+    <div class="label gray-label mb-s">
       <h3>写真</h3>
     </div>
     <div class="text-center">
@@ -45,22 +45,18 @@
   </section>
     
   <section>
-    <div class="label gray-label">
+    <div class="label gray-label mb-s">
       <h3>材料</h3>
     </div>
     <%= render "recipes/ingredients/form" %>
   </section>
   
   <section>
-    <div class="label gray-label">
+    <div class="label gray-label mb-s">
       <h3>調理の手順</h3>
     </div>
     <div id="procedure-form">
-      <% if @procedures.present? %>
-        <%= render "recipes/procedures/form" %>
-      <% else %>
-        <%= render "recipes/procedures/empty_form" %>
-      <% end %>
+      <%= render "recipes/procedures/form" %>
     </div>
   </section>
   
