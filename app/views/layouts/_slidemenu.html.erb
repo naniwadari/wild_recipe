@@ -1,11 +1,9 @@
-<div class="container">
-  <div id="slide-menu" class="is-off">
-    <ul class="nav-list">
-      <% if logged_in? %>
-        <%= render "layouts/after_login" %>
-      <% else %>
-        <%= render "layouts/before_login" %>
-      <% end %>
-    </ul>
-  </div>
+<div id="slide-menu" class="is-off">
+  <ul class="nav-list">
+    <% if logged_in? %>
+      <%= render "layouts/after_login" %>
+    <% else %>
+      <%= render "layouts/before_login" %>
+    <% end %>
+  </ul>
 </div>
