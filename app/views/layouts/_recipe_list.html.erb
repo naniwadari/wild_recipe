@@ -16,10 +16,12 @@
   </div>
 
   <div id="book-icon-<%= recipe.id %>">
-    <% if current_user.book?(recipe) %>
-      <%= render "recipes/unbook", :book_recipe => recipe %>
-    <% else %>
-      <%= render "recipes/book", :book_recipe => recipe %>
+    <% if logged_in? %>
+      <% if current_user.book?(recipe) %>
+        <%= render "recipes/unbook", :book_recipe => recipe %>
+      <% else %>
+        <%= render "recipes/book", :book_recipe => recipe %>
+      <% end %>
     <% end %>
   </div>
   
