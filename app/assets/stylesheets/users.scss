@@ -4,19 +4,20 @@
 
 .profile-panel-group{
 	border-top: none;
-	background-color: #fff;
 }
 
 .profile-tab{
 	width: 100%;
+	background-color: #fff;
 	font-weight: bold;
-	padding: 10px;
+	padding: 10px 0;
 	text-align: center;
-	border-right: 1px solid $border-color;
+	border: 1px solid $border-color;
+	border-left: none;
 	box-sizing: border-box;
 
-	&:last-of-type{
-		border-right: none;
+	&:first-of-type{
+		border-left: 1px solid $border-color;
 	}
 	
 	&.is-active{

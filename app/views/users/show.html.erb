@@ -1,13 +1,13 @@
 <% provide(:title, "ユーザープロフィール")%>
-
-  <div class="flex">
+<div class="content-inner">
+  <div class="flex mb-m">
     <img src="http://placehold.jp/100x100.png"></img>
     <div class="profile_text">
       <h3><%= @user.name %></h3>
       <%= render "profile" %>
     </div>
   </div>
-  <ul class="flex">
+  <ul class="flex mb-s">
     <li class="tab profile-tab is-active">投稿(<%= @recipes_count.count %>)</li>
     <li class="tab profile-tab">イイネ(<%= @like_recipes_count.count %>)</li>
     <li class="tab profile-tab">ブクマ(<%= @book_recipes_count.count %>)</li>
@@ -42,3 +42,4 @@
       <% end %>
     </section>
   </div>
+</div>

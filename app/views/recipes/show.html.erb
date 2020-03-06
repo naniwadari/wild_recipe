@@ -34,49 +34,50 @@
       <% end %>
     </div>
   </section>
-</div>
 
-<section>
-  <div class="label gray-label">
-    <h3>材料</h3>
-  </div>
-  <div>
-    <% @recipe.ingredient.each do |ingredient| %>
-      <% if ingredient.name.present? %>
-        <div class="ingredient-list flex flex-between">
-          <div><%= ingredient.name %></div>
-          <div><%= ingredient.amount %></div>
+
+  <section>
+    <div class="label gray-label">
+      <h3>材料</h3>
+    </div>
+    <div>
+      <% @recipe.ingredient.each do |ingredient| %>
+        <% if ingredient.name.present? %>
+          <div class="ingredient-list flex flex-between">
+            <div><%= ingredient.name %></div>
+            <div><%= ingredient.amount %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </section>
+  <section>
+    <div class="label gray-label">
+      <h3>手順</h3>
+    </div>
+    <div>
+      <% @recipe.procedure.order(number: "ASC").each do |procedure| %>
+        <div class="procedure-list flex flex-left">
+          <div><%= procedure.number %>:</div>
+          <div><%= procedure.content %></div>
         </div>
       <% end %>
-    <% end %>
-  </div>
-</section>
-<section>
-  <div class="label gray-label">
-    <h3>手順</h3>
-  </div>
-  <div>
-    <% @recipe.procedure.order(number: "ASC").each do |procedure| %>
-      <div class="procedure-list flex flex-left">
-        <div><%= procedure.number %>:</div>
-        <div><%= procedure.content %></div>
-      </div>
-    <% end %>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section>
-  <div class="label gray-label mb-s">
-    <h3>ユーザーからのコメント</h3>
-  </div>
-  
-  <div class="content-inner">
-    <div class="impression-show mb-m">
-      <%= render "impression_show" %>
+  <section>
+    <div class="label gray-label mb-s">
+      <h3>ユーザーからのコメント</h3>
     </div>
     
-    <div class="impression-form">
-      <%= render "impression_form" %>
+    <div class="content-inner">
+      <div class="impression-show mb-m">
+        <%= render "impression_show" %>
+      </div>
+      
+      <div class="impression-form">
+        <%= render "impression_form" %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
