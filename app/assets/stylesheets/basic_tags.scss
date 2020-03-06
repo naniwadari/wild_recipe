@@ -76,12 +76,35 @@
   color: #fff;
 }
 
+//文字サイズ
+.text-small{
+  font-size: 1.2rem;
+}
+//margin設定
+.mb-ss{
+  margin-bottom: 5px;
+}
+
+.mb-s{
+  margin-bottom: 10px;
+}
+
+.mb-m{
+  margin-bottom: 20px;
+}
+
+.mb-l{
+  margin-bottom: 30px;
+}
+
 /*見出しラベル*/
 
 .label{
-  padding: 0.8em;
+  padding: 10px;
   border-radius: 5px 5px 0 0;
   background-color: #fff;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
 }
 
 .gray-label{
