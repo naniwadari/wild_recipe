@@ -6,12 +6,17 @@
     <%= image_tag "wildrecipe_logo.png"%>  
   </div>
 </div>
-<div class="label gray-label">
-  <h3>新着レシピ</h3>
-</div>
+
 <section>
-  <% @recipes.each do |recipe| %>
-    <%= render "layouts/recipe_list", recipe: recipe %>
-  <% end %>
+  <div class="content-inner">
+    <div class="label gray-label">
+      <h3>新着レシピ</h3>
+    </div>
+    <div>
+      <% @recipes.each do |recipe| %>
+        <%= render "layouts/recipe_list", recipe: recipe %>
+      <% end %>
+    </div>
+  </div>
 </section>
 

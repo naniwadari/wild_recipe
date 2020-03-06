@@ -100,9 +100,11 @@
 /*見出しラベル*/
 
 .label{
-  padding: 0.8em;
+  padding: 10px;
   border-radius: 5px 5px 0 0;
   background-color: #fff;
+  border-right: 1px solid $border-color;
+  border-left: 1px solid $border-color;
 }
 
 .gray-label{
