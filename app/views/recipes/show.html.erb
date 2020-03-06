@@ -1,8 +1,8 @@
 <img src="<%= @recipe.image.url %>" class="mainimg"></img>
 <div class="content-inner">
   <section>
-    <h1><%= @recipe.name %></h1>
-    <p><%= @recipe.comment %></p>
+    <h1 class="mb-s"><%= @recipe.name %></h1>
+    <p class="mb-s"><%= @recipe.comment %></p>
     by<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
   </section>
   <section>
@@ -67,11 +67,11 @@
 
 <section>
   <div class="label gray-label">
-    <h3>ユーザーからのコメント</h3>
+    <h3 class="mb-s">ユーザーからのコメント</h3>
   </div>
   
   <div class="content-inner">
-    <div class="impression-show">
+    <div class="impression-show mb-m">
       <%= render "impression_show" %>
     </div>
     
