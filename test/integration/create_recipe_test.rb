@@ -35,7 +35,6 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     assert_no_difference "Recipe.count" do
       post recipes_path, params:{ recipe: { name: recipe_name }}
     end
-    assert_not flash.empty?
     assert_template "recipes/new"
   end
 end
