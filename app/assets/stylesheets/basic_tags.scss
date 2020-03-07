@@ -173,16 +173,12 @@
   .recipe-box-img{
     width: 110px;
     height: 100%;
-    overflow: hidden;
-    position: relative;
     background-color: transparent;
     
     img{
+      width: 100%;
       height: 100%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate3d(-50%,-50%, 0);
+      object-fit: cover;
     }
   }
 }
