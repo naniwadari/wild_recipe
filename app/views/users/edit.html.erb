@@ -1,5 +1,5 @@
 <% provide(:title, "プロフィールの変更") %>
-<section class="user-edit text-center">
+<section class="user-edit text-center mb-l">
   <h1 class="mb-m">プロフィールの変更</h1>
   <%= form_for(@user,html: {class: "inline"}) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
@@ -22,3 +22,7 @@
     <%= f.submit "変更", class: "btn large-btn" %>
   <% end %>
 </section>
+
+<div class="text-center">
+  <%= link_to "プロフィールへ戻る", @user %>
+</div>
