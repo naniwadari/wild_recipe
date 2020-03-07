@@ -176,7 +176,7 @@ class RecipesEditTest < ActionDispatch::IntegrationTest
     @recipe.reload
     assert @recipe.release
     get recipes_path
-    assert_select "a[href=?]",recipe_path(@recipe), count:1
+    assert_select "a[href=?]",recipe_path(@recipe), count:2
     #公開設定をオフにして、レシピ一覧に表示されていないことを確認
     patch release_recipe_path(@recipe), params: { release: false }
     assert_redirected_to user_path(@user)
