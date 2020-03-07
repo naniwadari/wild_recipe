@@ -212,8 +212,23 @@ header{
 	padding: 8px 0;
 }
 
-.header-menu-btn{
+.header-btn-li{
+	li{
+		padding: 0 10px;
+	}
+}
+.login-btn{
 	font-size: 4rem;
+	border-right: 1px solid $border-color;
+}
+
+.header-menu-btn{
+	color: $link-color;
+	cursor: pointer;
+	font-size: 4rem;
+	&:hover{
+		color: $link-color-hover;
+	}
 }
 
 //フッター

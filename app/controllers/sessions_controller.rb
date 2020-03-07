@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       log_in @user
       #チェックボックスがオンなら永続セッションを保存、オフなら削除
       params[:session][:remember_me] == "1" ? remember(@user) : forget(@user)
+      flash[:success] = "ログインしました"
       redirect_back_or root_url
     elsif
       flash.now[:danger] = "ログインに失敗しました"
@@ -22,6 +23,7 @@ class SessionsController < ApplicationController
   
   def destroy
     log_out if logged_in?
+    flash[:success] = "ログアウトしました"
     redirect_to root_url
   end
 end

@@ -1,4 +1,4 @@
-<div class="flex flex-between">
+<div class="flex flex-between mb-ss">
 	<div>
 		<h1>
 			<%= link_to root_url do %>
@@ -6,9 +6,18 @@
 			<% end %>
 		</h1>
 	</div>
-	<div class="header-menu-btn">
-		<i class="fas fa-bars"></i>
-	</div>
+	<ul class="header-btn-li flex">
+		<% unless logged_in? %>
+			<li class="login-btn">
+				<%= link_to login_path do %>
+					<%= icon('fas','sign-in-alt') %>
+				<% end %>
+			</li>
+		<% end %>
+		<li class="header-menu-btn">
+			<i class="fas fa-bars"></i>
+		</li>
+	</ul>
 </div>
 
 <%= form_tag(recipes_path, :method => "get",class: "flex") do %>
