@@ -2,7 +2,6 @@
   <h1 class="mb-s">料理の名前を入力してください</h1>
   <%= form_for(@recipe) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
-    
     <%= f.text_area :name, placeholder: "例：スベリヒユのおひたし" %>
     <div class="btn-center">
       <%= f.submit "レシピ入力に進む", class: "btn large-btn" %>

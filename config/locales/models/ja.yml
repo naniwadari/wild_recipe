@@ -12,3 +12,6 @@ ja:
         password: パスワード
         password_confirmation: パスワードの再入力
         password_digest:
+      recipe:
+        id: ID
+        name: レシピの名前

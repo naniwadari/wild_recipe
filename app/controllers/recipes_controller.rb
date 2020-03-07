@@ -18,7 +18,6 @@ class RecipesController < ApplicationController
       @recipe.ingredient.create(number: 1)
       redirect_to edit_recipe_path(@recipe)
     else
-      flash[:danger] = "レシピ名を入力してください"
       render "new"
     end
   end
