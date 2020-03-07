@@ -1,7 +1,9 @@
 <% author = recipe.user %>
 <div class="recipe_box flex flex-between">
   <div class="recipe-box-img">
-    <img src="<%= recipe.image.url %>"></img>
+    <%= link_to recipe do %>
+      <%= image_tag recipe.image.url %>
+    <% end %>
   </div>
   <div class="recipe_content">
     <div class="recipe_title">
