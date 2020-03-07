@@ -10,4 +10,5 @@ ja:
         created_at: 作成日時
         updated_at: 更新日時
         password: パスワード
+        password_confirmation: パスワードの再入力
         password_digest:
