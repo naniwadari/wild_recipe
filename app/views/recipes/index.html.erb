@@ -1,9 +1,11 @@
 <div class="content-inner">
   <div class="label gray-label">
-    <% if params[:search].nil? | params[:search].empty? %>
+    <% if @keyword.nil? %>
+      <h3>レシピ一覧(<%= @recipes_count.count %>件)</h3>
+    <% elsif @keyword.empty? %>
       <h3>レシピ一覧(<%= @recipes_count.count %>件)</h3>
     <% else %>
-      <h3>"<%= params[:search] %>"の検索結果(<%= @recipes_count.count %>件)</h3>
+      <h3>"<%= @keyword %>"の検索結果(<%= @recipes_count.count %>件)</h3>
     <% end %>
   </div>
   <div>
@@ -12,7 +14,7 @@
         <%= render "layouts/recipe_list", recipe: recipe %>
       <% end %>
     <% else %>
-      <p>"<%= params[:search] %>"を含むレシピは見つかりませんでした(><;)</p>
+      <p>"<%= @keyword %>"を含むレシピは見つかりませんでした(><;)</p>
       <p>まだ検索機能が弱いので許してください(><;)</p>
     <% end %>
     <%= paginate @recipes %>
