@@ -1,7 +1,7 @@
 <div class="content-inner">
   <div class="label gray-label">
     <% if params[:search].nil? %>
-      <h3>レシピ一覧(<%= Recipe.count %>件)</h3>
+      <h3>レシピ一覧(<%= @recipes_count.count %>件)</h3>
     <% else %>
       <h3>検索結果(<%= @recipes_count.count %>件)</h3>
     <% end %>
