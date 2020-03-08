@@ -66,6 +66,11 @@ group :development, :test do
   gem 'minitest-reporters', '1.1.14'
   gem 'selenium-webdriver'
   gem "rails-controller-testing"
+  #自動デプロイ
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
