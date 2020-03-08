@@ -42,9 +42,6 @@ gem "mime-types"
 gem "mini_magick"
 #環境変数管理
 gem "dotenv-rails"
-#capistrano用
-gem 'ed25519'
-gem 'bcrypt_pbkdf'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -74,6 +71,8 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :development do
