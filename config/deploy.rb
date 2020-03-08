@@ -1,5 +1,5 @@
 #capistranoのバージョン固定
-lock "3.4.0"
+lock "3.12.0"
 
 #アプリケーションの名前
 set :application, "wild_recipe"

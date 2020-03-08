@@ -1,5 +1,5 @@
 #EC2サーバーのIP,ログインユーザー名,サーバーのロール
-server '18.178.95.42', user: 'amanojaku52', roles %w{app db web}
+server '18.178.95.42', user: 'amanojaku52', roles: %w{app db web}
 #デプロイサーバーにsshログインする鍵の情報
 set :ssh_options, keys: '~/.ssh/wildrecipe_key_rsa'
 
