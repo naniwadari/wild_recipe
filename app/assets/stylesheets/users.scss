@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-icon{
+	img{
+		width: 100px;
+		height: 100px;
+		object-fit: cover;
+	}
+}
+
+.profile_text{
+	padding-left: 1rem;
+}
+
 .profile-panel-group{
 	border-top: none;
 }

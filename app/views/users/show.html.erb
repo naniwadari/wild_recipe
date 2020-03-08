@@ -1,7 +1,9 @@
 <% provide(:title, "ユーザープロフィール")%>
 <div class="content-inner">
   <div class="flex mb-m">
-    <img src="http://placehold.jp/100x100.png"></img>
+    <div class="user-icon">
+      <%= image_tag @user.image.url %>
+    </div>
     <div class="profile_text">
       <h3><%= @user.name %></h3>
       <%= render "profile" %>

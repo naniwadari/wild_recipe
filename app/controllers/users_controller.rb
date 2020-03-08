@@ -36,6 +36,7 @@ class UsersController < ApplicationController
   
   #@userはbefore_actionのcorrect_userで定義
   def edit
+    @user.image.cache! unless @user.image.blank?
   end
   
   #@userはbefore_actionのcorrect_userで定義
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
     #このparamsハッシュでは:user属性を必須とし、許可した属性以外をブロックする(strong parameters)
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation,:profile_text)
+                                   :password_confirmation,:profile_text,:image)
     end
     
     #beforeアクション

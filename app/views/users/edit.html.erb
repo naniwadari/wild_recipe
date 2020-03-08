@@ -1,6 +1,20 @@
 <% provide(:title, "プロフィールの変更") %>
 <section class="user-edit text-center mb-l">
   <h1 class="mb-m">プロフィールの変更</h1>
+  
+  <div class="user-icon">
+    <%= image_tag @user.image.url %>
+  </div>
+  <%= form_with model: @user, url: user_path, local: true do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
+    <%= f.hidden_field :image_cache %>
+    <div class="btn-center">
+      <%= button_tag type: "submit", class: "clear-btn mb-l" do %>
+        <%= icon('fas','camera') %><%= "イメージを登録" %>
+      <% end %>
+    </div>
+  <% end %>
   <%= form_for(@user,html: {class: "inline"}) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
     
