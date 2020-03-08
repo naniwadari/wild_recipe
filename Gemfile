@@ -67,7 +67,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem "rails-controller-testing"
   #自動デプロイ
-  gem 'capistrano'
+  gem 'capistrano', '3.4.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
