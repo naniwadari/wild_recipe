@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      recipe: レシピ
+      impression: ユーザーコメント
     attributes:
       user:
         id: ID

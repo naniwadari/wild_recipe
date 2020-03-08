@@ -12,10 +12,24 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "サンプルダッシュボード　：　ユーザー名簿" do
+        panel "ユーザー一覧" do
           ul do
             User.all.map do |user|
               li link_to(user.name, admin_user_path(user))
+            end
+          end
+        end
+        panel "レシピ一覧" do
+          ul do
+            Recipe.all.map do |recipe|
+              li link_to(recipe.name, admin_recipe_path(recipe))
+            end
+          end
+        end
+        panel "ユーザーコメント一覧" do
+          ul do
+            Impression.all.map do |impression|
+              li link_to(impression.comment, admin_impression_path(impression))
             end
           end
         end
