@@ -21,7 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 #jquery
 gem "jquery-rails"
 #パスワード暗号化
-gem "bcrypt", "3.1.12"
+gem "bcrypt", "~> 3.1.7"
 #ページネーション
 gem "kaminari"
 #データベース内のカウント機能
@@ -42,6 +42,9 @@ gem "mime-types"
 gem "mini_magick"
 #環境変数管理
 gem "dotenv-rails"
+#capistrano用
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
