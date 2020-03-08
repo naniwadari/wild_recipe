@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200214021736) do
+ActiveRecord::Schema.define(version: 20200308040252) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20200214021736) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment"], name: "index_impressions_on_comment"
     t.index ["recipe_id"], name: "index_impressions_on_recipe_id"
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
@@ -96,6 +95,7 @@ ActiveRecord::Schema.define(version: 20200214021736) do
     t.boolean "admin", default: false
     t.string "remember_digest"
     t.text "profile_text"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

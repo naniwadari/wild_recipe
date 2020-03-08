@@ -2,6 +2,10 @@ class User < ApplicationRecord
   attr_accessor :remember_token #仮想の属性remember_tokenを作成
   before_save { email.downcase! } #saveする前にemailを小文字化する(一意性の確保)
   
+  #画像アップロード
+  mount_uploader :image, ImagesUploader
+  validate :image_size
+  
   #バリデーション
   validates :name, presence: true, length: {maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -84,4 +88,12 @@ class User < ApplicationRecord
     self.impressions.create(recipe_id: recipe.id, comment: comment)
   end
   
+  private
+
+  def image_size
+    if image.size > 3.megabytes
+      errors.add(:image, "画像サイズは3MB以内です")
+    end
+  end
+
 end
