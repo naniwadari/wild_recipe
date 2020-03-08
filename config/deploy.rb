@@ -14,7 +14,7 @@ set :repo_url, "git@github.com:matsuno-koji/wild_recipe.git"
 set :deploy_to, "/var/www/rails/wild_recipe"
 
 #シンボリックリンクをはるファイル
-set :linked_files, fetch(:linked_files,[]).push('.env')
+set :linked_files, fetch(:linked_files,[]).push('config/settings.yml')
 
 #シンボリックリンクをはるフォルダ
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
