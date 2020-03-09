@@ -28,3 +28,4 @@ production:
   database: wildrecipe
   username: root
   password: 
+  socket: /var/lib/mysql/mysql.sock
