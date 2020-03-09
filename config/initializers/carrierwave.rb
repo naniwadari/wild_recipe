@@ -19,8 +19,8 @@ CarrierWave.configure do |config|
 			provider: 'AWS',
 			region: 'ap-northeast-1',
 			#環境変数で管理
-			aws_access_key_id: ENV.fetch("AWS_ACCESS_KEY_ID"),
-			aws_secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY")
+			aws_access_key_id: Rails.application.secrets[:AWS_ACCESS_KEY_ID],
+			aws_secret_access_key: Rails.application.secrets[:AWS_SECRET_ACCESS_KEY]
 		}
 	else
 		#開発環境はlocalに保存
