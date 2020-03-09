@@ -17,7 +17,7 @@ set :deploy_to, "/var/www/rails/wild_recipe"
 set :linked_files, fetch(:linked_files,[]).push('config/settings.yml')
 
 #secrets.keyへのシンボリックリンク
-set :linked_files, "config/secrets.yml.key"
+set :linked_files, %w{config/secrets.yml.key}
 
 #シンボリックリンクをはるフォルダ
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
