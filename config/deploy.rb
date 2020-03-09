@@ -7,8 +7,8 @@ set :application, "wild_recipe"
 #cloneするgitのリポジトリ
 set :repo_url, "git@github.com:matsuno-koji/wild_recipe.git"
 
-# deployするブランチ。masterなので変更せず。
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+# deployするブランチ。基本マスター、指定があれば他のブランチ
+set :branch, ENV['BRANCH'] || "master"
 
 # deploy先のディレクトリ
 set :deploy_to, "/var/www/rails/wild_recipe"
