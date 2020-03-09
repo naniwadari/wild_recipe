@@ -13,7 +13,7 @@ $std_log = File.expand_path 'log/unicorn.log', $app_dir
 
 #上記設定の定義
 worker_processes $worker
-woking_directory $app_dir
+working_directory $app_dir
 stderr_path $std_log
 stdout_path $std_log
 timeout $timeout
