@@ -1,10 +1,9 @@
 # WildRecipe README
-
+https://wildrecipe.net
 ## アプリケーションの概要
   WildRecipeは野食専門のレシピ投稿・共有サービスです。
-  url: https://wildrecipe.net
 
-##　技術的ポイント
+## 技術的ポイント
   * AWS EC2を用いたRails本番環境構築
   * AWS ACMでSSL証明書を発行しSSL化
   * 独自ドメインの取得とAWS Route53を利用した名前解決
