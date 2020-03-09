@@ -25,7 +25,7 @@ preload_app true
 
 #fork前に行うことを定義
 before_fork do |server,worker|
-	defined?(ActiveRecord::Base) and ActiveRecord::connection.disconnect!
+	defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
 	old_pid = "#{server.config[:pid]}.oldbin"
 	if old_pid != server.pid
 		begin
