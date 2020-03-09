@@ -29,3 +29,6 @@
 .byebug_history
 .zprofile
 .zprofile.swp
+
+# Ignore encrypted secrets key file.
+config/secrets.yml.key
