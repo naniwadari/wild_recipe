@@ -8,6 +8,9 @@
 	justify-content: space-between;
 }
 
+.flex-center{
+  justify-content: center;
+}
 .flex-left{
   justify-content: left;
 }
@@ -24,6 +27,10 @@
   flex-direction: wrap;
 }
 
+//フォント
+.scp{
+  font-family: 'Source Code Pro', monospace;
+}
 /* ブロックレベル */
 
 .inline{
@@ -82,19 +89,19 @@
 }
 //margin設定
 .mb-ss{
-  margin-bottom: 5px;
-}
-
-.mb-s{
   margin-bottom: 10px;
 }
 
-.mb-m{
+.mb-s{
   margin-bottom: 20px;
 }
 
-.mb-l{
+.mb-m{
   margin-bottom: 30px;
+}
+
+.mb-l{
+  margin-bottom: 40px;
 }
 
 .mb-ll{

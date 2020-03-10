@@ -6,23 +6,26 @@
 			<% end %>
 		</h1>
 	</div>
-	<ul class="header-btn-li flex">
-		<% unless logged_in? %>
-			<li class="login-btn">
-				<%= link_to login_path do %>
-					<%= icon('fas','sign-in-alt') %>
-				<% end %>
+	<div class="header-btn">
+		<ul class="header-btn-li flex">
+			<% unless logged_in? %>
+				<li class="login-btn">
+					<%= link_to login_path do %>
+						<%= icon('fas','sign-in-alt') %>
+					<% end %>
+				</li>
+			<% end %>
+			<li class="header-menu-btn">
+				<i class="fas fa-bars"></i>
 			</li>
-		<% end %>
-		<li class="header-menu-btn">
-			<i class="fas fa-bars"></i>
-		</li>
-	</ul>
+		</ul>
+	</div>
 </div>
-
-<%= form_tag(recipes_path, :method => "get",class: "flex") do %>
-	<%= text_field_tag :search, "",placeholder: "レシピを検索" ,class: "header-search-form"%>
-	<%= button_tag type: "submit",:name => nil ,class: "search-button" do %>
-		<%= icon("fas", "search")%>
+<div class="search-form">
+	<%= form_tag(recipes_path, :method => "get",class: "flex") do %>
+		<%= text_field_tag :search, "",placeholder: "レシピを検索" ,class: "header-search-form"%>
+		<%= button_tag type: "submit",:name => nil ,class: "search-button" do %>
+			<%= icon("fas", "search")%>
+		<% end %>
 	<% end %>
-<% end %>
+</div>

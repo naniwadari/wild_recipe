@@ -1,0 +1,20 @@
+<div class="side-container">
+  <div class="side">
+    <div class="side-title mb-s text-center scp">Menu</div>
+    <ul class="side-nav">
+      <% if logged_in? %>
+        <%= render "layouts/after_login" %>
+      <% else %>
+        <%= render "layouts/before_login" %>
+      <% end %>
+    </ul>
+    <div class="side-info">
+      <% if logged_in? %>
+        <p>お気に入りのレシピを見つけてイイネしよう！</p>
+      <% else %>
+        <p>ユーザー登録するとレシピ投稿やイイネができます！</p>
+      <% end %>
+      <%= image_tag "wildrecipe_logo_character_notext.png" %>
+    </div>
+  </div>
+</div>

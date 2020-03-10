@@ -14,19 +14,26 @@ body{
 	width: 100%;
 	height: 100%;
 	min-height: 100vh;
-	max-width: 560px;
-	margin: 0 auto;
 	position: relative;
 	background-color: $bgc;
 }
 
 .container{
+	width: 100%; 
 	background-color: $bgc;
-	padding: 10px 0 0 0;
+	padding: 50px 0 0 0;
+	max-width: 560px;
+	box-sizing: border-box;
 }
 
 .content-inner{
 	padding: 0 6px;
+}
+
+@media(min-width: 560px){
+	.content-inner{
+		padding: 0;
+	}
 }
 
 .footer-clearbox{
@@ -190,12 +197,24 @@ header{
 	border-bottom: 1px solid $border-color;
 }
 
+.header-container{
+	max-width: 550px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
 .header-logo{
 	height: 40px;
 }
 
+.search-form{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 560px;
+}
+
 .header-search-form{
-	width: 90%;
+	width: 100%;
 	border: 1px solid #bfbcb0;
 	padding: 12px 8px;
 	color: #4c4a40;
@@ -207,7 +226,7 @@ header{
 
 .search-button{
 	font-size: 2rem;
-	width: 10%;
+	width: 50px;
 	height: 40px;
 	background-color: $button-color;
 	box-sizing: border-box;
@@ -238,6 +257,11 @@ header{
 	}
 }
 
+@media(min-width: 970px){
+	.header-btn{
+		display: none;
+	}
+}
 //フッター
 
 footer{
@@ -290,3 +314,76 @@ footer{
 		overflow-x: hidden;
 	}
 }
+
+//サイド情報
+.side-container{
+	padding: 10px 0 0 0;
+	display: none;
+	margin: 0 auto;
+	width: 180px;
+	box-sizing: border-box;
+	.side{
+	padding: 10px;
+	border : 1px solid $border-color;
+	border-radius: $basic-radius;
+	background-color: rgba(255,255,255,0.5);
+	box-sizing: border-box;
+		.side-title{
+			font-size: 2.5rem;
+			font-weight: bold;
+		}
+		.side-nav{
+			text-align: center;
+			padding: 10px;
+			margin-bottom: 40px;
+			li{
+				border-bottom: 1px solid $border-color;
+				padding: 5px;
+			}
+		}
+		.side-info{
+			text-align: center;
+			p{
+				background: #fff;
+				border: 1px solid #000;
+				border-radius: $basic-radius;
+				padding: 10px;
+				margin-bottom: 14px;
+				position: relative;
+				&:before{
+				content: "";
+				position: absolute;
+				bottom: -27px;
+				right: calc( 50% - 14px );
+				border: 14px solid transparent;
+				border-top: 14px solid #fff;
+				z-index: 2;
+				}
+				&:after{
+				content: "";
+				position: absolute;
+				bottom: -28px;
+				right: calc( 50% - 14px );
+				border: 14px solid transparent;
+				border-top: 14px solid #000;
+				z-index: 1;
+				}
+			}
+			img{
+				width: 100px;
+			}
+		}
+		
+	}
+	.clear{
+		background-color: transparent;
+		border: none;
+	}
+}
+
+@media(min-width: 970px){
+	.side-container{
+		display: inline;
+	}
+}
+
