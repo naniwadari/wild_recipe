@@ -12,7 +12,7 @@
     <% end %>
     <%= f.submit "ログイン", class: "btn large-btn mb-s" %>
   <% end %>
-  <p class="mb-s">まだユーザー登録してなければ・・・<%= link_to "サインアップ", signup_path %></p>
+  <p class="mb-s">まだ登録していなければ…<%= link_to "サインアップ", signup_path %></p>
   
   <%= form_for(:session, url: login_path) do |f| %>
     <%= f.hidden_field :email, value: "sample@sample.com", class: "form-control" %>
