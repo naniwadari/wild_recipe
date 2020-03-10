@@ -21,19 +21,13 @@ body{
 .container{
 	width: 100%; 
 	background-color: $bgc;
-	padding: 50px 0 0 0;
+	padding: 50px 0;
 	max-width: 560px;
 	box-sizing: border-box;
 }
 
 .content-inner{
 	padding: 0 6px;
-}
-
-@media(min-width: 560px){
-	.content-inner{
-		padding: 0;
-	}
 }
 
 .footer-clearbox{

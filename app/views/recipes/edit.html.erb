@@ -34,7 +34,7 @@
     <div class="text-center recipes-edit-img mb-s">
       <%= image_tag @recipe.image.url %>
     </div>
-    <div class="btn-center">
+    <div class="btn-center mb-l">
       <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
         <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" ,class: "mb-s"%>
           <div>
