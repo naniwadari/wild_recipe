@@ -31,15 +31,17 @@
     <div class="label gray-label mb-s">
       <h3>写真</h3>
     </div>
-    <div class="text-center recipes-edit-img">
+    <div class="text-center recipes-edit-img mb-s">
       <%= image_tag @recipe.image.url %>
     </div>
     <div class="btn-center">
       <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
-        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
-          <%= button_tag type:"submit", class: "clear-btn" do %>
-            <%= icon('fas','camera') %><%= "イメージを登録" %>
-          <% end %>
+        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" ,class: "mb-s"%>
+          <div>
+            <%= button_tag type:"submit", class: "clear-btn" do %>
+              <%= icon('fas','camera') %><%= "イメージを登録" %>
+            <% end %>
+          </div>
       <% end %>
     </div>
   </section>
@@ -63,7 +65,7 @@
   <div class="btn-center mb-ss">
     <%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |form| %>
      <%= form.hidden_field :release, value: true %>
-     <%= form.submit "レシピを公開する", class: "btn large-btn" %>
+     <%= form.submit "レシピを公開する", class: "important-btn large-btn" %>
     <% end %>
   </div>
   <div class="text-center mb-ss">

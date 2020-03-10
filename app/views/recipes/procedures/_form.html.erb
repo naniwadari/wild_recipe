@@ -38,7 +38,7 @@
   <%= form_with model: @procedure, url: procedures_path do |form| %>
     <%= hidden_field_tag :recipe_id, @recipe.id %>
     <%= form.hidden_field :content, value: "" %>
-    <%= button_tag type: "submit", class: "btn midium-btn" do %>
+    <%= button_tag type: "submit", class: "btn clear-btn" do %>
       <%= icon('fas','plus-circle') %><%= "フォームを追加" %>
     <% end %>
   <% end %>
