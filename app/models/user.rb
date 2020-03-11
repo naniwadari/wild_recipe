@@ -21,6 +21,19 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :books, dependent: :destroy
   has_many :impressions, dependent: :destroy
+  
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:user_name]
+    image = auth[:info][:image]
+
+    self.find_or_create_by(provider: provider, uid: uid) do |user|
+      user.name = name
+      user.image = image
+    end
+  end
+  
   class << self
     
     #渡された文字列をBcryptで暗号化して返す
