@@ -26,13 +26,13 @@ class User < ApplicationRecord
     provider = auth[:provider]
     uid = auth[:uid]
     name = auth[:info][:name]
-    #image = auth[:info][:image]
+    image = auth[:info][:image]
 
     self.find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
       user.email = User.dummy_email(auth)
       user.password = User.new_token
-      user.image.url = image
+      user.image = image
     end
   end
   
