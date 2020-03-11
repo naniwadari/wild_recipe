@@ -26,10 +26,12 @@ class User < ApplicationRecord
     provider = auth[:provider]
     uid = auth[:uid]
     name = auth[:info][:name]
-    image = auth[:info][:profile_image_url]
+    image = auth[:info][:image]
 
     self.find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
+      user.email = User.dummy_email(auth)
+      user.password = User.new_token
       user.image = image
     end
   end
@@ -107,6 +109,10 @@ class User < ApplicationRecord
     if image.size > 3.megabytes
       errors.add(:image, "画像サイズは3MB以内です")
     end
+  end
+
+  def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 
 end
