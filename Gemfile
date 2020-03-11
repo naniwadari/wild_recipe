@@ -42,6 +42,9 @@ gem "mime-types"
 gem "mini_magick"
 #環境変数管理
 gem "dotenv-rails"
+#TwitterAPI関連
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
