@@ -32,3 +32,5 @@
 
 # Ignore encrypted secrets key file.
 config/secrets.yml.key
+/config/certs*
+!/config/certs/.kepp
