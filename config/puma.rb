@@ -14,6 +14,13 @@ on_worker_boot do
   ActiveRecord::Base.establish_connection
 end
 
+#SSL接続のための設定
+#if "development" == ENV.fetch("RAILS_ENV") { "development" }
+#  ssl_bind '0.0.0.0', '9292', {
+#    key: "config/certs/server.key",
+#    cert: "config/certs/server.crt"
+#  }
+#end
 
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
