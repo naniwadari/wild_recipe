@@ -32,7 +32,7 @@ class User < ApplicationRecord
       user.name = name
       user.email = User.dummy_email(auth)
       user.password = User.new_token
-      user.image = image
+      user.remote_image_url = image
     end
   end
   
