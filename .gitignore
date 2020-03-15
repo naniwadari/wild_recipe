@@ -26,6 +26,9 @@
 /public/uploads
 #vscode用設定ファイル
 /workspace/
+#macのディレクトリ情報ファイル
+/.DS_store
+
 .byebug_history
 .zprofile
 .zprofile.swp
