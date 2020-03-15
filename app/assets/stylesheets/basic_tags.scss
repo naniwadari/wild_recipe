@@ -176,7 +176,7 @@
   &:first-of-type{
    border-top: 1px solid $border-color; 
   }
-  
+
   .recipe-box-img{
     width: 110px;
     height: 100%;
@@ -201,11 +201,13 @@
 }
 
 .recipe_title{
+  line-height: 1.2;
   padding: 6px 12px 0;
 }
 
 .recipe_comment{
   font-size: 1.2rem;
+  line-height: 1.2;
   padding: 4px 12px 0;
 }
 
