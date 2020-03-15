@@ -10,15 +10,19 @@
       <%= f.check_box :remember_me %>
       <span>ログイン情報をブラウザに保存</span>
     <% end %>
-    <%= f.submit "ログイン", class: "btn large-btn mb-s" %>
+    <%= f.submit "ログイン", class: "btn large-btn mb-m" %>
   <% end %>
+  <div>
+    <%= link_to '/auth/twitter' ,class: "tweet-btn mb-m" do %>
+      <%= icon('fab','twitter') %><%= "twitterでログイン"%>
+    <% end %>
+  </div>
   <p class="mb-s">まだ登録していなければ…<%= link_to "サインアップ", signup_path %></p>
   
   <%= form_for(:session, url: login_path) do |f| %>
     <%= f.hidden_field :email, value: "sample@sample.com", class: "form-control" %>
     <%= f.hidden_field :password, value: "password", class: "form-control" %>
-    <%= f.submit "テストログイン", class: "btn midium-btn" %>
+    <%= f.submit "テストログイン", class: "mb-m btn midium-btn" %>
   <% end %>
 
-  <%= link_to "Twitterでログイン", '/auth/twitter' %>
 </section>
