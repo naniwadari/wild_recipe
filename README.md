@@ -8,6 +8,7 @@ https://wildrecipe.net
   * AWS ACMでSSL証明書を発行しSSL化
   * 独自ドメインの取得とAWS Route53を利用した名前解決
   * AWS S3へ画像を保存(CarrierWave+Fogを利用して連携)
+  * TwitterAPIを利用したTwitterログイン。
   * Capistranoによる自動デプロイ
   * Ajaxを用いた非同期処理
     * レシピ投稿における材料入力・手順入力のインプットフォームの増減
@@ -19,6 +20,8 @@ https://wildrecipe.net
 ## 機能一覧
   * ユーザー登録[BCrypt]
   * ユーザー認証[BCrypt]
+  * Twitterログイン[Omniauth]
+  * レシピのTwitter共有
   * レシピ投稿[jQuery]
   * レシピ編集
   * レシピ検索
