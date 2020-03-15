@@ -12,9 +12,9 @@
   <section>
     <div class="recipe-show-funcbox text-center">
       <div class="funcbox-item">
-        <a href="#" class="tweet-btn">
-          <i class="fab fa-twitter"></i>ツイートする
-        </a>
+        <%= link_to @tweet_url, onclick: "window.open(this.href, 'foo','height=400,width=600');return false", class:"tweet-btn" do %>
+          <%= icon('fab','twitter') %><%= "ツイートする" %>
+        <% end %>
       </div>
       <% if logged_in? %>
         <div class="funcbox-item text-center">

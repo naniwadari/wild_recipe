@@ -73,6 +73,14 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find_by(id: params[:id])
     if @recipe.present?
+      @tweet_url = URI.encode(
+        "http://twitter.com/intent/tweet?original_referer=" +
+        request.url +
+        "&url=" +
+        request.url +
+        "&text=" +
+        @recipe.name + "のレシピを見ています！"
+      )
       @user_comments = @recipe.impressions.page(params[:page]).per(5)
     else
       flash[:danger] = "レシピが見つかりませんでした"
