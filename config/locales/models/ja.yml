@@ -13,7 +13,8 @@ ja:
         updated_at: 更新日時
         password: パスワード
         password_confirmation: パスワードの再入力
-        password_digest:
+        image: 画像
       recipe:
         id: ID
         name: レシピの名前
+        image: 画像

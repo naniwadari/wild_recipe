@@ -3,7 +3,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
-  process resize_to_limit: [400, 400]
+  process resize_to_limit: [1000, 1000]
   # Choose what kind of storage to use for this uploader:
   
   if Rails.env.production?
@@ -43,7 +43,10 @@ class ImageUploader < CarrierWave::Uploader::Base
    def extension_whitelist
      %w(jpg jpeg gif png)
    end
-
+  # ファイルサイズの制限
+   def size_range
+    1..3.megabytes
+   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
    def filename

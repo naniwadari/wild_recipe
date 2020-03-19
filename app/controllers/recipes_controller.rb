@@ -33,13 +33,15 @@ class RecipesController < ApplicationController
   
   def update
     @recipe = Recipe.find(params[:id])
-    respond_to do |format|
-      if @recipe.update_attributes(recipe_params)
+    if @recipe.update_attributes(recipe_params)
+      respond_to do |format|
         format.html {redirect_to edit_recipe_path(@recipe)}
         format.js
-      else
-        render "edit"
       end
+    else
+      @ingredients = IngredientCollection.new( [], @recipe.id )
+      @procedures = @recipe.procedure.order(number: "ASC")
+      render "edit"
     end
   end
   
@@ -92,7 +94,7 @@ class RecipesController < ApplicationController
   
     #Recipeのストロングパラメーター
     def recipe_params
-      params.require(:recipe).permit(:name, :comment, :image)
+      params.require(:recipe).permit(:name, :comment, :image, :image_cache)
     end
 
 end

@@ -21,7 +21,8 @@ Rails.application.routes.draw do
       patch :release #公開・非公開を決めるカラム
     end
   end
-  
+  patch "recipes/:id/edit", to: "recipes#update", as: "update_recipe"
+
   resources :ingredients, only: :create
   
   resources :procedures, only: :create

@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 #自分で入れたやつ
+#デバッグ用
+gem "pry-byebug"
 #jquery
 gem "jquery-rails"
 #パスワード暗号化
