@@ -1,0 +1,4 @@
+<%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |f| %>
+  <%= f.hidden_field :release, value: true %>
+  <%= f.submit "レシピを公開する", class: "important-btn large-btn" %>
+<% end %>

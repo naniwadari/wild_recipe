@@ -1,0 +1,4 @@
+<%= form_with url: release_recipe_path(@recipe), method: :patch, local: true do |f| %>
+  <%= f.hidden_field :release, value: false %>
+  <%= f.submit "プライベートで保存" ,class: "btn midium-btn"%>
+<% end %>
