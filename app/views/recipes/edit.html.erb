@@ -8,12 +8,7 @@
       <h1 id="recipe-title"><%= @recipe.name %></h1>
       <dt><a>名前を変更する</a></dt>
       <dd>
-        <%= form_with model: @recipe do |f| %>
-          <%= f.text_area :name, placeholder: "レシピの名前を入力しましょう", value: @recipe.name %>
-          <div class="btn-right">
-            <%= f.submit "変更", class: "btn mini-btn"%>
-          </div>
-        <% end %>
+       <%= render "recipes/edit/nameform" %>
       </dd>
     </div>
   </section>
@@ -23,7 +18,7 @@
       <h3>コメント</h3>
     </div>
     <div class="content-inner">
-      <%= render "recipes/recipe_comment_form" %>
+      <%= render "recipes/edit/commentform" %>
     </div>
   </section>
   
