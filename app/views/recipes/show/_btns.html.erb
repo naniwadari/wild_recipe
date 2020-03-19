@@ -1,0 +1,25 @@
+<div class="funcbox-item">
+	<%= link_to @tweet_url, onclick: "window.open(this.href, 'foo','height=400,width=600');return false", class:"tweet-btn" do %>
+		<%= icon('fab','twitter') %><%= "ツイートする" %>
+	<% end %>
+</div>
+<% if logged_in? %>
+	<div class="funcbox-item">
+		<div class="like-func">
+			<% if current_user.like?(@recipe) %>
+				<%= render "recipes/unlike" %>
+			<% else %>
+				<%= render "recipes/like" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="funcbox-item">
+		<div id="book-icon-<%= @recipe.id %>">
+			<% if current_user.book?(@recipe) %>
+				<%= render "recipes/unbook" %>
+			<% else %>
+				<%= render "recipes/book" %>
+			<% end %>
+		</div>
+	</div>
+<% end %>

@@ -3,42 +3,20 @@
     <img src="<%= @recipe.image.url %>" ></img>
   </div>
 </section>
+
 <div class="content-inner">
+
   <section>
     <h1 class="mb-s"><%= @recipe.name %></h1>
     <p class="mb-s"><%= @recipe.comment %></p>
     by<%= link_to "#{@recipe.user.name}", user_path(@recipe.user) %>
   </section>
+
   <section>
     <div class="recipe-show-funcbox text-center">
-      <div class="funcbox-item">
-        <%= link_to @tweet_url, onclick: "window.open(this.href, 'foo','height=400,width=600');return false", class:"tweet-btn" do %>
-          <%= icon('fab','twitter') %><%= "ツイートする" %>
-        <% end %>
-      </div>
-      <% if logged_in? %>
-        <div class="funcbox-item text-center">
-          <div class="like-func">
-            <% if current_user.like?(@recipe) %>
-              <%= render "unlike" %>
-            <% else %>
-              <%= render "like" %>
-            <% end %>
-          </div>
-        </div>
-        <div class="funcbox-item text-center">
-          <div id="book-icon-<%= @recipe.id %>">
-            <% if current_user.book?(@recipe) %>
-              <%= render "unbook" %>
-            <% else %>
-              <%= render "book" %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+      <%= render "recipes/show/btns" %>
     </div>
   </section>
-
 
   <section>
     <div class="label gray-label">
