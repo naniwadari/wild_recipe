@@ -26,7 +26,7 @@ class RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
     @user = @recipe.user
-    @ingredients = IngredientCollection.new( [], @recipe.id)
+    @ingredients = IngredientCollection.new( [], @recipe)
     @procedures = @recipe.procedure.order(number: "ASC")
     @procedure = @recipe.procedure.build
   end
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
         format.js
       end
     else
-      @ingredients = IngredientCollection.new( [], @recipe.id )
+      @ingredients = IngredientCollection.new( [], @recipe)
       @procedures = @recipe.procedure.order(number: "ASC")
       render "edit"
     end

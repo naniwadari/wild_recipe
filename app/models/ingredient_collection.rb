@@ -7,17 +7,14 @@ class IngredientCollection
   extend ActiveModel::Translation
   include ActiveModel::AttributeMethods
   include ActiveModel::Validations
-  INGREDIENT_NUM = 5 #同時に作成する材料の数
   attr_accessor :collection #作成した材料モデルが格納される仮属性
   
   #初期化メソッド
-  def initialize(attributes = [], recipe_id)
-    #レシピＩＤを指定
-    @recipe = Recipe.find_by(id: recipe_id)
+  def initialize(attributes = [], recipe )
     #attributesに値が入っていればcollectionに材料データを入れ込んだ配列を代入する
     if attributes.present?
       self.collection = attributes.map do |value|
-        @recipe.ingredient.build(
+        recipe.ingredient.build(
           name: value[:name],
           amount: value[:amount] )
       end
@@ -25,7 +22,7 @@ class IngredientCollection
         value.number = "#{ (i + 1) }"
       end
     else
-      self.collection = @recipe.ingredient.map
+      self.collection = recipe.ingredient.map
     end
   end
 

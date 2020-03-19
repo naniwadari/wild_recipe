@@ -4,7 +4,7 @@ class IngredientsController < ApplicationController
   
   def create
     @recipe = Recipe.find_by(id: params[:recipe_id])
-    @ingredients = IngredientCollection.new(ingredients_params, @recipe.id)
+    @ingredients = IngredientCollection.new(ingredients_params, @recipe)
     if @ingredients.save
       respond_to do |format|
         format.html { redirect_to edit_recipe_path(@recipe) }
