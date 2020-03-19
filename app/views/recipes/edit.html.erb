@@ -30,16 +30,7 @@
       <%= image_tag @recipe.image.url %>
     </div>
     <div class="btn-center mb-l">
-      <%= form_with model: @recipe, url: update_recipe_path, local: true do |f| %>
-        <%= render "shared/error_messages", object: f.object %>
-        <%= f.hidden_field :image_cache %>
-        <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" ,class: "mb-s"%>
-          <div>
-            <%= button_tag type:"submit", class: "clear-btn" do %>
-              <%= icon('fas','camera') %><%= "イメージを登録" %>
-            <% end %>
-          </div>
-      <% end %>
+      <%= render "recipes/edit/uploader"%>
     </div>
   </section>
     
