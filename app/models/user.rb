@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :impressions, dependent: :destroy
   
+  #twitterログイン用のメソッド
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]
@@ -70,37 +71,37 @@ class User < ApplicationRecord
   
   #レシピをイイネする
   def like(recipe)
-    self.likes.create(recipe_id: recipe.id)
+    likes.create(recipe_id: recipe.id)
   end
   
   #レシピのイイネを取り消す
   def unlike(recipe)
-    self.likes.find_by(recipe_id: recipe.id).destroy
+    likes.find_by(recipe_id: recipe.id).destroy
   end
   
   #ユーザーがレシピをイイネしていたらtrueを返す
   def like?(recipe)
-    self.likes.find_by(recipe_id: recipe.id).present?
+    likes.find_by(recipe_id: recipe.id).present?
   end
   
   #レシピをブックマークする
   def book(recipe)
-    self.books.create(recipe_id: recipe.id)
+    books.create(recipe_id: recipe.id)
   end
   
   #レシピのブックマークを取り消す
   def unbook(recipe)
-    self.books.find_by(recipe_id: recipe.id).destroy
+    books.find_by(recipe_id: recipe.id).destroy
   end
   
   #ユーザーがレシピをブックマークしていたらtrueを返す
   def book?(recipe)
-    self.books.find_by(recipe_id: recipe.id).present?
+    books.find_by(recipe_id: recipe.id).present?
   end
   
   #ユーザーがレシピにコメントする
   def write_comment(recipe, comment)
-    self.impressions.create(recipe_id: recipe.id, comment: comment)
+    impressions.create(recipe_id: recipe.id, comment: comment)
   end
   
   private
@@ -111,6 +112,7 @@ class User < ApplicationRecord
     end
   end
 
+  #twitterログイン用ダミーアドレス生成
   def self.dummy_email(auth)
     "#{auth.uid}-#{auth.provider}@example.com"
   end
