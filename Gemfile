@@ -49,6 +49,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 #ローカルSSL
 gem 'thin'
+#SEO対策
+gem 'meta-tags'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
