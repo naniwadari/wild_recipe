@@ -7,17 +7,23 @@ module ApplicationHelper
       charset: 'utf-8',
       description: "WildRecipeは野食専門のレシピサイトです",
       canocilal: request.original_url,
+      image: "",
       separator: '|',
       og:{
         site_name: :site,
         title: :title,
         descriptiotn: :description,
-        image: "",
+        image: :image,
         type: 'website',
         url: request.original_url,
         locale: 'ja_JP',
       },
       twitter:{
+        site_name: :site,
+        tiltle: :title,
+        description: :description,
+        image: :image,
+        type: 'website'
         card:'summary_large_image',
       }
     }
