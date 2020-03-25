@@ -2,25 +2,23 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'WildRecipe',
-      title: "#{@recipe.name unless @recipe.nil?}" ,
+      title: "野食専門レシピサイト" ,
       reverse: true,
       charset: 'utf-8',
-      description: "#{@recipe.comment unless @recipe.nil?}",
+      description: "WildRecipeは野食専門のレシピサイトです",
       canocilal: request.original_url,
       separator: '|',
-      icon:{
-        href: "#{@recipe.image.url unless @recipe.nil?}" , sizes: '180x180', type: 'image/jpg' 
-      },
       og:{
         site_name: :site,
         title: :title,
         descriptiotn: :description,
+        image: "",
         type: 'website',
         url: request.original_url,
         locale: 'ja_JP',
       },
       twitter:{
-        card:'summary',
+        card:'summary_large_image',
       }
     }
   end

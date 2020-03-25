@@ -1,3 +1,7 @@
+<% set_meta_tags title: "#{@recipe.name}" %>
+<% set_meta_tags description: "#{@recipe.comment}" %>
+<% set_meta_tags image: "#{@recipe.image.url}" %>
+
 <section>
   <div class="recipes-show-img">
     <img src="<%= @recipe.image.url %>" ></img>
