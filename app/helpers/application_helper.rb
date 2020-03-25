@@ -2,7 +2,7 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'WildRecipe',
-      title: "野食専門レシピサイト" ,
+      title: "野食専門レシピサイトWildRecipe" ,
       reverse: true,
       charset: 'utf-8',
       description: "WildRecipeは野食専門のレシピサイトです。美味しく自然と触れ合おう",
