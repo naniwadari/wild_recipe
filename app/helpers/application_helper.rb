@@ -6,9 +6,6 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: "WildRecipeは野食専門のレシピサイトです。美味しく自然と触れ合おう",
-      icon: {
-
-      },
       canocilal: request.original_url,
       image: image_url("wildrecipe_logo_character.png"),
       separator: '|',
@@ -16,7 +13,7 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         descriptiotn: :description,
-        image: "",
+        image: image_url("wildrecipe_logo_character.png"),
         type: 'website',
         url: request.original_url,
         locale: 'ja_JP',
@@ -25,7 +22,7 @@ module ApplicationHelper
         site_name: :site,
         tiltle: :title,
         description: :description,
-        image: "",
+        image: image_url("wildrecipe_logo_character.png"),
         type: 'website',
         card:'summary_large_image',
       }
