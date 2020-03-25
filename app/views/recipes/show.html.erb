@@ -1,6 +1,13 @@
-<% set_meta_tags title: "#{@recipe.name}" %>
-<% set_meta_tags description: "#{@recipe.comment}" %>
-<% set_meta_tags image: "#{@recipe.image.url}" %>
+<% 
+  set_meta_tags title: "#{@recipe.name}",
+    description: "#{@recipe.comment}",
+    og: {
+      image: "#{@recipe.image.url}"
+    },
+    twitter: {
+      image: "#{@recipe.image.url}"
+    }
+%>
 
 <section>
   <div class="recipes-show-img">

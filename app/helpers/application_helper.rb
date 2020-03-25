@@ -13,7 +13,7 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         descriptiotn: :description,
-        image: :image,
+        image: "",
         type: 'website',
         url: request.original_url,
         locale: 'ja_JP',
@@ -22,7 +22,7 @@ module ApplicationHelper
         site_name: :site,
         tiltle: :title,
         description: :description,
-        image: :image,
+        image: "",
         type: 'website',
         card:'summary_large_image',
       }
