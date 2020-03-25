@@ -6,6 +6,7 @@ module ApplicationHelper
       reverse: true,
       charset: 'utf-8',
       description: "WildRecipeは野食専門のレシピサイトです。美味しく自然と触れ合おう",
+      keywords: "Wildrecipe,野草,野食,ワイルドレシピ,野肉,キノコ",
       canocilal: request.original_url,
       image: image_url("wildrecipe_logo_character.png"),
       separator: '|',
