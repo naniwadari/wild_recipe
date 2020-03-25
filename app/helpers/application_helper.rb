@@ -23,7 +23,7 @@ module ApplicationHelper
         tiltle: :title,
         description: :description,
         image: :image,
-        type: 'website'
+        type: 'website',
         card:'summary_large_image',
       }
     }
