@@ -5,9 +5,12 @@ module ApplicationHelper
       title: "野食専門レシピサイト" ,
       reverse: true,
       charset: 'utf-8',
-      description: "WildRecipeは野食専門のレシピサイトです",
+      description: "WildRecipeは野食専門のレシピサイトです。美味しく自然と触れ合おう",
+      icon: {
+
+      },
       canocilal: request.original_url,
-      image: "",
+      image: image_url("wildrecipe_logo_character.png"),
       separator: '|',
       og:{
         site_name: :site,
