@@ -1,5 +1,7 @@
 # WildRecipe README
 https://wildrecipe.net
+(※インスタンス停止済みです。)
+
 ## アプリケーションの概要
   WildRecipeは野食専門のレシピ投稿・共有サービスです。
 
